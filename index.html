@@ -2,207 +2,237 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Arcade Nexus</title>
+<title>Arcyn</title>
 
 <style>
+
+*{
+box-sizing:border-box;
+margin:0;
+padding:0;
+font-family:system-ui;
+}
+
 body{
-    margin:0;
-    font-family:Arial,Helvetica,sans-serif;
-    background:linear-gradient(135deg,#0f2027,#203a43,#2c5364);
-    color:white;
-    text-align:center;
+background:#0b0b0b;
+color:white;
+padding:40px;
+}
+
+.container{
+max-width:1100px;
+margin:auto;
 }
 
 header{
-    padding:20px;
-    font-size:40px;
-    font-weight:bold;
+display:flex;
+align-items:center;
+gap:10px;
+margin-bottom:30px;
+font-size:20px;
+font-weight:600;
 }
 
-#menu{
-    margin-top:20px;
+.logo{
+width:34px;
+height:34px;
+border-radius:8px;
+background:#16a34a;
+display:flex;
+align-items:center;
+justify-content:center;
 }
 
-button{
-    padding:12px 25px;
-    margin:10px;
-    border:none;
-    border-radius:8px;
-    background:#00c6ff;
-    color:white;
-    font-size:16px;
-    cursor:pointer;
-    transition:0.2s;
+.hero{
+background:linear-gradient(135deg,#0f3d22,#08120d);
+border-radius:18px;
+padding:40px;
+display:flex;
+justify-content:space-between;
+align-items:center;
+margin-bottom:25px;
 }
 
-button:hover{
-    transform:scale(1.05);
+.hero h1{
+font-size:40px;
 }
 
-#gameContainer{
-    display:none;
-    margin-top:20px;
+.hero p{
+color:#9ca3af;
+margin-top:10px;
 }
 
-canvas{
-    background:black;
-    border:3px solid white;
+.gameIcon{
+width:100px;
+height:100px;
+background:#14532d;
+border-radius:20px;
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:40px;
 }
 
-#leaderboard{
-    margin-top:20px;
+.stats{
+display:grid;
+grid-template-columns:repeat(4,1fr);
+gap:15px;
+margin-bottom:25px;
 }
+
+.stat{
+background:#121212;
+padding:18px;
+border-radius:12px;
+}
+
+.stat h2{
+font-size:20px;
+}
+
+.stat span{
+color:#9ca3af;
+font-size:13px;
+}
+
+.search{
+margin-bottom:20px;
+}
+
+.search input{
+width:100%;
+padding:14px;
+border-radius:10px;
+border:none;
+background:#141414;
+color:white;
+}
+
+.categories{
+display:flex;
+flex-wrap:wrap;
+gap:10px;
+margin-bottom:25px;
+}
+
+.category{
+background:#141414;
+padding:8px 16px;
+border-radius:20px;
+font-size:14px;
+cursor:pointer;
+}
+
+.category.active{
+background:#16a34a;
+}
+
+.sectionTitle{
+margin-bottom:15px;
+font-size:20px;
+}
+
+.games{
+display:grid;
+grid-template-columns:repeat(auto-fill,minmax(180px,1fr));
+gap:15px;
+}
+
+.game{
+background:#111;
+border-radius:14px;
+height:120px;
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:30px;
+color:#888;
+transition:.2s;
+}
+
+.game:hover{
+transform:scale(1.05);
+background:#181818;
+}
+
 </style>
 </head>
 
 <body>
 
-<header>🎮 Arcade Nexus</header>
+<div class="container">
 
-<div id="menu">
-    <button onclick="startSnake()">Snake</button>
-    <button onclick="startReaction()">Reaction Test</button>
+<header>
+<div class="logo">🎮</div>
+Arcyn
+</header>
+
+<div class="hero">
+<div>
+<span style="color:#22c55e">Play Free Games</span>
+<h1>Welcome to <span style="color:#22c55e">Arcyn</span></h1>
+<p>Discover and play amazing HTML games right in your browser. No downloads needed.</p>
 </div>
 
-<div id="gameContainer">
-    <canvas id="game" width="600" height="400"></canvas>
-    <div id="score"></div>
-    <button onclick="backMenu()">Back</button>
+<div class="gameIcon">
+🎮
+</div>
 </div>
 
-<div id="leaderboard">
-<h2>🏆 Leaderboard</h2>
-<ul id="scores"></ul>
+<div class="stats">
+
+<div class="stat">
+<h2>14</h2>
+<span>Total Games</span>
 </div>
 
-<script>
+<div class="stat">
+<h2>8,200</h2>
+<span>Total Plays</span>
+</div>
 
-const canvas = document.getElementById("game")
-const ctx = canvas.getContext("2d")
+<div class="stat">
+<h2>5</h2>
+<span>Categories</span>
+</div>
 
-let currentGame = null
-let score = 0
+<div class="stat">
+<h2>7</h2>
+<span>Featured</span>
+</div>
 
-function showScores(){
-    let scores = JSON.parse(localStorage.getItem("scores") || "[]")
-    let list = document.getElementById("scores")
-    list.innerHTML = ""
+</div>
 
-    scores.slice(0,10).forEach(s=>{
-        let li=document.createElement("li")
-        li.textContent=s
-        list.appendChild(li)
-    })
-}
+<div class="search">
+<input placeholder="Search games...">
+</div>
 
-function saveScore(s){
-    let scores = JSON.parse(localStorage.getItem("scores") || "[]")
-    scores.push(s)
-    scores.sort((a,b)=>b-a)
-    localStorage.setItem("scores",JSON.stringify(scores))
-    showScores()
-}
+<div class="categories">
+<div class="category active">All Games</div>
+<div class="category">Arcade</div>
+<div class="category">Puzzle</div>
+<div class="category">Strategy</div>
+<div class="category">Action</div>
+<div class="category">Adventure</div>
+<div class="category">Sports</div>
+<div class="category">Card</div>
+<div class="category">Racing</div>
+</div>
 
-showScores()
+<div class="sectionTitle">Featured</div>
 
-function backMenu(){
-    document.getElementById("gameContainer").style.display="none"
-    document.getElementById("menu").style.display="block"
-    currentGame=null
-}
+<div class="games">
 
-function startSnake(){
+<div class="game">🚗</div>
+<div class="game">🧠</div>
+<div class="game">🕹</div>
+<div class="game">⚔️</div>
+<div class="game">🏀</div>
+<div class="game">🎯</div>
 
-document.getElementById("menu").style.display="none"
-document.getElementById("gameContainer").style.display="block"
+</div>
 
-currentGame="snake"
-score=0
-
-let snake=[[10,10]]
-let food=[15,10]
-let dir=[1,0]
-
-document.onkeydown=(e)=>{
-if(e.key==="ArrowUp") dir=[0,-1]
-if(e.key==="ArrowDown") dir=[0,1]
-if(e.key==="ArrowLeft") dir=[-1,0]
-if(e.key==="ArrowRight") dir=[1,0]
-}
-
-function loop(){
-
-if(currentGame!=="snake") return
-
-ctx.clearRect(0,0,600,400)
-
-let head=[snake[0][0]+dir[0],snake[0][1]+dir[1]]
-
-if(head[0]<0||head[1]<0||head[0]>=30||head[1]>=20){
-saveScore(score)
-alert("Game Over! Score: "+score)
-backMenu()
-return
-}
-
-snake.unshift(head)
-
-if(head[0]==food[0]&&head[1]==food[1]){
-score++
-food=[Math.floor(Math.random()*30),Math.floor(Math.random()*20)]
-}else{
-snake.pop()
-}
-
-ctx.fillStyle="lime"
-snake.forEach(s=>{
-ctx.fillRect(s[0]*20,s[1]*20,18,18)
-})
-
-ctx.fillStyle="red"
-ctx.fillRect(food[0]*20,food[1]*20,18,18)
-
-document.getElementById("score").textContent="Score: "+score
-
-setTimeout(loop,100)
-}
-
-loop()
-}
-
-function startReaction(){
-
-document.getElementById("menu").style.display="none"
-document.getElementById("gameContainer").style.display="block"
-
-currentGame="reaction"
-score=0
-
-ctx.fillStyle="black"
-ctx.fillRect(0,0,600,400)
-
-let startTime
-
-setTimeout(()=>{
-ctx.fillStyle="green"
-ctx.fillRect(0,0,600,400)
-startTime=performance.now()
-},Math.random()*3000+1000)
-
-canvas.onclick=()=>{
-if(currentGame!=="reaction") return
-
-let reaction=Math.floor(performance.now()-startTime)
-score=1000-reaction
-saveScore(score)
-
-alert("Reaction time: "+reaction+"ms")
-backMenu()
-}
-
-}
-
-</script>
+</div>
 
 </body>
 </html>
