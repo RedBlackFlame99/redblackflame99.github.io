@@ -273,5 +273,30 @@
         "name": "Gun Mayhem 2",
         "path": "games/gun_mayhem/clgunmayhem2goof.html",
         "icon": "games/gun_mayhem/icon2.png"
+    },
+    {
+        "name": "Pixel Shooter",
+        "path": "games/pixel_shooter/clpixelshooter.html",
+        "icon": "games/pixel_shooter/icon.png"
+    },
+    {
+        "name": "Planet Life",
+        "path": "games/planet_life/clplanetlife.html",
+        "icon": "games/planet_life/icon.png"
+    },
+    {
+        "name": "Retro Bowl",
+        "path": "games/retro_bowl/rb.html",
+        "icon": "games/retro_bowl/icon.png"
+    },
+    {
+        "name": "Retro Bowl College",
+        "path": "games/retro_bowl/college.html",
+        "icon": "games/retro_bowl/college.png"
+    },
+    {
+        "name": "Retro Ping Pong",
+        "path": "games/retro_ping_pong/game.html",
+        "icon": "games/retro_ping_pong/icon.png"
     }
 ]
