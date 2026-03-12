@@ -13,5 +13,10 @@
         "name": "1v1.lol",
         "path": "games/1v1_lol/1v1_lol.html",
         "icon": "games/1v1_lol/1v1lol-cover.png"
+    },
+    {
+        "name": "Gunspin",
+        "path": "games/gunspin/clgun-spin.html",
+        "icon": "games/gunspin/gunspin-logo.png"
     }
 ]
