@@ -103,5 +103,10 @@
         "name": "Cookie Clicker",
         "path": "games/cookie_clicker/clcookie-clicker.html",
         "icon": "games/cookie_clicker/icon.png"
+    },
+    {
+        "name": "Drift Boss",
+        "path": "games/drift_boss/cldriftboss.html",
+        "icon": "games/drift_boss/icon.png"
     }
 ]

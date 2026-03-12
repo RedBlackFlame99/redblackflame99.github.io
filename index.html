@@ -4,135 +4,160 @@
 <meta charset="UTF-8">
 <title>Hotdog Party</title>
 
-<!-- Fun Google Font -->
 <link href="https://fonts.googleapis.com/css2?family=Luckiest+Guy&display=swap" rel="stylesheet">
 
 <style>
-body {
-    margin: 0;
-    background: #121212;
-    color: #fff;
-    font-family: "Segoe UI", system-ui, sans-serif;
-    padding: 40px;
-    box-sizing: border-box;
+
+/* Page styling */
+body{
+margin:0;
+background:#121212;
+color:white;
+font-family:"Segoe UI",system-ui,sans-serif;
+padding:120px 40px 40px 40px;
+box-sizing:border-box;
 }
 
-/* Header */
-.header {
-    font-family: 'Luckiest Guy', cursive;
-    font-size: 3rem;
-    color: #ff8c00;
-    margin-bottom: 25px;
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    letter-spacing: 1px;
+/* Sticky header */
+.topbar{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+background:#181818;
+padding:20px 40px;
+box-shadow:0 6px 20px rgba(0,0,0,.6);
+z-index:1000;
+display:flex;
+align-items:center;
 }
 
-.header span {
-    font-size: 3.2rem;
+/* Emoji */
+.logo-emoji{
+font-size:3rem;
+margin-right:12px;
+animation:bounce 2s infinite;
+}
+
+/* Title text */
+.header-text{
+font-family:'Luckiest Guy',cursive;
+font-size:3rem;
+background:linear-gradient(45deg,#ff7b00,#ffae00);
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+letter-spacing:2px;
+text-shadow:0 0 20px rgba(255,140,0,.4);
+}
+
+/* Bounce animation */
+@keyframes bounce{
+0%,100%{transform:translateY(0)}
+50%{transform:translateY(-6px)}
 }
 
 /* Search bar */
-.search-container {
-    margin-bottom: 30px;
+.search-container{
+margin-bottom:30px;
 }
 
-.search-container input {
-    width: 100%;
-    padding: 12px 16px;
-    border-radius: 12px;
-    border: none;
-    font-size: 16px;
-    background: #1e1e1e;
-    color: #fff;
-    outline: none;
-    box-shadow: inset 0 0 6px rgba(0,0,0,0.4);
+.search-container input{
+width:100%;
+padding:12px 16px;
+border-radius:12px;
+border:none;
+font-size:16px;
+background:#1e1e1e;
+color:white;
+outline:none;
+box-shadow:inset 0 0 6px rgba(0,0,0,.4);
 }
 
-.search-container input::placeholder {
-    color: #aaa;
+.search-container input::placeholder{
+color:#aaa;
 }
 
-.search-container input:focus {
-    background: #2c2c2c;
+.search-container input:focus{
+background:#2c2c2c;
 }
 
 /* Games grid */
-.games {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-    gap: 25px;
+.games{
+display:grid;
+grid-template-columns:repeat(auto-fill,minmax(220px,1fr));
+gap:25px;
 }
 
 /* Game cards */
-.game {
-    position: relative;
-    aspect-ratio: 1/1;
-    border-radius: 16px;
-    overflow: hidden;
-    cursor: pointer;
-    background: #1f1f1f;
-    transition: transform 0.3s, box-shadow 0.3s;
+.game{
+position:relative;
+aspect-ratio:1/1;
+border-radius:16px;
+overflow:hidden;
+cursor:pointer;
+background:#1f1f1f;
+transition:transform .3s,box-shadow .3s;
 }
 
-.game img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: transform 0.3s;
+.game img{
+width:100%;
+height:100%;
+object-fit:cover;
+transition:transform .3s;
 }
 
-.game::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(to top, rgba(0,0,0,0.85), transparent);
-    opacity: 0;
-    transition: opacity 0.3s;
-    z-index: 1;
+.game::after{
+content:"";
+position:absolute;
+inset:0;
+background:linear-gradient(to top,rgba(0,0,0,.85),transparent);
+opacity:0;
+transition:opacity .3s;
+z-index:1;
 }
 
-.game .title {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    padding: 12px;
-    text-align: center;
-    font-weight: 600;
-    font-size: 1rem;
-    opacity: 0;
-    transform: translateY(8px);
-    transition: opacity 0.3s, transform 0.3s;
-    color: #fff;
-    z-index: 2;
+.game .title{
+position:absolute;
+bottom:0;
+left:0;
+right:0;
+padding:12px;
+text-align:center;
+font-weight:600;
+font-size:1rem;
+opacity:0;
+transform:translateY(8px);
+transition:opacity .3s,transform .3s;
+color:white;
+z-index:2;
 }
 
-.game:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+.game:hover{
+transform:translateY(-6px);
+box-shadow:0 14px 25px rgba(0,0,0,.6);
 }
 
-.game:hover img {
-    transform: scale(1.08);
+.game:hover img{
+transform:scale(1.08);
 }
 
-.game:hover::after {
-    opacity: 1;
+.game:hover::after{
+opacity:1;
 }
 
-.game:hover .title {
-    opacity: 1;
-    transform: translateY(0);
+.game:hover .title{
+opacity:1;
+transform:translateY(0);
 }
+
 </style>
 </head>
 
 <body>
 
-<div class="header">
-🌭 Hotdog Party
+<div class="topbar">
+<div class="logo-emoji">🌭</div>
+<div class="header-text">Hotdog Party</div>
 </div>
 
 <div class="search-container">
@@ -142,45 +167,55 @@ body {
 <div class="games" id="games"></div>
 
 <script>
-let allGames = [];
 
-async function loadGames() {
-    const response = await fetch("games.json");
-    const games = await response.json();
-    allGames = games;
-    renderGames(games);
+let allGames=[];
+
+async function loadGames(){
+const response=await fetch("games.json");
+const games=await response.json();
+allGames=games;
+renderGames(games);
 }
 
-function renderGames(games) {
-    const container = document.getElementById("games");
-    container.innerHTML = "";
+function renderGames(games){
 
-    games.forEach(game => {
-        const card = document.createElement("div");
-        card.className = "game";
+const container=document.getElementById("games");
+container.innerHTML="";
 
-        card.innerHTML = `
-            <img src="${game.icon}" alt="${game.name}">
-            <div class="title">${game.name}</div>
-        `;
+games.forEach(game=>{
 
-        card.onclick = () => {
-            window.location.href = game.path;
-        }
+const card=document.createElement("div");
+card.className="game";
 
-        container.appendChild(card);
-    });
+card.innerHTML=`
+<img src="${game.icon}" alt="${game.name}">
+<div class="title">${game.name}</div>
+`;
+
+card.onclick=()=>{
+window.location.href=game.path;
 }
 
-document.getElementById("search").addEventListener("input", e => {
-    const query = e.target.value.toLowerCase();
-    const filtered = allGames.filter(game =>
-        game.name.toLowerCase().includes(query)
-    );
-    renderGames(filtered);
+container.appendChild(card);
+
+});
+
+}
+
+document.getElementById("search").addEventListener("input",e=>{
+
+const query=e.target.value.toLowerCase();
+
+const filtered=allGames.filter(game =>
+game.name.toLowerCase().includes(query)
+);
+
+renderGames(filtered);
+
 });
 
 loadGames();
+
 </script>
 
 </body>
