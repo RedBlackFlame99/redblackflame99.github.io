@@ -357,6 +357,11 @@
     {
         "name": "Johnny Trigger",
         "path": "games/johnny_trigger/cljohnnytrigger.html",
-        "icon": "games/johhny_trigger/icon.png"
+        "icon": "games/johnny_trigger/icon.png"
+    },
+    {
+        "name": "JustFall.lol",
+        "path": "games/justfall_lol/cljustfalllol.html",
+        "icon": "games/justfall_lol/icon.png"
     }
 ]
