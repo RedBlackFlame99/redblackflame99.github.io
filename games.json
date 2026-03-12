@@ -110,8 +110,13 @@
         "icon": "games/drift_boss/icon.png"
     },
     {
-        "name": "Drift Boss",
-        "path": "games/drift_boss/cldriftboss.html",
-        "icon": "games/drift_boss/icon.png"
+        "name": "Time Shooter 2",
+        "path": "games/time_shooter/cltimeshooter2.html",
+        "icon": "games/time_shooter/ts2.png"
+    },
+    {
+        "name": "Time Shooter 3",
+        "path": "games/time_shooter/cltimeshooter3.html",
+        "icon": "games/time_shooter/ts3.png"
     }
 ]
