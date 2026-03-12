@@ -5,9 +5,9 @@
         "icon": "games/snow_rider/snow-rider-3d.png"
     },
     {
-        "name": "Snow Rider",
-        "path": "games/snow_rider/snow_rider.html",
-        "icon": "games/snow_rider/snow-rider-3d.png"
+        "name": "Ragdoll Archer",
+        "path": "games/ragdoll_archers/ragdoll_archers.html",
+        "icon": "games/ragdoll_archers/icon.png"
     },
     {
         "name": "Snow Rider",
