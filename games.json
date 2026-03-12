@@ -348,5 +348,15 @@
         "name": "Tung Tung Tung Sahur Obby",
         "path": "games/roblox/ttt_obby/ttt.html",
         "icon": "games/roblox/ttt_obby/icon.png"
+    },
+    {
+        "name": "Jailbreak Obby",
+        "path": "games/roblox/jailbreak_obby/jbo.html",
+        "icon": "games/roblox/jailbreak_obby/icon.png"
+    },
+    {
+        "name": "Johnny Trigger",
+        "path": "games/johnny_trigger/cljohnnytrigger.html",
+        "icon": "games/johhny_trigger/icon.png"
     }
 ]
