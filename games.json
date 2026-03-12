@@ -28,5 +28,10 @@
         "name": "PolyTrack",
         "path": "games/poly_track/clpolytrackworksnow.html",
         "icon": "games/poly_track/polytrack-min.jpg"
+    },
+    {
+        "name": "Monkey Mart",
+        "path": "games/monkey_mart/monkey_mart.html",
+        "icon": "games/monkey_mart/monkey.png"
     }
 ]
