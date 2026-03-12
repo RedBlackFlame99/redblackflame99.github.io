@@ -33,5 +33,15 @@
         "name": "Monkey Mart",
         "path": "games/monkey_mart/monkey_mart.html",
         "icon": "games/monkey_mart/monkey.png"
+    },
+    {
+        "name": "Five Nights at Epstein's",
+        "path": "games/five_nighte/five_nighte.html",
+        "icon": "games/five_nighte/epstein.png"
+    },
+    {
+        "name": "Level Devil",
+        "path": "games/level_devil/clleveldevil.html",
+        "icon": "games/level_devil/icon.png"
     }
 ]
