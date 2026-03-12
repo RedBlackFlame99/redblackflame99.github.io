@@ -83,5 +83,25 @@
         "name": "Block Blast",
         "path": "games/blockblast/clblockblast.html",
         "icon": "games/blockblast/e.png"
+    },
+    {
+        "name": "Geo Lite (little long to load)",
+        "path": "games/geometry_dash/lite/lite.html",
+        "icon": "games/geometry_dash/lite/lite.png"
+    },
+    {
+        "name": "Getaway Shootout",
+        "path": "games/getaway_shootout/clgetawayshootout.html",
+        "icon": "games/getaway_shootout/logo.png"
+    },
+    {
+        "name": "Geo Subzero",
+        "path": "games/geometry_dash/subzero/subzero.html",
+        "icon": "games/geometry_dash/subzero/subzero.png"
+    },
+    {
+        "name": "Cookie Clicker",
+        "path": "games/cookie_clicker/clcookie-clicker.html",
+        "icon": "games/cookie_clicker/icon.png"
     }
 ]
