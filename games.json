@@ -120,7 +120,7 @@
         "icon": "games/time_shooter/ts3.png"
     },
     {
-        "name": "Dance of Fire and Ice",
+        "name": "A Dance of Fire and Ice",
         "path": "games/fireandice/fireandice.html",
         "icon": "games/fireandice/icon.png"
     },
@@ -153,5 +153,50 @@
         "name": "Ragdoll Drop",
         "path": "games/ragdoll/drop/clragdolldrop.html",
         "icon": "games/ragdoll/drop/icon.png"
+    },
+    {
+        "name": "Ragdoll Hit",
+        "path": "games/ragdoll/hit/clragdollhit.html",
+        "icon": "games/ragdoll/hit/icon.png"
+    },
+    {
+        "name": "OvO",
+        "path": "games/ovo/clovofixed.html",
+        "icon": "games/ovo/icon.png"
+    },
+    {
+        "name": "OvO 2",
+        "path": "games/ovo/clovo2.html",
+        "icon": "games/ovo/icon2.png"
+    },
+    {
+        "name": "OvO Dimensions",
+        "path": "games/ovo/clovodimensions.html",
+        "icon": "games/ovo/iconD.png"
+    },
+    {
+        "name": "Basket Stars",
+        "path": "games/basketstars/stars.html",
+        "icon": "games/basketstars/icon.png"
+    },
+    {
+        "name": "Cluster Rush",
+        "path": "games/clusterrush/rush.html",
+        "icon": "games/clusterrush/image.png"
+    },
+    {
+        "name": "Capybara Clicker",
+        "path": "games/capybara_clicker/clcabybaraclicker.html",
+        "icon": "games/capybara_clicker/icon.png"
+    },
+    {
+        "name": "Coreball",
+        "path": "games/coreball/coreball.html",
+        "icon": "games/coreball/icon.png"
+    },
+    {
+        "name": "Cell Machine",
+        "path": "games/cell_machine/clcellmachine.html",
+        "icon": "games/cell_machine/icon.png"
     }
 ]
