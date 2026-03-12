@@ -153,10 +153,5 @@
         "name": "Ragdoll Drop",
         "path": "games/ragdoll/drop/clragdolldrop.html",
         "icon": "games/ragdoll/drop/icon.png"
-    },
-    {
-        "name": "Ragdoll Hit",
-        "path": "games/ragdoll/hit/clragdollhit.html",
-        "icon": "games/ragdoll/hit/icon.png"
     }
 ]
