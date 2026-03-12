@@ -338,5 +338,15 @@
         "name": "Steal A Brainrot",
         "path": "games/roblox/sab/clbrainrot.html",
         "icon": "games/roblox/sab/icon.png"
+    },
+    {
+        "name": "Snowboard Obby",
+        "path": "games/roblox/snowboard/clsnowboardobby.html",
+        "icon": "games/roblox/snowboard/icon.png"
+    },
+    {
+        "name": "Tung Tung Tung Sahur Obby",
+        "path": "games/roblox/ttt_obby/ttt.html",
+        "icon": "games/roblox/ttt_obby/icon.png"
     }
 ]
