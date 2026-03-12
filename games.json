@@ -87,7 +87,7 @@
     {
         "name": "Geo Lite (little long to load)",
         "path": "games/geometry_dash/lite/lite.html",
-        "icon": "games/geometry_dash/lite/lite.png"
+        "icon": "games/geometry_dash/lite/icon.png"
     },
     {
         "name": "Getaway Shootout",
@@ -97,12 +97,17 @@
     {
         "name": "Geo Subzero",
         "path": "games/geometry_dash/subzero/subzero.html",
-        "icon": "games/geometry_dash/subzero/subzero.png"
+        "icon": "games/geometry_dash/subzero/icon.png"
     },
     {
         "name": "Cookie Clicker",
         "path": "games/cookie_clicker/clcookie-clicker.html",
         "icon": "games/cookie_clicker/icon.png"
+    },
+    {
+        "name": "Drift Boss",
+        "path": "games/drift_boss/cldriftboss.html",
+        "icon": "games/drift_boss/icon.png"
     },
     {
         "name": "Drift Boss",
