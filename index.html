@@ -343,6 +343,101 @@ Send Recommendations
 
 <script>
 
+  let allGames = [];
+
+async function loadGames(){
+  try{
+    const response = await fetch("./games.json");
+    const games = await response.json();
+    allGames = games;
+    renderGames(games);
+  }catch(err){
+    console.error("Failed to load games.json", err);
+  }
+}
+
+function renderGames(games){
+  const container = document.getElementById("games");
+  container.innerHTML = "";
+
+  games.forEach(game => {
+
+    const card = document.createElement("div");
+    card.className = "game";
+
+    const img = document.createElement("img");
+    img.src = game.icon;
+    img.alt = game.name;
+
+    const title = document.createElement("div");
+    title.className = "title";
+    title.textContent = game.name;
+
+    card.appendChild(img);
+    card.appendChild(title);
+
+    card.addEventListener("click", () => {
+      openGame(game.path);
+    });
+
+    container.appendChild(card);
+  });
+}
+
+/* Search */
+document.getElementById("search").addEventListener("input", e => {
+  const query = e.target.value.toLowerCase().trim();
+
+  const filtered = allGames.filter(game =>
+    game.name.toLowerCase().includes(query)
+  );
+
+  renderGames(filtered);
+});
+
+loadGames();
+
+/* Game overlay */
+const gameView = document.getElementById("gameView");
+const gameIframe = document.getElementById("gameIframe");
+
+document.getElementById("backBtn").onclick = () => {
+  gameView.style.display = "none";
+  gameIframe.src = "";
+};
+
+document.getElementById("fullscreenBtn").onclick = () => {
+  if(gameIframe.requestFullscreen) gameIframe.requestFullscreen();
+  else if(gameIframe.webkitRequestFullscreen) gameIframe.webkitRequestFullscreen();
+  else if(gameIframe.msRequestFullscreen) gameIframe.msRequestFullscreen();
+};
+
+function openGame(url){
+  gameIframe.src = url;
+  gameView.style.display = "flex";
+}
+
+/* Background shapes */
+const bgShapes = document.getElementById("bgShapes");
+const numShapes = 25;
+
+for(let i=0;i<numShapes;i++){
+  const shape = document.createElement("div");
+  shape.className = "shape";
+
+  const size = Math.random()*60+20;
+  shape.style.width = size+"px";
+  shape.style.height = size+"px";
+  shape.style.left = Math.random()*100+"%";
+  shape.style.top = Math.random()*100+"%";
+  shape.style.animationDuration = (Math.random()*20+10)+"s";
+  shape.style.animationDelay = (Math.random()*-20)+"s";
+  shape.style.borderRadius = Math.random()>0.5 ? "50%" : "20%";
+  shape.style.opacity = Math.random()*0.3+0.1;
+
+  bgShapes.appendChild(shape);
+}
+
 /* FLOATING BLOCKS */
 
 const bg=document.getElementById("background");
