@@ -18,5 +18,10 @@
         "name": "Gunspin",
         "path": "games/gunspin/clgun-spin.html",
         "icon": "games/gunspin/gunspin-logo.png"
+    },
+    {
+        "name": "2048",
+        "path": "games/2048/cl2048.html",
+        "icon": "games/2048/unnamed.png"
     }
 ]
