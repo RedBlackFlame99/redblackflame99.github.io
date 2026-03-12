@@ -23,5 +23,10 @@
         "name": "2048",
         "path": "games/2048/cl2048.html",
         "icon": "games/2048/unnamed.png"
+    },
+    {
+        "name": "PolyTrack",
+        "path": "games/poly_track/clpolytrackworksnow.html",
+        "icon": "games/poly_track/polytrack-min.jpg"
     }
 ]
