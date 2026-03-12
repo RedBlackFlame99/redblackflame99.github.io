@@ -298,5 +298,10 @@
         "name": "Retro Ping Pong",
         "path": "games/retro_ping_pong/game.html",
         "icon": "games/retro_ping_pong/icon.png"
+    },
+    {
+        "name": "Eaglercraft",
+        "path": "games/eaglercraft/v1_8_offline.html",
+        "icon": "games/eaglercraft/icon1.png"
     }
 ]
