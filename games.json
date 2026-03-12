@@ -56,13 +56,17 @@
     },
     {
         "name": "Survival Race",
-        "path": "games/survival_race/clsurvivalracev2.html",
-        "icon": "games/survival_race/survial-race.png"
+        "path": "games/survival_race/game.html",
+        "icon": "games/survival_race/icon.png"
     },
     {
         "name": "Slope",
-        "path": "games/slope/clslopplus.html",
-        "icon": "slope.png"
+        "path": "games/slope/clslopeplus.html",
+        "icon": "games/slope/slope.png"
+    },
+    {
+        "name": "Doge Miner",
+        "path": "games/doge_miner/dogeminer.html",
+        "icon": "games/doge_miner/icon.png"
     }
-    
 ]
