@@ -10,43 +10,8 @@
         "icon": "games/ragdoll_archers/icon.png"
     },
     {
-        "name": "Snow Rider",
-        "path": "games/snow_rider/snow_rider.html",
-        "icon": "games/snow_rider/snow-rider-3d.png"
-    },
-    {
-        "name": "Snow Ridere",
-        "path": "games/snow_rider/snow_rider.html",
-        "icon": "games/snow_rider/snow-rider-3d.png"
-    },
-    {
-        "name": "Snow Rider",
-        "path": "games/snow_rider/snow_rider.html",
-        "icon": "games/snow_rider/snow-rider-3d.png"
-    },
-    {
-        "name": "Snow Rider",
-        "path": "games/snow_rider/snow_rider.html",
-        "icon": "games/snow_rider/snow-rider-3d.png"
-    },
-    {
-        "name": "Snow Rider",
-        "path": "games/snow_rider/snow_rider.html",
-        "icon": "games/snow_rider/snow-rider-3d.png"
-    },
-    {
-        "name": "Snow Rider",
-        "path": "games/snow_rider/snow_rider.html",
-        "icon": "games/snow_rider/snow-rider-3d.png"
-    },
-    {
-        "name": "Snow Rider",
-        "path": "games/snow_rider/snow_rider.html",
-        "icon": "games/snow_rider/snow-rider-3d.png"
-    },
-    {
-        "name": "Snow Rider",
-        "path": "games/snow_rider/snow_rider.html",
-        "icon": "games/snow_rider/snow-rider-3d.png"
+        "name": "1v1.lol",
+        "path": "games/1v1_lol/1v1_lol.html",
+        "icon": "games/1v1_lol/1v1lol-cover.png"
     }
 ]
