@@ -7,265 +7,275 @@
 <link href="https://fonts.googleapis.com/css2?family=Luckiest+Guy&display=swap" rel="stylesheet">
 
 <style>
-body {
-    margin: 0;
-    padding-top: 90px;
-    font-family: "Segoe UI", system-ui, sans-serif;
-    background: #121212;
-    color: white;
-    overflow-x: hidden;
+
+body{
+margin:0;
+padding-top:90px;
+font-family:"Segoe UI",system-ui,sans-serif;
+background:#121212;
+color:white;
+overflow-x:hidden;
 }
 
 /* FLOATING BACKGROUND */
-.bg {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: -1;
-    overflow: hidden;
+
+.bg{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+z-index:-1;
+overflow:hidden;
 }
 
-.shape {
-    position: absolute;
-    width: 60px;
-    height: 60px;
-    background: linear-gradient(45deg,#ff7b00,#ffae00);
-    opacity: .18;
-    border-radius: 14px;
-    animation: float 18s linear infinite;
+.shape{
+position:absolute;
+width:60px;
+height:60px;
+background:linear-gradient(45deg,#ff7b00,#ffae00);
+opacity:.18;
+border-radius:14px;
+animation:float 18s linear infinite;
 }
 
-@keyframes float {
-    0% { transform: translateY(0) rotate(0); }
-    50% { transform: translateY(-70px) rotate(180deg); }
-    100% { transform: translateY(0) rotate(360deg); }
+@keyframes float{
+0%{transform:translateY(0) rotate(0)}
+50%{transform:translateY(-70px) rotate(180deg)}
+100%{transform:translateY(0) rotate(360deg)}
 }
 
 /* TOPBAR */
-.topbar {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    background: rgba(24,24,24,.95);
-    backdrop-filter: blur(8px);
-    padding: 14px 20px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    box-shadow: 0 4px 18px rgba(0,0,0,.6);
-    box-sizing: border-box;
+
+.topbar{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+background:rgba(24,24,24,.95);
+backdrop-filter:blur(8px);
+padding:14px 20px;
+display:flex;
+align-items:center;
+justify-content:space-between;
+box-shadow:0 4px 18px rgba(0,0,0,.6);
+box-sizing:border-box;
+z-index:1000;
 }
 
-.top-left {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    cursor: pointer;
+.top-center{
+position:absolute;
+left:50%;
+transform:translateX(-50%);
+font-size:14px;
+font-weight:600;
+color:#ccc;
+pointer-events:none;
 }
 
-.logo-emoji {
-    font-size: 30px;
-    animation: bounce 2s infinite;
+.top-left{
+display:flex;
+align-items:center;
+gap:10px;
+cursor:pointer;
 }
 
-@keyframes bounce {
-    0%,100% { transform: translateY(0); }
-    50% { transform: translateY(-6px); }
+.logo-emoji{
+font-size:30px;
+animation:bounce 2s infinite;
 }
 
-.header-text {
-    font-family: 'Luckiest Guy';
-    font-size: 28px;
-    background: linear-gradient(45deg,#ff7b00,#ffae00);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+@keyframes bounce{
+0%,100%{transform:translateY(0)}
+50%{transform:translateY(-6px)}
+}
+
+.header-text{
+font-family:'Luckiest Guy';
+font-size:28px;
+background:linear-gradient(45deg,#ff7b00,#ffae00);
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
 }
 
 /* NAV */
-.nav-right {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    flex-wrap: wrap;
+
+.nav-right{
+display:flex;
+align-items:center;
+gap:12px;
+flex-wrap:wrap;
 }
 
-.nav-btn {
-    display: flex;
-    align-items: center;
-    gap: 6px;
-    padding: 8px 12px;
-    border-radius: 8px;
-    text-decoration: none;
-    color: white;
-    font-weight: 600;
-    transition: .2s;
-    cursor: pointer;
+.nav-btn{
+display:flex;
+align-items:center;
+gap:6px;
+padding:8px 12px;
+border-radius:8px;
+text-decoration:none;
+color:white;
+font-weight:600;
+transition:.2s;
+cursor:pointer;
 }
 
-.nav-btn:hover {
-    background: #1f1f1f;
+.nav-btn:hover{
+background:#1f1f1f;
 }
 
-.nav-btn svg {
-    width: 22px;
-    height: 22px;
+.nav-btn svg{
+width:22px;
+height:22px;
 }
 
 /* DISCORD BUTTON */
-.discord-btn {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    background: #5865F2;
-    padding: 8px 14px;
-    border-radius: 8px;
-    color: white;
-    text-decoration: none;
-    font-weight: 600;
+
+.discord-btn{
+display:flex;
+align-items:center;
+gap:8px;
+background:#5865F2;
+padding:8px 14px;
+border-radius:8px;
+color:white;
+text-decoration:none;
+font-weight:600;
 }
 
-.discord-btn svg {
-    width: 28px;
-    height: 28px;
+.discord-btn svg{
+width:28px;
+height:28px;
 }
 
-.discord-btn:hover {
-    background: #ff8c00;
-    box-shadow: 0 0 10px #ff8c00;
+.discord-btn:hover{
+background:#ff8c00;
+box-shadow:0 0 10px #ff8c00;
 }
 
 /* PAGES */
-.page {
-    display: none;
-    padding: 40px 40px 40px 40px; /* keep left/right/bottom padding */
-    padding-top: 140px; /* extra space to clear the fixed header */
+
+.page{
+display:none;
+padding:40px;
 }
 
-.active {
-    display: block;
+.active{
+display:block;
 }
 
 /* HERO */
-.hero {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 40px;
-    margin-bottom: 40px;
+
+.hero{
+display:flex;
+justify-content:space-between;
+align-items:center;
+flex-wrap:wrap;
+gap:40px;
+margin-bottom:40px;
 }
 
-.hero-text h1 {
-    font-size: 60px;
-    margin: 0;
+.hero-text h1{
+font-size:60px;
+margin:0;
 }
 
-.hero-text span {
-    color: #ff8c00;
+.hero-text span{
+color:#ff8c00;
 }
 
-.start-btn {
-    margin-top: 15px;
-    padding: 12px 20px;
-    border: none;
-    background: #ffd000;
-    font-weight: bold;
-    border-radius: 8px;
-    cursor: pointer;
+.start-btn{
+margin-top:15px;
+padding:12px 20px;
+border:none;
+background:#ffd000;
+font-weight:bold;
+border-radius:8px;
+cursor:pointer;
 }
 
-/* SEARCH BAR WITH ICON */
-.search-container {
-    position: relative;
-    width: 100%;
-    max-width: 400px;
-    margin-bottom: 20px;
+/* BETTER SEARCH BAR */
+
+.search-container{
+position:relative;
+max-width:400px;
+margin-bottom:20px;
 }
 
-.search-container svg {
-    position: absolute;
-    left: 14px;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 20px;
-    height: 20px;
-    fill: #aaa;
-    pointer-events: none;
-    transition: all 0.3s ease;
+.search-icon{
+position:absolute;
+left:14px;
+top:50%;
+transform:translateY(-50%);
+width:18px;
+height:18px;
+fill:#aaa;
+pointer-events:none;
 }
 
-.search {
-    width: 100%;
-    padding: 12px 16px 12px 42px; /* left padding for icon */
-    border-radius: 12px;
-    border: 2px solid #333;
-    background: #1f1f1f;
-    color: #fff;
-    font-size: 16px;
-    outline: none;
-    transition: all 0.3s ease;
-    box-shadow: inset 0 2px 4px rgba(0,0,0,0.4);
+.search{
+width:100%;
+padding:12px 16px 12px 42px;
+border-radius:12px;
+border:2px solid #333;
+background:#1f1f1f;
+color:#fff;
+font-size:16px;
+outline:none;
+transition:.25s;
 }
 
-.search::placeholder {
-    color: #aaa;
-    font-style: italic;
+.search::placeholder{
+color:#aaa;
 }
 
-.search:focus {
-    border-color: #ff8c00;
-    box-shadow: 0 0 10px rgba(255,140,0,0.6);
-    background: #2a2a2a;
-}
-
-.search:focus + svg {
-    fill: #ff8c00;
-    transform: translateY(-50%) scale(1.1);
+.search:focus{
+border-color:#ff8c00;
+box-shadow:0 0 10px rgba(255,140,0,.6);
+background:#2a2a2a;
 }
 
 /* GAMES GRID */
-.games {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    gap: 20px;
+
+.games{
+display:grid;
+grid-template-columns:repeat(auto-fill,minmax(200px,1fr));
+gap:20px;
 }
 
-.game {
-    position: relative;
-    aspect-ratio: 1/1;
-    border-radius: 14px;
-    overflow: hidden;
-    cursor: pointer;
-    background: #1f1f1f;
-    transition: .2s;
+.game{
+position:relative;
+aspect-ratio:1/1;
+border-radius:14px;
+overflow:hidden;
+cursor:pointer;
+background:#1f1f1f;
+transition:.2s;
 }
 
-.game:hover {
-    transform: scale(1.04);
+.game:hover{
+transform:scale(1.04);
 }
 
-.game img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
+.game img{
+width:100%;
+height:100%;
+object-fit:cover;
 }
 
-.title {
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-    text-align: center;
-    background: rgba(0,0,0,.7);
-    padding: 8px;
-    opacity: 0;
-    transition: .2s;
+.title{
+position:absolute;
+bottom:0;
+width:100%;
+text-align:center;
+background:rgba(0,0,0,.7);
+padding:8px;
+opacity:0;
+transition:.2s;
 }
 
-.game:hover .title {
-    opacity: 1;
+.game:hover .title{
+opacity:1;
 }
 
 </style>
@@ -275,101 +285,141 @@ body {
 
 <div class="bg" id="bg"></div>
 
-<!-- TOPBAR -->
 <div class="topbar">
-    <div class="top-left" onclick="showPage('home')">
-        <div class="logo-emoji">🌭</div>
-        <div class="header-text">Hotdog Party</div>
-    </div>
 
-    <div class="nav-right">
-        <div class="nav-btn" onclick="showPage('gamesPage')">
-            <svg viewBox="0 0 24 24" fill="white">
-                <path d="M7 14l-2 2a3 3 0 01-4-4l3-7a4 4 0 014-2h8a4 4 0 014 2l3 7a3 3 0 01-4 4l-2-2h-2l-2 2h-2l-2-2H7z"/>
-            </svg>
-            Games
-        </div>
+<div class="top-center">Credits: Carter M and Caden J</div>
 
-        <a href="https://discord.gg/3y28DJYaVY" target="_blank" class="discord-btn">
-            <svg viewBox="0 0 127.14 96.36">
-                <path fill="white" d="M107.7,8.07A105.15,105.15,0,0,0,81.47,0a72.06,72.06,0,0,0-3.36,6.83A97.68,97.68,0,0,0,49,6.83,72.37,72.37,0,0,0,45.64,0,105.89,105.89,0,0,0,19.39,8.09C2.79,33.64-1.71,58.52.54,83.06a105.73,105.73,0,0,0,32.17,16.3,77.7,77.7,0,0,0,6.89-11.14,68.42,68.42,0,0,1-10.85-5.18c.91-.67,1.8-1.36,2.66-2.07a75.48,75.48,0,0,0,64.32,0c.87.71,1.76,1.4,2.66,2.07a68.68,68.68,0,0,1-10.87,5.19,77.23,77.23,0,0,0,6.9,11.13A105.25,105.25,0,0,0,126.6,83C129.2,54.59,122.2,30,107.7,8.07ZM42.45,65.69C36.18,65.69,31,59.8,31,52.53S36.06,39.37,42.45,39.37s11.5,5.93,11.46,13.16C53.91,59.8,48.83,65.69,42.45,65.69Zm42.24,0c-6.27,0-11.45-5.89-11.45-13.16S78.32,39.37,84.69,39.37,96.2,45.3,96.15,52.53C96.15,59.8,91.07,65.69,84.69,65.69Z"/>
-            </svg>
-            Discord
-        </a>
-    </div>
+<div class="top-left" onclick="showPage('home')">
+<div class="logo-emoji">🌭</div>
+<div class="header-text">Hotdog Party</div>
 </div>
 
-<!-- HOME PAGE -->
+<div class="nav-right">
+
+<div class="nav-btn" onclick="showPage('gamesPage')">
+
+<svg viewBox="0 0 24 24" fill="white">
+<path d="M7 14l-2 2a3 3 0 01-4-4l3-7a4 4 0 014-2h8a4 4 0 014 2l3 7a3 3 0 01-4 4l-2-2h-2l-2 2h-2l-2-2H7z"/>
+</svg>
+
+Games
+</div>
+
+<a href="https://discord.gg/3y28DJYaVY" target="_blank" class="discord-btn">
+
+<svg viewBox="0 0 127.14 96.36">
+<path fill="white" d="M107.7,8.07A105.15,105.15,0,0,0,81.47,0a72.06,72.06,0,0,0-3.36,6.83A97.68,97.68,0,0,0,49,6.83,72.37,72.37,0,0,0,45.64,0,105.89,105.89,0,0,0,19.39,8.09C2.79,33.64-1.71,58.52.54,83.06a105.73,105.73,0,0,0,32.17,16.3,77.7,77.7,0,0,0,6.89-11.14,68.42,68.42,0,0,1-10.85-5.18c.91-.67,1.8-1.36,2.66-2.07a75.48,75.48,0,0,0,64.32,0c.87.71,1.76,1.4,2.66,2.07a68.68,68.68,0,0,1-10.87,5.19,77.23,77.23,0,0,0,6.9,11.13A105.25,105.25,0,0,0,126.6,83C129.2,54.59,122.2,30,107.7,8.07Z"/>
+</svg>
+
+Discord
+</a>
+
+</div>
+
+</div>
+
 <div id="home" class="page active">
-    <div class="hero">
-        <div class="hero-text">
-            <h1>THE <span>HOTDOG</span> PARTY</h1>
-            <p>Play tons of games instantly.</p>
-            <button class="start-btn" onclick="showPage('gamesPage')">START PLAYING</button>
-        </div>
-    </div>
+
+<div class="hero">
+
+<div class="hero-text">
+<h1>THE <span>HOTDOG</span> PARTY</h1>
+<p>Play tons of games instantly.</p>
+<button class="start-btn" onclick="showPage('gamesPage')">START PLAYING</button>
 </div>
 
-<!-- GAMES PAGE -->
+</div>
+
+</div>
+
 <div id="gamesPage" class="page">
-    <h2>All Games</h2>
-    <div class="search-container">
-        <input class="search" id="search" placeholder="Search games...">
-        <svg viewBox="0 0 24 24">
-            <path d="M21.71 20.29l-3.388-3.388a8.5 8.5 0 10-1.414 1.414l3.388 3.388a1 1 0 001.414-1.414zM10.5 18a7.5 7.5 0 117.5-7.5 7.509 7.509 0 01-7.5 7.5z"/>
-        </svg>
-    </div>
-    <div class="games" id="games"></div>
+
+<h2>All Games</h2>
+
+<div class="search-container">
+
+<svg class="search-icon" viewBox="0 0 24 24">
+<path d="M21 20l-5.2-5.2a7 7 0 10-1 1L20 21zM10 16a6 6 0 110-12 6 6 0 010 12z"/>
+</svg>
+
+<input class="search" id="search" placeholder="Search games...">
+
+</div>
+
+<div class="games" id="games"></div>
+
 </div>
 
 <script>
-let allGames = []
+
+let allGames=[]
 
 function showPage(page){
-    document.querySelectorAll(".page").forEach(p=>p.classList.remove("active"))
-    document.getElementById(page).classList.add("active")
-    window.scrollTo(0,0)
+document.querySelectorAll(".page").forEach(p=>p.classList.remove("active"))
+document.getElementById(page).classList.add("active")
+window.scrollTo(0,0)
 }
 
-/* LOAD GAMES */
 async function loadGames(){
-    const res = await fetch("games.json")
-    const games = await res.json()
-    allGames = games
-    renderGames(games)
+
+const res=await fetch("games.json")
+const games=await res.json()
+
+allGames=games
+renderGames(games)
+
 }
 
 function renderGames(games){
-    const container = document.getElementById("games")
-    container.innerHTML = ""
-    games.forEach(game => {
-        const card = document.createElement("div")
-        card.className = "game"
-        card.innerHTML = `<img src="${game.icon}"><div class="title">${game.name}</div>`
-        card.onclick = () => location.href = game.path
-        container.appendChild(card)
-    })
-}
 
-/* SEARCH */
-document.getElementById("search").addEventListener("input", e => {
-    const q = e.target.value.toLowerCase()
-    const filtered = allGames.filter(g => g.name.toLowerCase().includes(q))
-    renderGames(filtered)
+const container=document.getElementById("games")
+container.innerHTML=""
+
+games.forEach(game=>{
+
+const card=document.createElement("div")
+card.className="game"
+
+card.innerHTML=`
+<img src="${game.icon}">
+<div class="title">${game.name}</div>
+`
+
+card.onclick=()=>location.href=game.path
+
+container.appendChild(card)
+
 })
 
-/* FLOATING SHAPES */
-const bg = document.getElementById("bg")
-for(let i = 0; i < 30; i++){
-    const shape = document.createElement("div")
-    shape.className = "shape"
-    shape.style.left = Math.random()*100 + "%"
-    shape.style.top = Math.random()*100 + "%"
-    shape.style.animationDuration = (Math.random()*20+10) + "s"
-    bg.appendChild(shape)
+}
+
+document.getElementById("search").addEventListener("input",e=>{
+
+const q=e.target.value.toLowerCase()
+
+const filtered=allGames.filter(g=>g.name.toLowerCase().includes(q))
+
+renderGames(filtered)
+
+})
+
+const bg=document.getElementById("bg")
+
+for(let i=0;i<30;i++){
+
+const shape=document.createElement("div")
+shape.className="shape"
+
+shape.style.left=Math.random()*100+"%"
+shape.style.top=Math.random()*100+"%"
+shape.style.animationDuration=(Math.random()*20+10)+"s"
+
+bg.appendChild(shape)
+
 }
 
 loadGames()
+
 </script>
 
 </body>

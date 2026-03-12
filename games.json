@@ -308,5 +308,35 @@
         "name": "2D Rocket League",
         "path": "games/rocket_league/clrocketleague.html",
         "icon": "games/rocket_league/e.png"
+    },
+    {
+        "name": "Rocket Soccer Derby",
+        "path": "games/rocket_league/clrocketsoccerderby.html",
+        "icon": "games/rocket_league/derby.png"
+    },
+    {
+        "name": "Rooftop Snipers",
+        "path": "games/rooftop_snipers/clrooftopsnipers.html",
+        "icon": "games/rooftop_snipers/icon1.png"
+    },
+    {
+        "name": "Rooftop Snipers 2",
+        "path": "games/rooftop_snipers/clrooftopsnipers2.html",
+        "icon": "games/rooftop_snipers/icon2.png"
+    },
+    {
+        "name": "99 Nights in the Forest",
+        "path": "games/roblox/99nf/cl99nightsitf.html",
+        "icon": "games/roblox/99nf/icon.png"
+    },
+    {
+        "name": "Grow A Garden",
+        "path": "games/roblox/gag/gag.html",
+        "icon": "games/roblox/gag/icon.png"
+    },
+    {
+        "name": "Steal A Brainrot",
+        "path": "games/roblox/sab/clbrainrot.html",
+        "icon": "games/roblox/sab/icon.png"
     }
 ]
