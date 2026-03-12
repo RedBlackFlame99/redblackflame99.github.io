@@ -43,5 +43,16 @@
         "name": "Level Devil",
         "path": "games/level_devil/clleveldevil.html",
         "icon": "games/level_devil/icon.png"
+    },
+    {
+        "name": "Basket Random",
+        "path": "games/basket_random/basket_random.html",
+        "icon": "games/basket_random/icon.png"
+    },
+    {
+        "name": "Drive Mad",
+        "path": "games/drive_mad/cldrivemady.html",
+        "icon": "games/drive_mad/poki-drive-mad-icon-filled-256.png"
     }
+    
 ]
