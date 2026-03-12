@@ -363,5 +363,20 @@
         "name": "JustFall.lol",
         "path": "games/justfall_lol/cljustfalllol.html",
         "icon": "games/justfall_lol/icon.png"
+    },
+    {
+        "name": "Bowmasters",
+        "path": "games/bowmasters/clbowmasters.html",
+        "icon": "games/bowmasters/icon.png"
+    },
+    {
+        "name": "Brawlstars",
+        "path": "games/brawlstars/clBrawlstars.html",
+        "icon": "games/brawlstars/icon.png"
+    },
+    {
+        "name": "BuildNow.GG",
+        "path": "games/buildnow_gg/clbuildnowgg.html",
+        "icon": "games/buildnow_gg/icon.png"
     }
 ]
