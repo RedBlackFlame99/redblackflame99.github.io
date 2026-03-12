@@ -123,5 +123,20 @@
         "name": "Dance of Fire and Ice",
         "path": "games/fireandice/fireandice.html",
         "icon": "games/fireandice/icon.png"
+    },
+    {
+        "name": "Stacktris",
+        "path": "games/stacktris/clstacktris.html",
+        "icon": "games/stacktris/icon.png"
+    },
+    {
+        "name": "Tiny Fishing",
+        "path": "games/tiny_fishing/cltinyfishing.html",
+        "icon": "games/tiny_fishing/tiny-fishing.jpg"
+    },
+    {
+        "name": "Tomb of the Mask",
+        "path": "games/totm/cltotm.html",
+        "icon": "games/totm/icon.png"
     }
 ]
