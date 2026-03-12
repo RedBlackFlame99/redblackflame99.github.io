@@ -39,52 +39,89 @@ animation:float 18s linear infinite;
 /* TOPBAR */
 .topbar{
 position:fixed;top:0;left:0;width:100%;
-background:rgba(24,24,24,.95);
-backdrop-filter:blur(8px);
-padding:14px 20px;
+background:rgba(18,18,18,.97);
+backdrop-filter:blur(12px);
+padding:10px 24px;
 display:flex;align-items:center;justify-content:space-between;
-box-shadow:0 4px 18px rgba(0,0,0,.6);
+box-shadow:0 2px 24px rgba(0,0,0,.7);
 box-sizing:border-box;z-index:1000;
+border-bottom:1px solid rgba(255,140,0,.12);
 }
 
 .top-center{
 position:absolute;left:50%;transform:translateX(-50%);
-font-size:14px;font-weight:600;color:#ccc;pointer-events:none;
+font-size:13px;font-weight:600;color:#555;pointer-events:none;
+letter-spacing:.5px;
 }
 
-.top-left{display:flex;align-items:center;gap:10px;cursor:pointer;}
+/* LOGO */
+.top-left{
+display:flex;align-items:center;gap:0;
+cursor:pointer;
+background:rgba(255,140,0,.07);
+border:1px solid rgba(255,140,0,.18);
+border-radius:12px;
+padding:6px 14px 6px 10px;
+transition:.2s;
+}
+.top-left:hover{
+background:rgba(255,140,0,.14);
+border-color:rgba(255,140,0,.35);
+box-shadow:0 0 14px rgba(255,140,0,.15);
+}
 
-.logo-emoji{font-size:30px;animation:bounce 2s infinite;}
+.logo-emoji{
+font-size:26px;
+animation:bounce 2s infinite;
+line-height:1;
+margin-right:8px;
+}
 
 @keyframes bounce{
 0%,100%{transform:translateY(0)}
-50%{transform:translateY(-6px)}
+50%{transform:translateY(-5px)}
 }
 
 .header-text{
-font-family:'Luckiest Guy';font-size:28px;
-background:linear-gradient(45deg,#ff7b00,#ffae00);
+font-family:'Luckiest Guy';font-size:22px;
+background:linear-gradient(45deg,#ff7b00,#ffcc00);
 -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+letter-spacing:1px;
 }
 
-.nav-right{display:flex;align-items:center;gap:12px;flex-wrap:wrap;}
+/* NAV RIGHT */
+.nav-right{display:flex;align-items:center;gap:8px;flex-wrap:wrap;}
 
 .nav-btn{
-display:flex;align-items:center;gap:6px;
-padding:8px 12px;border-radius:8px;
-text-decoration:none;color:white;font-weight:600;
+display:flex;align-items:center;gap:7px;
+padding:8px 14px;border-radius:10px;
+text-decoration:none;color:#ddd;font-weight:600;font-size:14px;
 transition:.2s;cursor:pointer;
+border:1px solid transparent;
 }
-.nav-btn:hover{background:#1f1f1f;}
-.nav-btn svg{width:22px;height:22px;}
+.nav-btn:hover{
+background:#1e1e1e;
+border-color:#333;
+color:white;
+}
+.nav-btn svg{width:20px;height:20px;opacity:.85;}
 
 .discord-btn{
 display:flex;align-items:center;gap:8px;
-background:#5865F2;padding:8px 14px;
-border-radius:8px;color:white;text-decoration:none;font-weight:600;
+background:#5865F2;
+padding:8px 16px;
+border-radius:10px;color:white;
+text-decoration:none;font-weight:700;font-size:14px;
+border:1px solid rgba(255,255,255,.1);
+transition:.2s;
+box-shadow:0 2px 10px rgba(88,101,242,.35);
 }
-.discord-btn svg{width:28px;height:28px;}
-.discord-btn:hover{background:#ff8c00;box-shadow:0 0 10px #ff8c00;}
+.discord-btn svg{width:22px;height:22px;}
+.discord-btn:hover{
+background:#ff8c00;
+box-shadow:0 0 16px rgba(255,140,0,.5);
+border-color:rgba(255,255,255,.15);
+}
 
 /* PAGES */
 .page{display:none;padding:40px;}
@@ -110,7 +147,7 @@ background:linear-gradient(135deg,#ffffff,#ffe8a0);
 
 .hero p{font-size:20px;color:#aaa;margin:18px 0 32px;}
 
-.hero-btns{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;}
+.hero-btns{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;align-items:center;}
 
 .start-btn{
 padding:14px 34px;border:none;
@@ -121,14 +158,25 @@ box-shadow:0 4px 20px rgba(255,140,0,.45);
 }
 .start-btn:hover{transform:scale(1.06);box-shadow:0 6px 28px rgba(255,140,0,.65);}
 
+/* HERO DISCORD BUTTON — styled to match topbar pill */
 .discord-hero-btn{
-padding:14px 34px;
-border:2px solid #5865F2;background:transparent;
-color:#fff;font-weight:900;font-size:17px;
-border-radius:10px;cursor:pointer;transition:.2s;
-text-decoration:none;display:inline-flex;align-items:center;gap:8px;
+display:inline-flex;align-items:center;gap:10px;
+padding:13px 28px;
+background:#5865F2;
+border:1px solid rgba(255,255,255,.12);
+border-radius:10px;
+color:#fff;font-weight:800;font-size:16px;
+text-decoration:none;
+transition:.2s;
+box-shadow:0 4px 18px rgba(88,101,242,.4);
 }
-.discord-hero-btn:hover{background:#5865F2;transform:scale(1.06);}
+.discord-hero-btn svg{width:22px;height:22px;flex-shrink:0;}
+.discord-hero-btn:hover{
+background:#ff8c00;
+box-shadow:0 6px 26px rgba(255,140,0,.5);
+transform:scale(1.05);
+border-color:rgba(255,255,255,.2);
+}
 
 /* STATS */
 .stats{
@@ -170,11 +218,11 @@ background:linear-gradient(45deg,#ff7b00,#ffae00);
 display:inline-block;
 }
 
-/* FEATURED GRID */
+/* FEATURED GRID — bigger, more cards */
 .featured-grid{
 display:grid;
-grid-template-columns:repeat(auto-fill,minmax(175px,1fr));
-gap:18px;margin-bottom:28px;
+grid-template-columns:repeat(auto-fill,minmax(160px,1fr));
+gap:16px;margin-bottom:28px;
 }
 
 .featured-game{
@@ -190,13 +238,13 @@ box-shadow:0 0 22px rgba(255,140,0,.38);
 }
 .featured-game img{width:100%;height:100%;object-fit:cover;}
 
-/* SHARED GAME TITLE OVERLAY - fadey gradient */
+/* SHARED TITLE OVERLAY */
 .featured-game .title,
 .game .title{
 position:absolute;bottom:0;width:100%;
 text-align:center;
-background:linear-gradient(to top, rgba(0,0,0,0.82) 0%, rgba(0,0,0,0.5) 55%, rgba(0,0,0,0) 100%);
-padding:28px 8px 10px;
+background:linear-gradient(to top,rgba(0,0,0,.88) 0%,rgba(0,0,0,.45) 50%,rgba(0,0,0,0) 100%);
+padding:32px 8px 10px;
 opacity:0;transition:.25s;
 font-weight:600;font-size:14px;
 box-sizing:border-box;
@@ -230,28 +278,27 @@ margin:0 -40px 54px;
 padding:10px 0;
 }
 
-/* fade edges */
 .belt-wrapper::before,
 .belt-wrapper::after{
 content:'';
 position:absolute;top:0;bottom:0;
-width:80px;z-index:2;
+width:100px;z-index:2;
 pointer-events:none;
 }
 .belt-wrapper::before{
 left:0;
-background:linear-gradient(to right,#121212,transparent);
+background:linear-gradient(to right,#121212 20%,transparent);
 }
 .belt-wrapper::after{
 right:0;
-background:linear-gradient(to left,#121212,transparent);
+background:linear-gradient(to left,#121212 20%,transparent);
 }
 
 .belt-track{
 display:flex;
 gap:14px;
 width:max-content;
-animation:beltScroll 40s linear infinite;
+animation:beltScroll 80s linear infinite;
 padding:4px 40px;
 }
 
@@ -281,8 +328,8 @@ box-shadow:0 0 16px rgba(255,140,0,.4);
 .belt-title{
 position:absolute;bottom:0;width:100%;
 text-align:center;
-background:linear-gradient(to top, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.45) 60%, rgba(0,0,0,0) 100%);
-padding:22px 6px 7px;
+background:linear-gradient(to top,rgba(0,0,0,.88) 0%,rgba(0,0,0,.45) 60%,rgba(0,0,0,0) 100%);
+padding:26px 6px 7px;
 opacity:0;transition:.22s;
 font-size:12px;font-weight:600;
 box-sizing:border-box;
@@ -331,10 +378,12 @@ cursor:pointer;background:#1f1f1f;transition:.2s;
 
 <div class="topbar">
   <div class="top-center">Credits: Carter M and Caden J</div>
+
   <div class="top-left" onclick="showPage('home')">
     <div class="logo-emoji">🌭</div>
     <div class="header-text">Hotdog Party</div>
   </div>
+
   <div class="nav-right">
     <div class="nav-btn" onclick="showPage('gamesPage')">
       <svg viewBox="0 0 24 24" fill="white">
@@ -360,7 +409,7 @@ cursor:pointer;background:#1f1f1f;transition:.2s;
     <div class="hero-btns">
       <button class="start-btn" onclick="showPage('gamesPage')">🎮 START GRINDING!</button>
       <a href="https://discord.gg/3y28DJYaVY" target="_blank" class="discord-hero-btn">
-        <svg width="20" height="20" viewBox="0 0 127.14 96.36">
+        <svg viewBox="0 0 127.14 96.36">
           <path fill="white" d="M107.7,8.07A105.15,105.15,0,0,0,81.47,0a72.06,72.06,0,0,0-3.36,6.83A97.68,97.68,0,0,0,49,6.83,72.37,72.37,0,0,0,45.64,0,105.89,105.89,0,0,0,19.39,8.09C2.79,33.64-1.71,58.52.54,83.06a105.73,105.73,0,0,0,32.17,16.3,77.7,77.7,0,0,0,6.89-11.14,68.42,68.42,0,0,1-10.85-5.18c.91-.67,1.8-1.36,2.66-2.07a75.48,75.48,0,0,0,64.32,0c.87.71,1.76,1.4,2.66,2.07a68.68,68.68,0,0,1-10.87,5.19,77.23,77.23,0,0,0,6.9,11.13A105.25,105.25,0,0,0,126.6,83C129.2,54.59,122.2,30,107.7,8.07Z"/>
         </svg>
         Join Discord
@@ -447,12 +496,12 @@ function renderGames(games) {
 function renderFeatured(games) {
   const container = document.getElementById("featured-games")
   container.innerHTML = ""
-  shuffle(games).slice(0, 6).forEach((game, i) => {
+  shuffle(games).slice(0, 12).forEach((game, i) => {
     const card = document.createElement("div")
     card.className = "featured-game"
     card.innerHTML = `
       <img src="${game.icon}">
-      ${i < 3 ? '<div class="hot-badge">🔥 Hot</div>' : ''}
+      ${i < 4 ? '<div class="hot-badge">🔥 Hot</div>' : ''}
       <div class="title">${game.name}</div>
     `
     card.onclick = () => location.href = game.path
@@ -462,7 +511,6 @@ function renderFeatured(games) {
 
 function renderBelt(games) {
   const track = document.getElementById("belt-track")
-  // Double shuffled list for seamless loop
   const items = [...shuffle(games), ...shuffle(games)]
   track.innerHTML = items.map(game => `
     <div class="belt-card" onclick="location.href='${game.path}'">
@@ -477,7 +525,6 @@ document.getElementById("search").addEventListener("input", e => {
   renderGames(allGames.filter(g => g.name.toLowerCase().includes(q)))
 })
 
-// Background shapes
 const bg = document.getElementById("bg")
 for (let i = 0; i < 30; i++) {
   const shape = document.createElement("div")
