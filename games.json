@@ -143,5 +143,10 @@
         "name": "Happy Wheels",
         "path": "games/happy_wheels/clhappywheels.html",
         "icon": "games/happy_wheels/happy-wheels.jpg"
+    },
+    {
+        "name": "Little Alchemy",
+        "path": "games/little_alchemy/cllittlealchemy2.html",
+        "icon": "games/little_alchemy/unnamed.png"
     }
 ]
