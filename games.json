@@ -6,8 +6,8 @@
     },
     {
         "name": "Ragdoll Archers",
-        "path": "games/ragdoll_archers/ragdoll_archers.html",
-        "icon": "games/ragdoll_archers/icon.png"
+        "path": "games/ragdoll/archers/ragdoll_archers.html",
+        "icon": "games/ragdoll/archers/icon.png"
     },
     {
         "name": "1v1.lol",
@@ -148,5 +148,15 @@
         "name": "Little Alchemy",
         "path": "games/little_alchemy/cllittlealchemy2.html",
         "icon": "games/little_alchemy/unnamed.png"
+    },
+    {
+        "name": "Ragdoll Drop",
+        "path": "games/ragdoll/drop/clragdolldrop.html",
+        "icon": "games/ragdoll/drop/icon.png"
+    },
+    {
+        "name": "Ragdoll Hit",
+        "path": "games/ragdoll/hit/clragdollhit.html",
+        "icon": "games/ragdoll/hit/icon.png"
     }
 ]
