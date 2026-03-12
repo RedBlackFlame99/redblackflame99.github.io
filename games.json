@@ -253,5 +253,25 @@
         "name": "Final Earth 2",
         "path": "games/final_earth/clfinalearth2.html",
         "icon": "games/final_earth/icon.png"
+    },
+    {
+        "name": "Free Rider",
+        "path": "games/free_rider/fr1.html",
+        "icon": "games/free_rider/fr1.png"
+    },
+    {
+        "name": "Free Rider 2",
+        "path": "games/free_rider/fr2.html",
+        "icon": "games/free_rider/fr2.png"
+    },
+    {
+        "name": "Gun Mayhem",
+        "path": "games/gun_mayhem/clgunmayhem.html",
+        "icon": "games/gun_mayhem/icon1.png"
+    },
+    {
+        "name": "Gun Mayhem 2",
+        "path": "games/gun_mayhem/clgunmayhem2goof.html",
+        "icon": "games/gun_mayhem/icon2.png"
     }
 ]
