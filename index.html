@@ -18,15 +18,13 @@ overflow-x:hidden;
 }
 
 .bg{
-position:fixed;
-top:0;left:0;
+position:fixed;top:0;left:0;
 width:100%;height:100%;
 z-index:-1;overflow:hidden;
 }
 
 .shape{
-position:absolute;
-width:60px;height:60px;
+position:absolute;width:60px;height:60px;
 background:linear-gradient(45deg,#ff7b00,#ffae00);
 opacity:.18;border-radius:14px;
 animation:float 18s linear infinite;
@@ -40,15 +38,13 @@ animation:float 18s linear infinite;
 
 /* TOPBAR */
 .topbar{
-position:fixed;top:0;left:0;
-width:100%;
+position:fixed;top:0;left:0;width:100%;
 background:rgba(24,24,24,.95);
 backdrop-filter:blur(8px);
 padding:14px 20px;
 display:flex;align-items:center;justify-content:space-between;
 box-shadow:0 4px 18px rgba(0,0,0,.6);
-box-sizing:border-box;
-z-index:1000;
+box-sizing:border-box;z-index:1000;
 }
 
 .top-center{
@@ -85,8 +81,7 @@ transition:.2s;cursor:pointer;
 .discord-btn{
 display:flex;align-items:center;gap:8px;
 background:#5865F2;padding:8px 14px;
-border-radius:8px;color:white;
-text-decoration:none;font-weight:600;
+border-radius:8px;color:white;text-decoration:none;font-weight:600;
 }
 .discord-btn svg{width:28px;height:28px;}
 .discord-btn:hover{background:#ff8c00;box-shadow:0 0 10px #ff8c00;}
@@ -96,14 +91,11 @@ text-decoration:none;font-weight:600;
 .active{display:block;}
 
 /* HERO */
-.hero{
-text-align:center;
-padding:60px 20px 30px;
-}
+.hero{text-align:center;padding:60px 20px 30px;}
 
 .hero h1{
 font-family:'Luckiest Guy';
-font-size:clamp(56px, 10vw, 110px);
+font-size:clamp(56px,10vw,110px);
 margin:0;line-height:1.05;
 background:linear-gradient(135deg,#ff7b00 0%,#ffcc00 50%,#ff7b00 100%);
 -webkit-background-clip:text;-webkit-text-fill-color:transparent;
@@ -116,21 +108,15 @@ background:linear-gradient(135deg,#ffffff,#ffe8a0);
 -webkit-background-clip:text;-webkit-text-fill-color:transparent;
 }
 
-.hero p{
-font-size:20px;color:#aaa;
-margin:18px 0 32px;
-}
+.hero p{font-size:20px;color:#aaa;margin:18px 0 32px;}
 
-.hero-btns{
-display:flex;gap:14px;justify-content:center;flex-wrap:wrap;
-}
+.hero-btns{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;}
 
 .start-btn{
 padding:14px 34px;border:none;
 background:linear-gradient(45deg,#ff8c00,#ffd000);
 color:#111;font-weight:900;font-size:17px;
-border-radius:10px;cursor:pointer;
-transition:.2s;
+border-radius:10px;cursor:pointer;transition:.2s;
 box-shadow:0 4px 20px rgba(255,140,0,.45);
 }
 .start-btn:hover{transform:scale(1.06);box-shadow:0 6px 28px rgba(255,140,0,.65);}
@@ -152,13 +138,9 @@ margin:52px 0 16px;
 }
 
 .stat-card{
-background:#1a1a1a;
-border:1px solid #2a2a2a;
-border-radius:18px;
-padding:28px 44px;
-text-align:center;
-min-width:130px;
-transition:.25s;
+background:#1a1a1a;border:1px solid #2a2a2a;
+border-radius:18px;padding:28px 44px;
+text-align:center;min-width:130px;transition:.25s;
 }
 .stat-card:hover{
 border-color:#ff8c00;
@@ -192,17 +174,14 @@ display:inline-block;
 .featured-grid{
 display:grid;
 grid-template-columns:repeat(auto-fill,minmax(175px,1fr));
-gap:18px;
-margin-bottom:28px;
+gap:18px;margin-bottom:28px;
 }
 
 .featured-game{
-position:relative;
-aspect-ratio:1/1;
+position:relative;aspect-ratio:1/1;
 border-radius:14px;overflow:hidden;
 cursor:pointer;background:#1f1f1f;
-transition:.22s;
-border:2px solid transparent;
+transition:.22s;border:2px solid transparent;
 }
 .featured-game:hover{
 transform:scale(1.06);
@@ -210,14 +189,20 @@ border-color:#ff8c00;
 box-shadow:0 0 22px rgba(255,140,0,.38);
 }
 .featured-game img{width:100%;height:100%;object-fit:cover;}
-.featured-game .title{
+
+/* SHARED GAME TITLE OVERLAY - fadey gradient */
+.featured-game .title,
+.game .title{
 position:absolute;bottom:0;width:100%;
 text-align:center;
-background:rgba(0,0,0,.75);
-padding:10px 8px;opacity:0;
-transition:.2s;font-weight:600;
+background:linear-gradient(to top, rgba(0,0,0,0.82) 0%, rgba(0,0,0,0.5) 55%, rgba(0,0,0,0) 100%);
+padding:28px 8px 10px;
+opacity:0;transition:.25s;
+font-weight:600;font-size:14px;
+box-sizing:border-box;
 }
-.featured-game:hover .title{opacity:1;}
+.featured-game:hover .title,
+.game:hover .title{opacity:1;}
 
 .hot-badge{
 position:absolute;top:10px;right:10px;
@@ -229,13 +214,80 @@ text-transform:uppercase;letter-spacing:.5px;
 
 .view-all-btn{
 display:block;width:fit-content;
-margin:8px auto 64px;
+margin:8px auto 20px;
 padding:12px 32px;
 border:2px solid #ff8c00;background:transparent;
 color:#ff8c00;font-weight:700;font-size:15px;
 border-radius:10px;cursor:pointer;transition:.2s;
 }
 .view-all-btn:hover{background:#ff8c00;color:#111;}
+
+/* CONVEYOR BELT */
+.belt-wrapper{
+position:relative;
+overflow:hidden;
+margin:0 -40px 54px;
+padding:10px 0;
+}
+
+/* fade edges */
+.belt-wrapper::before,
+.belt-wrapper::after{
+content:'';
+position:absolute;top:0;bottom:0;
+width:80px;z-index:2;
+pointer-events:none;
+}
+.belt-wrapper::before{
+left:0;
+background:linear-gradient(to right,#121212,transparent);
+}
+.belt-wrapper::after{
+right:0;
+background:linear-gradient(to left,#121212,transparent);
+}
+
+.belt-track{
+display:flex;
+gap:14px;
+width:max-content;
+animation:beltScroll 40s linear infinite;
+padding:4px 40px;
+}
+
+.belt-wrapper:hover .belt-track{
+animation-play-state:paused;
+}
+
+@keyframes beltScroll{
+0%{transform:translateX(0)}
+100%{transform:translateX(-50%)}
+}
+
+.belt-card{
+position:relative;
+width:130px;height:130px;
+border-radius:12px;overflow:hidden;
+cursor:pointer;background:#1f1f1f;
+flex-shrink:0;
+transition:.2s;border:2px solid transparent;
+}
+.belt-card:hover{
+transform:scale(1.08);
+border-color:#ff8c00;
+box-shadow:0 0 16px rgba(255,140,0,.4);
+}
+.belt-card img{width:100%;height:100%;object-fit:cover;}
+.belt-title{
+position:absolute;bottom:0;width:100%;
+text-align:center;
+background:linear-gradient(to top, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.45) 60%, rgba(0,0,0,0) 100%);
+padding:22px 6px 7px;
+opacity:0;transition:.22s;
+font-size:12px;font-weight:600;
+box-sizing:border-box;
+}
+.belt-card:hover .belt-title{opacity:1;}
 
 /* ALL GAMES PAGE */
 .search-container{
@@ -270,12 +322,6 @@ cursor:pointer;background:#1f1f1f;transition:.2s;
 }
 .game:hover{transform:scale(1.04);}
 .game img{width:100%;height:100%;object-fit:cover;}
-.title{
-position:absolute;bottom:0;width:100%;
-text-align:center;background:rgba(0,0,0,.7);
-padding:8px;opacity:0;transition:.2s;
-}
-.game:hover .title{opacity:1;}
 
 </style>
 </head>
@@ -338,6 +384,12 @@ padding:8px;opacity:0;transition:.2s;
     </div>
   </div>
 
+  <!-- CONVEYOR BELT -->
+  <div class="section-title">🎮 Browse Games</div>
+  <div class="belt-wrapper">
+    <div class="belt-track" id="belt-track"></div>
+  </div>
+
   <!-- FEATURED -->
   <div class="section-title">🔥 Featured Games</div>
   <div class="featured-grid" id="featured-games"></div>
@@ -367,22 +419,17 @@ function showPage(page) {
   window.scrollTo(0, 0)
 }
 
-function animateCount(el, target, duration = 1400) {
-  let start = 0
-  const step = Math.ceil(target / (duration / 16))
-  const timer = setInterval(() => {
-    start = Math.min(start + step, target)
-    el.textContent = start
-    if (start >= target) clearInterval(timer)
-  }, 16)
+function shuffle(arr) {
+  return [...arr].sort(() => Math.random() - 0.5)
 }
 
 async function loadGames() {
   const res = await fetch("games.json")
   const games = await res.json()
   allGames = games
-renderGames(games)
+  renderGames(games)
   renderFeatured(games)
+  renderBelt(games)
 }
 
 function renderGames(games) {
@@ -400,8 +447,7 @@ function renderGames(games) {
 function renderFeatured(games) {
   const container = document.getElementById("featured-games")
   container.innerHTML = ""
-  const featured = games.slice(0, 6)
-  featured.forEach((game, i) => {
+  shuffle(games).slice(0, 6).forEach((game, i) => {
     const card = document.createElement("div")
     card.className = "featured-game"
     card.innerHTML = `
@@ -412,6 +458,18 @@ function renderFeatured(games) {
     card.onclick = () => location.href = game.path
     container.appendChild(card)
   })
+}
+
+function renderBelt(games) {
+  const track = document.getElementById("belt-track")
+  // Double shuffled list for seamless loop
+  const items = [...shuffle(games), ...shuffle(games)]
+  track.innerHTML = items.map(game => `
+    <div class="belt-card" onclick="location.href='${game.path}'">
+      <img src="${game.icon}" alt="${game.name}">
+      <div class="belt-title">${game.name}</div>
+    </div>
+  `).join("")
 }
 
 document.getElementById("search").addEventListener("input", e => {
