@@ -138,5 +138,10 @@
         "name": "Tomb of the Mask",
         "path": "games/totm/cltotm.html",
         "icon": "games/totm/icon.png"
+    },
+    {
+        "name": "Happy Wheels",
+        "path": "games/happy_wheels/clhappywheels.html",
+        "icon": "games/happy_wheels/happy-wheels.jpg"
     }
 ]
