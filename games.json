@@ -101,8 +101,8 @@
     },
     {
         "name": "Cookie Clicker",
-        "path": "games/cookie_clicker/clcookie-clicker.html",
-        "icon": "games/cookie_clicker/icon.png"
+        "path": "games/clicker/cookie_clicker/clcookie-clicker.html",
+        "icon": "games/clicker/cookie_clicker/icon.png"
     },
     {
         "name": "Drift Boss",
@@ -186,8 +186,8 @@
     },
     {
         "name": "Capybara Clicker",
-        "path": "games/capybara_clicker/clcabybaraclicker.html",
-        "icon": "games/capybara_clicker/icon.png"
+        "path": "games/clicker/capybara_clicker/clcabybaraclicker.html",
+        "icon": "games/clicker/capybara_clicker/icon.png"
     },
     {
         "name": "Coreball",
@@ -198,5 +198,60 @@
         "name": "Cell Machine",
         "path": "games/cell_machine/clcellmachine.html",
         "icon": "games/cell_machine/icon.png"
+    },
+    {
+        "name": "Choppy Orc",
+        "path": "games/choppy_orc/clchoppyorc.html",
+        "icon": "games/choppy_orc/icon.png"
+    },
+    {
+        "name": "Crossy Road",
+        "path": "games/crossy_road/clcrossyroad.html",
+        "icon": "games/crossy_road/icon.png"
+    },
+    {
+        "name": "CSGO Clicker",
+        "path": "games/clicker/csgo_clicker/clcsgoclicker.html",
+        "icon": "games/clicker/csgo_clicker/icon.png"
+    },
+    {
+        "name": "Cut The Rope",
+        "path": "games/cut_the_rope/clcuttherope.html",
+        "icon": "games/cut_the_rope/icon1.png"
+    },
+    {
+        "name": "Doodle Jump",
+        "path": "games/doodle_jump/cldoodlejump.png",
+        "icon": "games/doodle_jump/icon.png"
+    },
+    {
+        "name": "Eggy Car",
+        "path": "games/eggy_car/cleggycar.html",
+        "icon": "games/eggy_car/icon.png"
+    },
+    {
+        "name": "FNAF",
+        "path": "games/fnaf/fnaf1.html",
+        "icon": "games/fnaf/icon1.png"
+    },
+    {
+        "name": "FNAF 2",
+        "path": "games/fnaf/fnaf2.html",
+        "icon": "games/fnaf/icon2.png"
+    },
+    {
+        "name": "FNAF 3",
+        "path": "games/fnaf/fnaf3.html",
+        "icon": "games/fnaf/icon3.png"
+    },
+    {
+        "name": "FNAF 4",
+        "path": "games/fnaf/fnaf4.html",
+        "icon": "games/fnaf/icon4.png"
+    },
+    {
+        "name": "Final Earth 2",
+        "path": "games/final_earth/clfinalearth2.html",
+        "icon": "games/final_earth/icon.png"
     }
 ]
