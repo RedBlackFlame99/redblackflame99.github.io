@@ -303,5 +303,10 @@
         "name": "Eaglercraft",
         "path": "games/eaglercraft/v1_8_offline.html",
         "icon": "games/eaglercraft/icon1.png"
+    },
+    {
+        "name": "2D Rocket League",
+        "path": "games/rocket_league/clrocketleague.html",
+        "icon": "games/rocket_league/e.png"
     }
 ]
