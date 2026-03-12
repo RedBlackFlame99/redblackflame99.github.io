@@ -118,5 +118,11 @@
         "name": "Time Shooter 3",
         "path": "games/time_shooter/cltimeshooter3.html",
         "icon": "games/time_shooter/ts3.png"
+    },
+    {
+        "name": "Dance of Fire and Ice",
+        "path": "games/fireandice/fireandice.html",
+        "icon": "games/fireandice/icon.png"
     }
+]
 ]

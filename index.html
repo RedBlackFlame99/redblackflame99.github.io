@@ -3,7 +3,6 @@
 <head>
 <meta charset="UTF-8">
 <title>Hotdog Party</title>
-<link rel="icon" type="image/png" href="favicon.png">
 <link href="https://fonts.googleapis.com/css2?family=Luckiest+Guy&display=swap" rel="stylesheet">
 
 <style>
@@ -18,7 +17,7 @@ body {
   position:relative;
 }
 
-/* Animated background shapes container */
+/* Animated background shapes */
 .background-shapes {
   position:fixed;
   top:0;
@@ -28,17 +27,12 @@ body {
   z-index:-1;
   overflow:hidden;
 }
-
-/* Individual shapes */
 .shape {
   position:absolute;
-  border-radius:50%;
   opacity:0.3;
   background:linear-gradient(45deg,#ff7b00,#ffae00);
   animation: moveShape linear infinite;
 }
-
-/* Animations for shapes */
 @keyframes moveShape {
   0% { transform: translateY(0) translateX(0) rotate(0deg);}
   50% { transform: translateY(-50px) translateX(50px) rotate(180deg);}
@@ -216,12 +210,50 @@ body {
   opacity:1;
   transform:translateY(0);
 }
+
+/* Fullscreen game overlay */
+.game-view {
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  background:#121212;
+  z-index:2000;
+  display:none;
+  flex-direction:column;
+}
+.game-topbar {
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:10px 20px;
+  background:rgba(24,24,24,0.95);
+  backdrop-filter: blur(6px);
+  box-shadow:0 4px 10px rgba(0,0,0,.5);
+}
+.game-topbar button {
+  background:#ff8c00;
+  border:none;
+  padding:8px 14px;
+  border-radius:8px;
+  color:white;
+  font-weight:bold;
+  cursor:pointer;
+  transition:0.2s;
+}
+.game-topbar button:hover {
+  background:#ffb347;
+}
+.game-iframe {
+  flex:1;
+  width:100%;
+  border:none;
+}
 </style>
 </head>
-
 <body>
 
-<!-- Animated background shapes -->
 <div class="background-shapes" id="bgShapes"></div>
 
 <div class="topbar">
@@ -247,14 +279,25 @@ body {
 
 <div class="games" id="games"></div>
 
+<!-- Fullscreen game overlay -->
+<div class="game-view" id="gameView">
+  <div class="game-topbar">
+    <button id="backBtn">⬅ Back</button>
+    <button id="fullscreenBtn">⛶ Fullscreen</button>
+  </div>
+  <iframe class="game-iframe" id="gameIframe"></iframe>
+</div>
+
 <script>
 let allGames=[];
+
 async function loadGames(){
   const response=await fetch("games.json");
   const games=await response.json();
   allGames=games;
   renderGames(games);
 }
+
 function renderGames(games){
   const container=document.getElementById("games");
   container.innerHTML="";
@@ -262,18 +305,37 @@ function renderGames(games){
     const card=document.createElement("div");
     card.className="game";
     card.innerHTML=`<img src="${game.icon}" alt="${game.name}"><div class="title">${game.name}</div>`;
-    card.onclick=()=>{window.location.href=game.path;}
+    card.onclick=()=>{
+      openGame(game.path);
+    };
     container.appendChild(card);
   });
 }
+
 document.getElementById("search").addEventListener("input",e=>{
   const query=e.target.value.toLowerCase();
   const filtered=allGames.filter(game=>game.name.toLowerCase().includes(query));
   renderGames(filtered);
 });
+
 loadGames();
 
-/* Create moving shapes in the background */
+/* Game overlay functions */
+const gameView=document.getElementById("gameView");
+const gameIframe=document.getElementById("gameIframe");
+document.getElementById("backBtn").onclick=()=>{gameView.style.display="none"; gameIframe.src="";}
+document.getElementById("fullscreenBtn").onclick=()=>{ 
+  if(gameIframe.requestFullscreen) gameIframe.requestFullscreen();
+  else if(gameIframe.webkitRequestFullscreen) gameIframe.webkitRequestFullscreen();
+  else if(gameIframe.msRequestFullscreen) gameIframe.msRequestFullscreen();
+};
+
+function openGame(url){
+  gameIframe.src=url;
+  gameView.style.display="flex";
+}
+
+/* Background shapes */
 const bgShapes = document.getElementById('bgShapes');
 const numShapes = 25;
 for(let i=0;i<numShapes;i++){
@@ -291,6 +353,5 @@ for(let i=0;i<numShapes;i++){
   bgShapes.appendChild(shape);
 }
 </script>
-
 </body>
 </html>
