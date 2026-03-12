@@ -4,8 +4,10 @@
 <meta charset="UTF-8">
 <title>Hotdog Party</title>
 
+<!-- Fun Google Font -->
+<link href="https://fonts.googleapis.com/css2?family=Luckiest+Guy&display=swap" rel="stylesheet">
+
 <style>
-/* Basic reset and body styling */
 body {
     margin: 0;
     background: #121212;
@@ -15,7 +17,23 @@ body {
     box-sizing: border-box;
 }
 
-/* Search bar styling */
+/* Header */
+.header {
+    font-family: 'Luckiest Guy', cursive;
+    font-size: 3rem;
+    color: #ff8c00;
+    margin-bottom: 25px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    letter-spacing: 1px;
+}
+
+.header span {
+    font-size: 3.2rem;
+}
+
+/* Search bar */
 .search-container {
     margin-bottom: 30px;
 }
@@ -30,7 +48,6 @@ body {
     color: #fff;
     outline: none;
     box-shadow: inset 0 0 6px rgba(0,0,0,0.4);
-    transition: background 0.2s;
 }
 
 .search-container input::placeholder {
@@ -48,7 +65,7 @@ body {
     gap: 25px;
 }
 
-/* Individual game card */
+/* Game cards */
 .game {
     position: relative;
     aspect-ratio: 1/1;
@@ -66,7 +83,6 @@ body {
     transition: transform 0.3s;
 }
 
-/* Hover effects */
 .game::after {
     content: "";
     position: absolute;
@@ -112,10 +128,15 @@ body {
 }
 </style>
 </head>
+
 <body>
 
+<div class="header">
+🌭 Hotdog Party
+</div>
+
 <div class="search-container">
-    <input type="text" id="search" placeholder="Search games...">
+<input type="text" id="search" placeholder="Search games...">
 </div>
 
 <div class="games" id="games"></div>
@@ -132,25 +153,30 @@ async function loadGames() {
 
 function renderGames(games) {
     const container = document.getElementById("games");
-    container.innerHTML = ""; // clear existing
+    container.innerHTML = "";
+
     games.forEach(game => {
         const card = document.createElement("div");
         card.className = "game";
+
         card.innerHTML = `
             <img src="${game.icon}" alt="${game.name}">
             <div class="title">${game.name}</div>
         `;
+
         card.onclick = () => {
             window.location.href = game.path;
         }
+
         container.appendChild(card);
     });
 }
 
-// Search functionality
 document.getElementById("search").addEventListener("input", e => {
     const query = e.target.value.toLowerCase();
-    const filtered = allGames.filter(game => game.name.toLowerCase().includes(query));
+    const filtered = allGames.filter(game =>
+        game.name.toLowerCase().includes(query)
+    );
     renderGames(filtered);
 });
 
