@@ -25,26 +25,53 @@ gap:20px;
 }
 
 .game{
-background:#111;
+position:relative;
+aspect-ratio:1/1;
+overflow:hidden;
 border-radius:12px;
-padding:15px;
 cursor:pointer;
-transition:.2s;
-}
-
-.game:hover{
-transform:scale(1.05);
-background:#181818;
 }
 
 .game img{
 width:100%;
-border-radius:10px;
-margin-bottom:10px;
+height:100%;
+object-fit:cover;
+transition:0.25s;
 }
 
-.game h3{
-margin:0;
+.game::after{
+content:"";
+position:absolute;
+inset:0;
+background:linear-gradient(to top, rgba(0,0,0,0.85), transparent);
+opacity:0;
+transition:0.25s;
+}
+
+.game .title{
+position:absolute;
+bottom:0;
+left:0;
+right:0;
+padding:14px;
+text-align:center;
+font-weight:600;
+opacity:0;
+transform:translateY(10px);
+transition:0.25s;
+}
+
+.game:hover img{
+transform:scale(1.1);
+}
+
+.game:hover::after{
+opacity:1;
+}
+
+.game:hover .title{
+opacity:1;
+transform:translateY(0);
 }
 
 </style>
@@ -73,7 +100,7 @@ card.className = "game"
 
 card.innerHTML = `
 <img src="${game.icon}">
-<h3>${game.name}</h3>
+<div class="title">${game.name}</div>
 `
 
 card.onclick = () => {
