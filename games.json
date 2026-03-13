@@ -957,7 +957,7 @@
     {
         "name": "The Impossible Quiz",
         "path": "games/impossiblequiz/index.html",
-        "icon": "games/impossiblequiz/impossiblequiz.jpg"
+        "icon": "games/impossiblequiz/impossiblequiz.png"
     },
     {
         "name": "KartFight.io",
@@ -973,6 +973,31 @@
         "name": "OSU",
         "path": "games/osu/index.html",
         "icon": "games/osu/icon.png"
+    },
+    {
+        "name": "Blumgi Racers",
+        "path": "games/blumgi/racers.html",
+        "icon": "games/blumgi/icon.png"
+    },
+    {
+        "name": "Pacman",
+        "path": "games/pacman/index.html",
+        "icon": "games/pacman/icon.png"
+    },
+    {
+        "name": "Paper.io 2",
+        "path": "games/paperio2/index.html",
+        "icon": "games/paperio2/icon.png"
+    },
+    {
+        "name": "Papery Planes",
+        "path": "games/papery-planes/index.html",
+        "icon": "games/papery-planes/icon.png"
+    },
+    {
+        "name": "Poxel.io",
+        "path": "games/poxel/poxel.html",
+        "icon": "games/poxel/icon.png"
     }
 
 ]
