@@ -445,6 +445,26 @@
         "icon": "games/motox3m/icon.png"
     },
     {
+        "name": "Moto X3M 2",
+        "path": "games/motox3m/moto2.html",
+        "icon": "games/motox3m/icon2.png"
+    },
+    {
+        "name": "Moto X3M 3",
+        "path": "games/motox3m/moto3.html",
+        "icon": "games/motox3m/icon3.png"
+    },
+    {
+        "name": "Moto X3M Winter",
+        "path": "games/motox3m/moto-winter.html",
+        "icon": "games/motox3m/icon-winter.png"
+    },
+    {
+        "name": "Moto X3M Spookyland",
+        "path": "games/motox3m/moto-spooky.html",
+        "icon": "games/motox3m/icon-spooky.png"
+    },
+    {
         "name": "Hextris",
         "path": "games/hextris/clhextris.html",
         "icon": "games/hextris/icon.png"
