@@ -668,6 +668,16 @@
         "name": "Territorial.io",
         "path": "games/territorialio/clterritorialio.html",
         "icon": "games/territorialio/icon.png"
+    },
+    {
+        "name": "Age of War",
+        "path": "games/ageofwar/age1.html",
+        "icon": "games/ageofwar/icon1.png"
+    },
+    {
+        "name": "Age of War 2",
+        "path": "games/ageofwar/age2.html",
+        "icon": "games/ageofwar/icon2.png"
     }
     
     

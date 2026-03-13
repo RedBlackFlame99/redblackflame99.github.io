@@ -124,6 +124,91 @@ border-bottom:1px solid rgba(255,140,0,.12);
   top:104px;
 }
 
+/* LEFT PANEL */
+.games-left{
+  flex:0 0 220px;
+  position:sticky;
+  top:104px;
+  display:flex;
+  flex-direction:column;
+  gap:14px;
+}
+
+/* Game of the Day */
+.gotd-panel{
+  background:#1a1a1a;
+  border:1px solid #2a2a2a;
+  border-radius:16px;
+  overflow:hidden;
+}
+.gotd-header{
+  padding:12px 14px;
+  background:#161616;
+  border-bottom:1px solid #2a2a2a;
+  display:flex;align-items:center;gap:8px;
+}
+.gotd-header-title{
+  font-family:'Luckiest Guy';font-size:16px;
+  background:linear-gradient(45deg,#ff7b00,#ffae00);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+  letter-spacing:1px;
+}
+.gotd-body{padding:12px;}
+.gotd-img-wrap{
+  position:relative;width:100%;aspect-ratio:1/1;
+  border-radius:10px;overflow:hidden;
+  cursor:pointer;margin-bottom:10px;
+  border:2px solid transparent;transition:.2s;
+}
+.gotd-img-wrap:hover{border-color:#ff8c00;box-shadow:0 0 18px rgba(255,140,0,.35);}
+.gotd-img-wrap img{width:100%;height:100%;object-fit:cover;}
+.gotd-name{font-size:14px;font-weight:700;color:#ddd;margin-bottom:8px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.gotd-play-btn{
+  width:100%;padding:9px;
+  background:linear-gradient(45deg,#ff8c00,#ffd000);
+  border:none;border-radius:9px;
+  color:#111;font-weight:900;font-size:13px;
+  cursor:pointer;transition:.2s;
+}
+.gotd-play-btn:hover{transform:scale(1.03);box-shadow:0 4px 16px rgba(255,140,0,.5);}
+.gotd-date{font-size:11px;color:#555;margin-bottom:8px;}
+
+/* Active Players */
+.active-panel{
+  background:#1a1a1a;
+  border:1px solid #2a2a2a;
+  border-radius:16px;
+  overflow:hidden;
+}
+.active-header{
+  padding:12px 14px;
+  background:#161616;
+  border-bottom:1px solid #2a2a2a;
+  display:flex;align-items:center;gap:8px;
+}
+.active-header-title{
+  font-family:'Luckiest Guy';font-size:16px;
+  background:linear-gradient(45deg,#ff7b00,#ffae00);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+  letter-spacing:1px;flex:1;
+}
+.active-dot{
+  width:8px;height:8px;border-radius:50%;
+  background:#4caf50;box-shadow:0 0 6px #4caf50;
+  animation:pulse 1.8s infinite;
+}
+.active-list{padding:8px 0;}
+.active-row{
+  display:flex;align-items:center;gap:10px;
+  padding:8px 14px;cursor:pointer;transition:.15s;
+}
+.active-row:hover{background:rgba(255,140,0,.06);}
+.active-icon{width:36px;height:36px;border-radius:8px;object-fit:cover;flex-shrink:0;border:1px solid #2a2a2a;}
+.active-info{flex:1;min-width:0;}
+.active-name{font-size:12px;font-weight:700;color:#ddd;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.active-count{font-size:11px;color:#4caf50;margin-top:1px;}
+.active-empty{padding:20px;text-align:center;color:#444;font-size:13px;}
+
 /* search */
 .search-container{position:relative;max-width:100%;margin-bottom:18px;}
 .search-icon{position:absolute;left:14px;top:50%;transform:translateY(-50%);width:18px;height:18px;fill:#aaa;pointer-events:none;}
@@ -395,6 +480,38 @@ position:sticky;top:104px;
   <!-- BROWSE VIEW -->
   <div class="games-layout" id="browseView">
 
+    <!-- LEFT PANEL -->
+    <div class="games-left">
+
+      <!-- Game of the Day -->
+      <div class="gotd-panel">
+        <div class="gotd-header">
+          <span>📅</span>
+          <div class="gotd-header-title">Game of the Day</div>
+        </div>
+        <div class="gotd-body">
+          <div class="gotd-date" id="gotdDate"></div>
+          <div class="gotd-img-wrap" id="gotdImgWrap">
+            <img id="gotdImg" src="" alt="">
+          </div>
+          <div class="gotd-name" id="gotdName">Loading...</div>
+          <button class="gotd-play-btn" id="gotdBtn">▶ Play Now</button>
+        </div>
+      </div>
+
+      <!-- Active Players -->
+      <div class="active-panel">
+        <div class="active-header">
+          <div class="active-header-title">🔥 Playing Now</div>
+          <div class="active-dot"></div>
+        </div>
+        <div class="active-list" id="activeList">
+          <div class="active-empty">Loading...</div>
+        </div>
+      </div>
+
+    </div>
+
     <!-- center: search + 6-per-row grid -->
     <div class="games-center">
       <div class="search-container">
@@ -494,7 +611,88 @@ function showPage(page) {
   window.scrollTo(0, 0)
 }
 
-// ---- LEADERBOARD (Firebase Realtime DB — global across all players) ----
+// ---- GAME OF THE DAY ----
+function setupGameOfTheDay(games) {
+  if (!games.length) return
+  // Use today's date as a deterministic seed — same game for everyone all day
+  const today = new Date()
+  const seed = today.getFullYear() * 10000 + (today.getMonth()+1) * 100 + today.getDate()
+  const idx = seed % games.length
+  const game = games[idx]
+
+  const months = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"]
+  document.getElementById("gotdDate").textContent =
+    months[today.getMonth()] + " " + today.getDate() + ", " + today.getFullYear()
+  document.getElementById("gotdImg").src = game.icon
+  document.getElementById("gotdName").textContent = game.name
+  document.getElementById("gotdImgWrap").onclick = () => { showPage('gamesPage'); openGame(game) }
+  document.getElementById("gotdBtn").onclick = () => { showPage('gamesPage'); openGame(game) }
+}
+
+// ---- ACTIVE PLAYERS (Firebase — last 3 mins) ----
+const FB_ACTIVE_URL = "https://hotdog-party-61e77-default-rtdb.firebaseio.com/active"
+let activeSessionId = Math.random().toString(36).slice(2)
+
+async function pingActive(game) {
+  if (!FB_READY) return
+  try {
+    await fetch(FB_ACTIVE_URL + "/" + activeSessionId + ".json", {
+      method: "PUT",
+      headers: {"Content-Type":"application/json"},
+      body: JSON.stringify({
+        game: game.name,
+        icon: game.icon,
+        path: game.path,
+        ts: Date.now()
+      })
+    })
+  } catch(e) {}
+}
+
+async function loadActivePlayers() {
+  const container = document.getElementById("activeList")
+  if (!container) return
+  if (!FB_READY) { container.innerHTML = '<div class="active-empty">No one yet!</div>'; return }
+  try {
+    const r = await fetch(FB_ACTIVE_URL + ".json")
+    const data = await r.json()
+    if (!data) { container.innerHTML = '<div class="active-empty">Be the first to play!</div>'; return }
+
+    const cutoff = Date.now() - 3 * 60 * 1000 // last 3 minutes
+    const active = Object.values(data).filter(e => e && e.ts && e.ts > cutoff)
+
+    // Count by game
+    const counts = {}
+    active.forEach(e => {
+      const k = e.path
+      if (!counts[k]) counts[k] = { name: e.game, icon: e.icon, path: e.path, count: 0 }
+      counts[k].count++
+    })
+
+    const sorted = Object.values(counts).sort((a,b) => b.count - a.count).slice(0, 5)
+
+    if (sorted.length === 0) {
+      container.innerHTML = '<div class="active-empty">No one playing right now</div>'
+      return
+    }
+
+    container.innerHTML = sorted.map(e => {
+      const safePath = e.path.replace(/'/g, "\\'")
+      const label = e.count === 1 ? "1 player" : e.count + " players"
+      return `<div class="active-row" onclick="openGame(allGames.find(g=>g.path==='${safePath}'))">
+        <img class="active-icon" src="${e.icon}" alt="${e.name}" onerror="this.style.opacity=0">
+        <div class="active-info">
+          <div class="active-name">${e.name}</div>
+          <div class="active-count">● ${label}</div>
+        </div>
+      </div>`
+    }).join("")
+  } catch(e) {
+    container.innerHTML = '<div class="active-empty">No one playing right now</div>'
+  }
+}
+
+
 // SETUP: Go to firebase.google.com → create project → Realtime Database → Start in test mode
 // Then replace the URL below with your own:  https://YOUR-PROJECT-default-rtdb.firebaseio.com/plays
 const FB_URL = "https://hotdog-party-61e77-default-rtdb.firebaseio.com/plays"
@@ -581,6 +779,10 @@ function openGame(game) {
   renderPlayerSidebar(allGames, game)
   window.scrollTo(0, 0)
   incrementPlayCount(game)
+  pingActive(game)
+  // Keep refreshing "playing now" while game is open
+  clearInterval(window._activeInterval)
+  window._activeInterval = setInterval(() => pingActive(game), 90000)
 }
 
 function closePlayer() {
@@ -691,6 +893,10 @@ async function loadGames() {
     renderGames(games)
     renderBelt(games)
     loadLeaderboard()
+    setupGameOfTheDay(games)
+    loadActivePlayers()
+    // Refresh active players every 30 seconds
+    setInterval(loadActivePlayers, 30000)
 
     // Featured: top 10 most played from Firebase, padded with random games
     try {
@@ -709,7 +915,7 @@ async function loadGames() {
       // Pad to 12 with random games not already in the list
       const usedPaths = new Set(featured.map(g => g.path))
       const rest = shuffle(games.filter(g => !usedPaths.has(g.path)))
-      featured = [...featured, ...rest].slice(0, 20)
+      featured = [...featured, ...rest].slice(0, 12)
       renderFeatured(featured)
     } catch {
       renderFeatured(shuffle(games))
