@@ -599,7 +599,7 @@ position:sticky;top:104px;
         Email us
       </div>
       <div class="contact-email">
-        <span><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="e38b8c97878c84938291979adbd6d7a3848e828a8fcd808c8e">[email&#160;protected]</a></span>
+        <span>hotdogparty854@gmail.com</span>
         <button class="copy-btn" id="copyBtn" onclick="copyEmail()">Copy</button>
       </div>
     </div>
@@ -914,9 +914,9 @@ async function loadGames() {
         const sorted = Object.values(lbData)
           .filter(e => e && e.count && e.path)
           .sort((a, b) => b.count - a.count)
-          .slice(0, 10)
           .map(e => games.find(g => g.path === e.path))
           .filter(Boolean)
+          .slice(0, 10)
         featured = sorted
       }
       // Just show top 10, no padding
