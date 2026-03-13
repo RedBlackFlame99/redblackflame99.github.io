@@ -853,10 +853,30 @@
         "name": "Among Us",
         "path": "games/among-us/index.html",
         "icon": "games/among-us/red.png"
+    },
+    {
+        "name": "Angry Birds",
+        "path": "games/angry-birds/index.html",
+        "icon": "games/angry-birds/icon.png"
+    },
+    {
+        "name": "Basketball.io",
+        "path": "games/basketball-io/index.html",
+        "icon": "games/basketball-io/icon.jfif"
+    },
+    {
+        "name": "Black Hole Square",
+        "path": "games/blackholesquare/index.html",
+        "icon": "games/blackholesquare/icon.png"
+    },
+    {
+        "name": "Black Hole Square",
+        "path": "games/blackholesquare/index.html",
+        "icon": "games/blackholesquare/icon.png"
+    },
+    {
+        "name": "Blocky Snake",
+        "path": "games/blocky-snakes/index.html",
+        "icon": "games/blocky-snakes/icon.png"
     }
-    
-    
-    
-    
-    
 ]
