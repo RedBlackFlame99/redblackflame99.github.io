@@ -846,8 +846,8 @@
     },
     {
         "name": "Run 3",
-        "path": "test/run3/index.html",
-        "icon": "test/run3/favicon.png"
+        "path": "test/run-3/index.html",
+        "icon": "test/run-3/icon.png"
     }
     
     
