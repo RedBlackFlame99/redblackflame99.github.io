@@ -818,7 +818,29 @@
         "name": "Undertale",
         "path": "games/undertale/undertale.html",
         "icon": "games/undertale/icon.png"
+    },
+    {
+        "name": "Baldi's Basics",
+        "path": "games/baldis/baldis.html",
+        "icon": "games/baldis/icon.png"
+    },
+    {
+        "name": "Bee Swarm Simulator",
+        "path": "games/beeswarm/bee.html",
+        "icon": "games/beeswarm/icon.png"
+    },
+    {
+        "name": "Big Tower Tiny Square",
+        "path": "games/bigtower/tower1.html",
+        "icon": "games/bigtower/icon1.png"
+    },
+    {
+        "name": "Big Tower Tiny Square 2",
+        "path": "games/bigtower/tower2.html",
+        "icon": "games/bigtower/icon2.png"
     }
+    
+    
     
     
     
