@@ -843,6 +843,11 @@
         "name": "Grindcraft",
         "path": "test/grindcraft/index.html",
         "icon": "test/grindcraft/icon.png"
+    },
+    {
+        "name": "Run 3",
+        "path": "test/run3/index.html",
+        "icon": "test/run3/favicon.png"
     }
     
     
