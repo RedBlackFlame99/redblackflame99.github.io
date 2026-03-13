@@ -838,6 +838,11 @@
         "name": "Bob the Robber right click then click fullscreen",
         "path": "games/bobrob/rob.html",
         "icon": "games/bobrob/icon.png"
+    },
+    {
+        "name": "Grindcraft",
+        "path": "test/grindcraft/index.html",
+        "icon": "test/grindcraft/icon.png"
     }
     
     
