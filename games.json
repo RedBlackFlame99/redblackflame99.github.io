@@ -623,6 +623,11 @@
         "name": "Achievement Unlocked 3",
         "path": "games/achievement_unlocked/achieve3.html",
         "icon": "games/achievement_unlocked/icon3.png"
+    },
+    {
+        "name": "Stickman Hook",
+        "path": "games/stickmanhook/clstickmanhook.html",
+        "icon": "games/stickmanhook/icon.png"
     }
     
     
