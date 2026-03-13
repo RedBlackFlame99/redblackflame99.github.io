@@ -903,5 +903,26 @@
         "name": "Deal or no deal",
         "path": "test/deal-or-no-deal/index.html",
         "icon": "test/deal-or-no-deal/index.jpg"
+    },
+    {
+        "name": "Don't Drop the White Ball 2",
+        "path": "games/dont-drop-the-white-ball-2/index.html",
+        "icon": "games/dont-drop-the-white-ball-2/icon.png"
+    },
+    {
+        "name": "Edge Not Found",
+        "path": "games/edgenotfound/index.html",
+        "icon": "games/edgenotfound/edge.png"
+    },
+    {
+        "name": "Flappybird",
+        "path": "games/flappybird/index.html",
+        "icon": "games/flappybird/icon.png"
+    },
+    {
+        "name": "Froggys Battle",
+        "path": "games/froggysbattle/index.html",
+        "icon": "games/froggysbattle/icon.jpg"
     }
+
 ]
