@@ -678,6 +678,66 @@
         "name": "Age of War 2",
         "path": "games/ageofwar/age2.html",
         "icon": "games/ageofwar/icon2.png"
+    },
+    {
+        "name": "Tower Blocks",
+        "path": "games/towerblocks/cltowerblocks.html",
+        "icon": "games/towerblocks/icon.png"
+    },
+    {
+        "name": "Tower Crash 3D",
+        "path": "games/towercrash3d/cltowercrash3d.html",
+        "icon": "games/towercrash3d/icon.png"
+    },
+    {
+        "name": "Traffic Jam 3D",
+        "path": "games/trafficjam3d/cltrafficjam3d.html",
+        "icon": "games/trafficjam3d/icon.png"
+    },
+    {
+        "name": "Tunnel Rush",
+        "path": "games/tunnelrush/tr.html",
+        "icon": "games/tunnelrush/icon.png"
+    },
+    {
+        "name": "Archery World Tour",
+        "path": "games/worldarch/worldarch.html",
+        "icon": "games/worldarch/icon.png"
+    },
+    {
+        "name": "Ultimate Car Driving Simulator",
+        "path": "games/drivingsim/ult1.html",
+        "icon": "games/drivingsim/icon1.png"
+    },
+    {
+        "name": "Ultrakill",
+        "path": "games/ultrakill/uk.html",
+        "icon": "games/ultrakill/icon.png"
+    },
+    {
+        "name": "A Small World Cup",
+        "path": "games/smallcup/small.html",
+        "icon": "games/smallcup/icon.png"
+    },
+    {
+        "name": "Unicycle Hero",
+        "path": "games/unicyclehero/uh.html",
+        "icon": "games/unicyclehero/icon.png"
+    },
+    {
+        "name": "Awesome Tanks",
+        "path": "games/awesometanks/tanks1.html",
+        "icon": "games/awesometanks/icon1.png"
+    },
+    {
+        "name": "Awesome Tanks 2",
+        "path": "games/awesometanks/tanks2.html",
+        "icon": "games/awesometanks/icon2.png"
+    },    
+    {
+        "name": "Uno",
+        "path": "games/uno/cluno.html",
+        "icon": "games/uno/icon.png"
     }
     
     
