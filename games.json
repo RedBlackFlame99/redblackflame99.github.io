@@ -845,9 +845,14 @@
         "icon": "test/grindcraft/icon.png"
     },
     {
-        "name": "Run 3",
-        "path": "test/run-3/index.html",
-        "icon": "test/run-3/icon.png"
+        "name": "1v1 Space",
+        "path": "games/1v1space/index.html",
+        "icon": "games/1v1space/splash.png"
+    },
+    {
+        "name": "Among Us",
+        "path": "games/among-us/index.html",
+        "icon": "games/among-us/red.png"
     }
     
     
