@@ -658,6 +658,16 @@
         "name": "Swordfight",
         "path": "games/swordfight/clswordfight.html",
         "icon": "games/swordfight/icon.png"
+    },
+    {
+        "name": "Tall.io",
+        "path": "games/tallio/cltallio.html",
+        "icon": "games/tallio/icon.png"
+    },
+    {
+        "name": "Territorial.io",
+        "path": "games/territorialio/clterritorialio.html",
+        "icon": "games/territorialio/icon.png"
     }
     
     
