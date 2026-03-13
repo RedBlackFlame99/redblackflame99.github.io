@@ -883,5 +883,20 @@
         "name": "City Blocks 2",
         "path": "games/city-blocks-2/index.html",
         "icon": "games/city-blocks-2/icon.png"
+    },
+    {
+        "name": "Cleanup.io",
+        "path": "games/clean-up-io/index.html",
+        "icon": "games/clean-up-io/icon.png"
+    },
+    {
+        "name": "Color Switch 2 Challenges",
+        "path": "games/color-switch-2-challenges/index.html",
+        "icon": "games/color-switch-2-challenges/icon.png"
+    },
+    {
+        "name": "Craftmine",
+        "path": "games/craftmine/index.html",
+        "icon": "games/craftmine/images/craftmine.png"
     }
 ]
