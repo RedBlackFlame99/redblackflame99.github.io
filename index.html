@@ -100,60 +100,122 @@ border-bottom:1px solid rgba(255,140,0,.12);
 /* =====================
    GAMES PAGE
    ===================== */
-#gamesPage{padding:24px 32px;}
+#gamesPage{padding:24px 0;}
 
-/* BROWSE VIEW */
-.games-layout{display:grid;grid-template-columns:1fr 220px;gap:20px;}
-
-.game-hero-panel{
-position:relative;
-background:#1a1a1a;border:2px solid #2a2a2a;
-border-radius:18px;overflow:hidden;
-display:flex;align-items:center;
-padding:36px 40px;gap:36px;min-height:260px;
-cursor:pointer;transition:.2s;
+/* BROWSE VIEW — 3-col: blank | content | leaderboard */
+.games-layout{
+  display:grid;
+  grid-template-columns:1fr minmax(0,820px) 260px;
+  gap:0 24px;
+  align-items:start;
+  padding:0 24px;
 }
-.game-hero-panel:hover{border-color:#ff8c00;box-shadow:0 0 32px rgba(255,140,0,.2);}
-.game-hero-panel::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 20% 50%,rgba(255,140,0,.07) 0%,transparent 65%);pointer-events:none;}
-.hero-icon{width:200px;height:200px;border-radius:20px;object-fit:cover;flex-shrink:0;box-shadow:0 8px 32px rgba(0,0,0,.5);border:2px solid rgba(255,140,0,.25);}
-.hero-info{flex:1;}
-.hero-game-name{font-family:'Luckiest Guy';font-size:clamp(28px,3.5vw,48px);line-height:1.1;background:linear-gradient(135deg,#fff 0%,#ffe8a0 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin:0 0 6px;letter-spacing:1px;}
-.hero-game-tag{font-size:13px;font-weight:700;color:#666;text-transform:uppercase;letter-spacing:1.5px;margin-bottom:20px;}
-.hero-play-btn{display:inline-flex;align-items:center;gap:10px;padding:14px 32px;background:linear-gradient(45deg,#ff8c00,#ffd000);color:#111;font-weight:900;font-size:16px;border:none;border-radius:12px;cursor:pointer;transition:.2s;box-shadow:0 4px 20px rgba(255,140,0,.4);text-decoration:none;}
-.hero-play-btn:hover{transform:scale(1.05);box-shadow:0 6px 28px rgba(255,140,0,.6);}
 
-.game-sidebar{display:flex;flex-direction:column;gap:10px;}
+/* left blank column — nothing */
+.games-left-blank{grid-column:1;}
+
+/* center content column */
+.games-center{grid-column:2;}
+
+/* right leaderboard column */
+.games-right{grid-column:3;position:sticky;top:104px;}
+
+/* search */
+.search-container{position:relative;max-width:100%;margin-bottom:18px;}
+.search-icon{position:absolute;left:14px;top:50%;transform:translateY(-50%);width:18px;height:18px;fill:#aaa;pointer-events:none;}
+.search{width:100%;padding:11px 16px 11px 42px;border-radius:12px;border:2px solid #2a2a2a;background:#1a1a1a;color:#fff;font-size:15px;outline:none;transition:.25s;box-sizing:border-box;}
+.search::placeholder{color:#555;}
+.search:focus{border-color:#ff8c00;box-shadow:0 0 10px rgba(255,140,0,.4);background:#1f1f1f;}
+
+/* 6-per-row grid */
+.games{display:grid;grid-template-columns:repeat(6,1fr);gap:12px;}
+.game{position:relative;aspect-ratio:1/1;border-radius:12px;overflow:hidden;cursor:pointer;background:#1a1a1a;transition:.2s;border:2px solid transparent;}
+.game:hover{transform:scale(1.05);border-color:#ff8c00;box-shadow:0 0 16px rgba(255,140,0,.3);}
+.game img{width:100%;height:100%;object-fit:cover;}
+.game .title{position:absolute;bottom:0;width:100%;text-align:center;background:linear-gradient(to top,rgba(0,0,0,.88) 0%,rgba(0,0,0,.45) 50%,rgba(0,0,0,0) 100%);padding:28px 8px 8px;opacity:0;transition:.22s;font-weight:600;font-size:12px;box-sizing:border-box;}
+.game:hover .title{opacity:1;}
+
+/* LEADERBOARD */
+.leaderboard-panel{
+  background:#1a1a1a;
+  border:1px solid #2a2a2a;
+  border-radius:16px;
+  overflow:hidden;
+}
+.lb-header{
+  padding:14px 16px;
+  border-bottom:1px solid #2a2a2a;
+  background:#161616;
+  display:flex;align-items:center;gap:8px;
+}
+.lb-header-title{
+  font-family:'Luckiest Guy';font-size:18px;
+  background:linear-gradient(45deg,#ff7b00,#ffae00);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+  letter-spacing:1px;flex:1;
+}
+.lb-live-dot{
+  width:8px;height:8px;border-radius:50%;
+  background:#ff8c00;
+  box-shadow:0 0 6px #ff8c00;
+  animation:pulse 1.8s infinite;
+}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.3}}
+
+.lb-list{padding:8px 0;}
+
+.lb-row{
+  display:flex;align-items:center;gap:10px;
+  padding:9px 14px;
+  transition:.15s;
+  cursor:pointer;
+}
+.lb-row:hover{background:rgba(255,140,0,.06);}
+
+.lb-rank{
+  font-family:'Luckiest Guy';
+  font-size:18px;
+  width:26px;text-align:center;flex-shrink:0;
+  line-height:1;
+}
+.lb-rank.gold{color:#ffd700;}
+.lb-rank.silver{color:#c0c0c0;}
+.lb-rank.bronze{color:#cd7f32;}
+.lb-rank.other{color:#555;}
+
+.lb-icon{
+  width:40px;height:40px;border-radius:8px;
+  object-fit:cover;flex-shrink:0;
+  border:1px solid #2a2a2a;
+}
+.lb-info{flex:1;min-width:0;}
+.lb-name{font-size:13px;font-weight:700;color:#ddd;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.lb-plays{font-size:11px;color:#666;margin-top:2px;}
+.lb-bar-wrap{height:3px;background:#222;border-radius:2px;margin-top:5px;}
+.lb-bar{height:3px;background:linear-gradient(90deg,#ff7b00,#ffcc00);border-radius:2px;transition:width .4s;}
+
+.lb-empty{padding:24px;text-align:center;color:#444;font-size:13px;}
+
 .sidebar-title{font-family:'Luckiest Guy';font-size:16px;background:linear-gradient(45deg,#ff7b00,#ffae00);-webkit-background-clip:text;-webkit-text-fill-color:transparent;letter-spacing:1px;margin:0 0 4px;}
 .sidebar-game{display:flex;align-items:center;gap:12px;background:#1a1a1a;border:1px solid #2a2a2a;border-radius:12px;padding:10px;cursor:pointer;transition:.2s;}
 .sidebar-game:hover{border-color:#ff8c00;box-shadow:0 0 14px rgba(255,140,0,.2);transform:translateX(3px);}
 .sidebar-game img{width:52px;height:52px;border-radius:8px;object-fit:cover;flex-shrink:0;}
 .sidebar-game-name{font-size:13px;font-weight:700;color:#ddd;line-height:1.3;}
 
-.games-grid-wrap{grid-column:1 / -1;margin-top:8px;}
-.search-container{position:relative;max-width:400px;margin-bottom:18px;}
-.search-icon{position:absolute;left:14px;top:50%;transform:translateY(-50%);width:18px;height:18px;fill:#aaa;pointer-events:none;}
-.search{width:100%;padding:11px 16px 11px 42px;border-radius:12px;border:2px solid #2a2a2a;background:#1a1a1a;color:#fff;font-size:15px;outline:none;transition:.25s;}
-.search::placeholder{color:#555;}
-.search:focus{border-color:#ff8c00;box-shadow:0 0 10px rgba(255,140,0,.4);background:#1f1f1f;}
-.games{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:14px;}
-.game{position:relative;aspect-ratio:1/1;border-radius:12px;overflow:hidden;cursor:pointer;background:#1a1a1a;transition:.2s;border:2px solid transparent;}
-.game:hover{transform:scale(1.05);border-color:#ff8c00;box-shadow:0 0 16px rgba(255,140,0,.3);}
-.game img{width:100%;height:100%;object-fit:cover;}
-.game .title{position:absolute;bottom:0;width:100%;text-align:center;background:linear-gradient(to top,rgba(0,0,0,.88) 0%,rgba(0,0,0,.45) 50%,rgba(0,0,0,0) 100%);padding:28px 8px 8px;opacity:0;transition:.22s;font-weight:600;font-size:13px;box-sizing:border-box;}
-.game:hover .title{opacity:1;}
-
 /* =====================
    PLAYER VIEW
    ===================== */
 .player-layout{
 display:none;
-grid-template-columns:1fr 220px;
-gap:20px;
+grid-template-columns:1fr minmax(0,820px) 260px;
+gap:0 24px;
+padding:0 24px;
+align-items:start;
 }
 .player-layout.visible{display:grid;}
-
-/* iframe wrapper */
+.player-left-blank{grid-column:1;}
 .player-main{
+grid-column:2;
 background:#0e0e0e;
 border:2px solid #2a2a2a;
 border-radius:18px;
@@ -226,10 +288,12 @@ border:none;
 position:absolute;inset:0;
 }
 
-/* Player sidebar — same style as browse sidebar */
+/* Player sidebar */
 .player-sidebar{
+grid-column:3;
 display:flex;flex-direction:column;
 gap:10px;
+position:sticky;top:104px;
 }
 
 /* =====================
@@ -308,21 +372,11 @@ gap:10px;
   <!-- BROWSE VIEW -->
   <div class="games-layout" id="browseView">
 
-    <div class="game-hero-panel" id="heroPanel">
-      <img class="hero-icon" id="heroIcon" src="" alt="">
-      <div class="hero-info">
-        <div class="hero-game-name" id="heroName">Loading...</div>
-        <div class="hero-game-tag">🌭 HOTDOG PARTY PICK</div>
-        <button class="hero-play-btn" id="heroPlayBtn">▶ PLAY NOW!</button>
-      </div>
-    </div>
+    <!-- blank left -->
+    <div class="games-left-blank"></div>
 
-    <div class="game-sidebar">
-      <div class="sidebar-title">⚡ Quick Play</div>
-      <div id="sidebarGames"></div>
-    </div>
-
-    <div class="games-grid-wrap">
+    <!-- center: search + 6-per-row grid -->
+    <div class="games-center">
       <div class="search-container">
         <svg class="search-icon" viewBox="0 0 24 24"><path d="M21 20l-5.2-5.2a7 7 0 10-1 1L20 21zM10 16a6 6 0 110-12 6 6 0 010 12z"/></svg>
         <input class="search" id="search" placeholder="Search games...">
@@ -330,10 +384,25 @@ gap:10px;
       <div class="games" id="games"></div>
     </div>
 
+    <!-- right: leaderboard -->
+    <div class="games-right">
+      <div class="leaderboard-panel">
+        <div class="lb-header">
+          <div class="lb-header-title">🏆 Most Played</div>
+          <div class="lb-live-dot"></div>
+        </div>
+        <div class="lb-list" id="lbList">
+          <div class="lb-empty">Play some games to start the leaderboard!</div>
+        </div>
+      </div>
+    </div>
+
   </div>
 
   <!-- PLAYER VIEW -->
   <div class="player-layout" id="playerView">
+
+    <div class="player-left-blank"></div>
 
     <div class="player-main">
       <div class="player-toolbar">
@@ -378,7 +447,7 @@ gap:10px;
         Email us
       </div>
       <div class="contact-email">
-        <span>hotdogparty854@gmail.com</span>
+        <span><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="e38b8c97878c84938291979adbd6d7a3848e828a8fcd808c8e">[email&#160;protected]</a></span>
         <button class="copy-btn" id="copyBtn" onclick="copyEmail()">Copy</button>
       </div>
     </div>
@@ -406,18 +475,72 @@ function showPage(page) {
   window.scrollTo(0, 0)
 }
 
+// ---- LEADERBOARD (localStorage — shared across same browser) ----
+const LB_KEY = "hotdog_play_counts"
+
+function getPlayCounts() {
+  try { return JSON.parse(localStorage.getItem(LB_KEY) || "{}") } catch { return {} }
+}
+
+function incrementPlayCount(game) {
+  const counts = getPlayCounts()
+  counts[game.path] = (counts[game.path] || 0) + 1
+  localStorage.setItem(LB_KEY, JSON.stringify(counts))
+  renderLeaderboard(counts)
+}
+
+function renderLeaderboard(counts) {
+  if (!counts) counts = getPlayCounts()
+  const container = document.getElementById("lbList")
+  if (!container) return
+
+  const sorted = Object.entries(counts)
+    .sort((a, b) => b[1] - a[1])
+    .slice(0, 10)
+
+  if (sorted.length === 0) {
+    container.innerHTML = '<div class="lb-empty">Play some games to start the leaderboard!</div>'
+    return
+  }
+
+  const maxCount = sorted[0][1]
+  const rankLabels = ["\uD83E\uDD47","\uD83E\uDD48","\uD83E\uDD49"]
+  const rankClasses = ["gold","silver","bronze"]
+
+  container.innerHTML = sorted.map(([path, count], i) => {
+    const game = allGames.find(g => g.path === path)
+    if (!game) return ""
+    const pct = Math.round((count / maxCount) * 100)
+    const rankClass = i < 3 ? rankClasses[i] : "other"
+    const rankLabel = i < 3 ? rankLabels[i] : String(i+1)
+    const playsLabel = count === 1 ? "1 play" : count + " plays"
+    const safePath = path.replace(/'/g, "\\'")
+    return `
+      <div class="lb-row" onclick="openGame(allGames.find(g=>g.path==='${safePath}'))">
+        <div class="lb-rank ${rankClass}">${rankLabel}</div>
+        <img class="lb-icon" src="${game.icon}" alt="${game.name}">
+        <div class="lb-info">
+          <div class="lb-name">${game.name}</div>
+          <div class="lb-plays">${playsLabel}</div>
+          <div class="lb-bar-wrap"><div class="lb-bar" style="width:${pct}%"></div></div>
+        </div>
+      </div>
+    `
+  }).join("")
+}
+
 // ---- PLAYER ----
 function openGame(game) {
+  if (!game) return
   currentGame = game
   document.getElementById("browseView").style.display = "none"
   document.getElementById("playerView").classList.add("visible")
-
   document.getElementById("playerIcon").src = game.icon
   document.getElementById("playerTitle").textContent = game.name
   document.getElementById("gameFrame").src = game.path
-
   renderPlayerSidebar(allGames, game)
   window.scrollTo(0, 0)
+  incrementPlayCount(game)
 }
 
 function closePlayer() {
@@ -438,44 +561,17 @@ function fullscreenGame() {
   else if (frame.mozRequestFullScreen) frame.mozRequestFullScreen()
 }
 
-// ---- SIDEBAR QUICK PICKS ----
+// ---- SIDEBARS ----
 function renderPlayerSidebar(games, activeGame) {
   const container = document.getElementById("playerSidebarGames")
   container.innerHTML = ""
   shuffle(games).filter(g => g.path !== activeGame.path).slice(0, 5).forEach(game => {
     const el = document.createElement("div")
     el.className = "sidebar-game"
-    el.innerHTML = `<img src="${game.icon}" alt="${game.name}"><div class="sidebar-game-name">${game.name}</div>`
+    el.innerHTML = '<img src="' + game.icon + '" alt="' + game.name + '"><div class="sidebar-game-name">' + game.name + '</div>'
     el.onclick = () => openGame(game)
     container.appendChild(el)
   })
-}
-
-function renderBrowseSidebar(games) {
-  const container = document.getElementById("sidebarGames")
-  container.innerHTML = ""
-  shuffle(games).slice(0, 5).forEach(game => {
-    const el = document.createElement("div")
-    el.className = "sidebar-game"
-    el.innerHTML = `<img src="${game.icon}" alt="${game.name}"><div class="sidebar-game-name">${game.name}</div>`
-    el.onclick = () => {
-      setHero(game)
-      renderBrowseSidebar(allGames)
-    }
-    container.appendChild(el)
-  })
-}
-
-function setHero(game) {
-  currentGame = game
-  document.getElementById("heroIcon").src = game.icon
-  document.getElementById("heroIcon").alt = game.name
-  document.getElementById("heroName").textContent = game.name
-  document.getElementById("heroPlayBtn").onclick = () => openGame(game)
-  document.getElementById("heroPanel").onclick = (e) => {
-    if (e.target === document.getElementById("heroPlayBtn")) return
-    openGame(game)
-  }
 }
 
 // ---- GRIDS ----
@@ -485,7 +581,7 @@ function renderGames(games) {
   games.forEach(game => {
     const card = document.createElement("div")
     card.className = "game"
-    card.innerHTML = `<img src="${game.icon}"><div class="title">${game.name}</div>`
+    card.innerHTML = '<img src="' + game.icon + '"><div class="title">' + game.name + '</div>'
     card.onclick = () => openGame(game)
     container.appendChild(card)
   })
@@ -497,11 +593,9 @@ function renderFeatured(games) {
   shuffle(games).slice(0, 12).forEach((game, i) => {
     const card = document.createElement("div")
     card.className = "featured-game"
-    card.innerHTML = `
-      <img src="${game.icon}">
-      ${i < 4 ? '<div class="hot-badge">🔥 Hot</div>' : ''}
-      <div class="ftitle">${game.name}</div>
-    `
+    card.innerHTML = '<img src="' + game.icon + '">' +
+      (i < 4 ? '<div class="hot-badge">\uD83D\uDD25 Hot</div>' : '') +
+      '<div class="ftitle">' + game.name + '</div>'
     card.onclick = () => { showPage('gamesPage'); openGame(game) }
     container.appendChild(card)
   })
@@ -510,15 +604,24 @@ function renderFeatured(games) {
 function renderBelt(games) {
   const track = document.getElementById("belt-track")
   const items = [...shuffle(games), ...shuffle(games)]
-  track.innerHTML = items.map(game => `
-    <div class="belt-card" onclick="showPage('gamesPage'); openGame(allGames.find(g=>g.path==='${game.path}'))">
-      <img src="${game.icon}" alt="${game.name}">
-      <div class="belt-title">${game.name}</div>
-    </div>
-  `).join("")
+  track.innerHTML = items.map(game => {
+    const safePath = game.path.replace(/'/g, "\\'")
+    return '<div class="belt-card" onclick="showPage(\'gamesPage\'); openGame(allGames.find(g=>g.path===\'' + safePath + '\'))">' +
+      '<img src="' + game.icon + '" alt="' + game.name + '">' +
+      '<div class="belt-title">' + game.name + '</div>' +
+      '</div>'
+  }).join("")
 }
 
 function shuffle(arr) { return [...arr].sort(() => Math.random() - 0.5) }
+
+function copyEmail() {
+  navigator.clipboard.writeText("hotdogparty854@gmail.com")
+  const btn = document.getElementById("copyBtn")
+  btn.textContent = "Copied!"
+  btn.classList.add("copied")
+  setTimeout(() => { btn.textContent = "Copy"; btn.classList.remove("copied") }, 2000)
+}
 
 document.getElementById("search").addEventListener("input", e => {
   const q = e.target.value.toLowerCase()
@@ -542,12 +645,10 @@ async function loadGames() {
     const games = await res.json()
     allGames = games
     document.getElementById("stat-games").textContent = games.length
-    const hero = shuffle(games)[0]
-    setHero(hero)
-    renderBrowseSidebar(games)
     renderGames(games)
     renderFeatured(games)
     renderBelt(games)
+    renderLeaderboard()
   } catch(e) {
     console.log("Could not load games.json:", e)
   }

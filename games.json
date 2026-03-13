@@ -301,8 +301,8 @@
     },
     {
         "name": "Eaglercraft",
-        "path": "games/eaglercraft/v1_8_offline.html",
-        "icon": "games/eaglercraft/icon1.png"
+        "path": "games/mc/eaglercraft/v1_8_offline.html",
+        "icon": "games/mc/eaglercraft/icon1.png"
     },
     {
         "name": "2D Rocket League",
@@ -391,8 +391,8 @@
     },
     {
         "name": "Elytra Flight",
-        "path": "games/elytra_flight/clelytraflight.html",
-        "icon": "games/elytra_flight/icon.png"
+        "path": "games/mc/elytra_flight/clelytraflight.html",
+        "icon": "games/mc/elytra_flight/icon.png"
     },
     {
         "name": "Fruit Ninja",
@@ -478,5 +478,26 @@
         "name": "Infinite Craft",
         "path": "games/infinitecraft/clinfinitecraft.html",
         "icon": "games/infinitecraft/icon.png"
+    },
+    {
+        "name": "World's Hardest Game",
+        "path": "games/hardestgame/hardestgame.html",
+        "icon": "games/hardestgame/icon.png"
+    },
+    {
+        "name": "Madelin Stunt Cars 2",
+        "path": "games/madelin_stunt_cars/clmadstuntcars2.html",
+        "icon": "games/madelin_stunt_cars/icon.png"
+    },
+    {
+        "name": "Blackjack",
+        "path": "games/blackjack/blackjack.html",
+        "icon": "games/blackjack/icon.png"
+    },
+    {
+        "name": "Minecraft Parkour",
+        "path": "games/mc/mcparkour/blockcraftparkour.html",
+        "icon": "games/mc/mcparkour/icon.png"
     }
+    
 ]
