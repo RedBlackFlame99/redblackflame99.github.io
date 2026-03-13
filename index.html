@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta name="google-site-verification" content="Inu2k261rt2drh5T-IyZO7lLxgADeM4sOgpq0bvf1Po" />
 <meta charset="UTF-8">
 <title>Hotdog Party</title>
 <link rel="icon" href="favicon.png">
@@ -56,7 +55,7 @@ letter-spacing:.5px;
 }
 
 .top-left{
-display:flex;align-items:center;gap:0;
+display:flex;align-items:center;
 cursor:pointer;
 background:rgba(255,140,0,.07);
 border:1px solid rgba(255,140,0,.18);
@@ -98,17 +97,12 @@ text-decoration:none;color:#ddd;font-weight:600;font-size:14px;
 transition:.2s;cursor:pointer;
 border:1px solid transparent;
 }
-.nav-btn:hover{
-background:#1e1e1e;
-border-color:#333;
-color:white;
-}
+.nav-btn:hover{background:#1e1e1e;border-color:#333;color:white;}
 .nav-btn svg{width:20px;height:20px;opacity:.85;}
 
 .discord-btn{
 display:flex;align-items:center;gap:8px;
-background:#5865F2;
-padding:8px 16px;
+background:#5865F2;padding:8px 16px;
 border-radius:10px;color:white;
 text-decoration:none;font-weight:700;font-size:14px;
 border:1px solid rgba(255,255,255,.1);
@@ -116,17 +110,15 @@ transition:.2s;
 box-shadow:0 2px 10px rgba(88,101,242,.35);
 }
 .discord-btn svg{width:22px;height:22px;}
-.discord-btn:hover{
-background:#ff8c00;
-box-shadow:0 0 16px rgba(255,140,0,.5);
-border-color:rgba(255,255,255,.15);
-}
+.discord-btn:hover{background:#ff8c00;box-shadow:0 0 16px rgba(255,140,0,.5);}
 
 /* PAGES */
-.page{display:none;padding:40px;}
+.page{display:none;padding:32px 40px;}
 .active{display:block;}
 
-/* HERO */
+/* =====================
+   HOME PAGE
+   ===================== */
 .hero{text-align:center;padding:60px 20px 30px;}
 
 .hero h1{
@@ -164,8 +156,7 @@ background:#5865F2;
 border:1px solid rgba(255,255,255,.12);
 border-radius:10px;
 color:#fff;font-weight:800;font-size:16px;
-text-decoration:none;
-transition:.2s;
+text-decoration:none;transition:.2s;
 box-shadow:0 4px 18px rgba(88,101,242,.4);
 }
 .discord-hero-btn svg{width:22px;height:22px;flex-shrink:0;}
@@ -173,10 +164,8 @@ box-shadow:0 4px 18px rgba(88,101,242,.4);
 background:#ff8c00;
 box-shadow:0 6px 26px rgba(255,140,0,.5);
 transform:scale(1.05);
-border-color:rgba(255,255,255,.2);
 }
 
-/* STATS */
 .stats{
 display:flex;justify-content:center;
 gap:20px;flex-wrap:wrap;
@@ -215,7 +204,7 @@ background:linear-gradient(45deg,#ff7b00,#ffae00);
 display:inline-block;
 }
 
-/* FEATURED GRID */
+/* HOME FEATURED GRID */
 .featured-grid{
 display:grid;
 grid-template-columns:repeat(auto-fill,minmax(160px,1fr));
@@ -235,8 +224,7 @@ box-shadow:0 0 22px rgba(255,140,0,.38);
 }
 .featured-game img{width:100%;height:100%;object-fit:cover;}
 
-.featured-game .title,
-.game .title{
+.featured-game .ftitle{
 position:absolute;bottom:0;width:100%;
 text-align:center;
 background:linear-gradient(to top,rgba(0,0,0,.88) 0%,rgba(0,0,0,.45) 50%,rgba(0,0,0,0) 100%);
@@ -245,8 +233,7 @@ opacity:0;transition:.25s;
 font-weight:600;font-size:14px;
 box-sizing:border-box;
 }
-.featured-game:hover .title,
-.game:hover .title{opacity:1;}
+.featured-game:hover .ftitle{opacity:1;}
 
 .hot-badge{
 position:absolute;top:10px;right:10px;
@@ -319,66 +306,216 @@ box-sizing:border-box;
 }
 .belt-card:hover .belt-title{opacity:1;}
 
-/* ALL GAMES PAGE */
-.search-container{position:relative;max-width:400px;margin-bottom:20px;}
+/* =====================
+   GAMES PAGE — PIZZA EDITION STYLE
+   ===================== */
+#gamesPage{padding:24px 32px;}
+
+.games-layout{
+display:grid;
+grid-template-columns:1fr 220px;
+grid-template-rows:auto auto;
+gap:20px;
+}
+
+/* HERO PANEL */
+.game-hero-panel{
+grid-column:1;grid-row:1;
+background:#1a1a1a;
+border:2px solid #2a2a2a;
+border-radius:18px;
+overflow:hidden;
+display:flex;align-items:center;
+padding:36px 40px;
+gap:36px;
+min-height:260px;
+position:relative;
+transition:.2s;
+cursor:pointer;
+}
+.game-hero-panel:hover{
+border-color:#ff8c00;
+box-shadow:0 0 32px rgba(255,140,0,.2);
+}
+
+.game-hero-panel::before{
+content:'';
+position:absolute;inset:0;
+background:radial-gradient(ellipse at 20% 50%, rgba(255,140,0,.07) 0%, transparent 65%);
+pointer-events:none;
+}
+
+.hero-icon{
+width:200px;height:200px;
+border-radius:20px;
+object-fit:cover;
+flex-shrink:0;
+box-shadow:0 8px 32px rgba(0,0,0,.5);
+border:2px solid rgba(255,140,0,.25);
+}
+
+.hero-info{flex:1;}
+
+.hero-game-name{
+font-family:'Luckiest Guy';
+font-size:clamp(28px,3.5vw,48px);
+line-height:1.1;
+background:linear-gradient(135deg,#fff 0%,#ffe8a0 100%);
+-webkit-background-clip:text;-webkit-text-fill-color:transparent;
+margin:0 0 6px;
+letter-spacing:1px;
+}
+
+.hero-game-tag{
+font-size:13px;font-weight:700;
+color:#666;text-transform:uppercase;
+letter-spacing:1.5px;margin-bottom:20px;
+}
+
+.hero-play-btn{
+display:inline-flex;align-items:center;gap:10px;
+padding:14px 32px;
+background:linear-gradient(45deg,#ff8c00,#ffd000);
+color:#111;font-weight:900;font-size:16px;
+border:none;border-radius:12px;cursor:pointer;
+transition:.2s;
+box-shadow:0 4px 20px rgba(255,140,0,.4);
+text-decoration:none;
+}
+.hero-play-btn:hover{transform:scale(1.05);box-shadow:0 6px 28px rgba(255,140,0,.6);}
+
+/* SIDEBAR */
+.game-sidebar{
+grid-column:2;grid-row:1 / 3;
+display:flex;flex-direction:column;
+gap:12px;
+}
+
+.sidebar-title{
+font-family:'Luckiest Guy';
+font-size:16px;
+background:linear-gradient(45deg,#ff7b00,#ffae00);
+-webkit-background-clip:text;-webkit-text-fill-color:transparent;
+letter-spacing:1px;
+margin:0 0 4px;
+}
+
+.sidebar-game{
+display:flex;align-items:center;gap:12px;
+background:#1a1a1a;
+border:1px solid #2a2a2a;
+border-radius:12px;
+padding:10px;
+cursor:pointer;
+transition:.2s;
+}
+.sidebar-game:hover{
+border-color:#ff8c00;
+box-shadow:0 0 14px rgba(255,140,0,.2);
+transform:translateX(3px);
+}
+.sidebar-game img{
+width:52px;height:52px;
+border-radius:8px;object-fit:cover;
+flex-shrink:0;
+}
+.sidebar-game-name{
+font-size:13px;font-weight:700;
+color:#ddd;line-height:1.3;
+}
+
+/* SEARCH + GRID */
+.games-grid-section{
+grid-column:1;grid-row:2;
+}
+
+.search-container{
+position:relative;max-width:400px;margin-bottom:18px;
+}
 .search-icon{
 position:absolute;left:14px;top:50%;transform:translateY(-50%);
 width:18px;height:18px;fill:#aaa;pointer-events:none;
 }
 .search{
-width:100%;padding:12px 16px 12px 42px;
-border-radius:12px;border:2px solid #333;
-background:#1f1f1f;color:#fff;font-size:16px;
+width:100%;padding:11px 16px 11px 42px;
+border-radius:12px;border:2px solid #2a2a2a;
+background:#1a1a1a;color:#fff;font-size:15px;
 outline:none;transition:.25s;
 }
-.search::placeholder{color:#aaa;}
-.search:focus{border-color:#ff8c00;box-shadow:0 0 10px rgba(255,140,0,.6);background:#2a2a2a;}
+.search::placeholder{color:#555;}
+.search:focus{border-color:#ff8c00;box-shadow:0 0 10px rgba(255,140,0,.4);background:#1f1f1f;}
 
 .games{
 display:grid;
-grid-template-columns:repeat(auto-fill,minmax(200px,1fr));
-gap:20px;
+grid-template-columns:repeat(auto-fill,minmax(150px,1fr));
+gap:14px;
 }
+
 .game{
 position:relative;aspect-ratio:1/1;
-border-radius:14px;overflow:hidden;
-cursor:pointer;background:#1f1f1f;transition:.2s;
+border-radius:12px;overflow:hidden;
+cursor:pointer;background:#1a1a1a;
+transition:.2s;
+border:2px solid transparent;
 }
-.game:hover{transform:scale(1.04);}
+.game:hover{
+transform:scale(1.05);
+border-color:#ff8c00;
+box-shadow:0 0 16px rgba(255,140,0,.3);
+}
 .game img{width:100%;height:100%;object-fit:cover;}
-
-/* CONTACT PAGE */
-.contact-wrap{
-max-width:560px;
-margin:60px auto 0;
+.game .title{
+position:absolute;bottom:0;width:100%;
 text-align:center;
+background:linear-gradient(to top,rgba(0,0,0,.88) 0%,rgba(0,0,0,.45) 50%,rgba(0,0,0,0) 100%);
+padding:28px 8px 8px;
+opacity:0;transition:.22s;
+font-weight:600;font-size:13px;
+box-sizing:border-box;
+}
+.game:hover .title{opacity:1;}
+
+/* BOTTOM BAR of games page */
+.hero-bottom-bar{
+grid-column:1;
+display:flex;align-items:center;gap:12px;
+background:#1a1a1a;
+border:1px solid #2a2a2a;
+border-radius:12px;
+padding:10px 16px;
+margin-bottom:4px;
+}
+.hero-bottom-icon{
+width:38px;height:38px;
+border-radius:7px;object-fit:cover;
+}
+.hero-bottom-name{
+font-size:14px;font-weight:700;color:#ddd;
+}
+.hero-bottom-sub{
+font-size:11px;color:#555;
 }
 
+/* =====================
+   CONTACT PAGE
+   ===================== */
+.contact-wrap{
+max-width:560px;margin:60px auto 0;text-align:center;
+}
 .contact-wrap h2{
-font-family:'Luckiest Guy';
-font-size:48px;
+font-family:'Luckiest Guy';font-size:48px;
 background:linear-gradient(45deg,#ff7b00,#ffcc00);
 -webkit-background-clip:text;-webkit-text-fill-color:transparent;
 margin:0 0 12px;
 }
-
-.contact-wrap p{
-color:#888;font-size:16px;margin:0 0 48px;
-}
+.contact-wrap p{color:#888;font-size:16px;margin:0 0 48px;}
 
 .contact-card{
-background:#1a1a1a;
-border:1px solid #2a2a2a;
-border-radius:20px;
-padding:36px 40px;
-margin-bottom:20px;
-transition:.25s;
-text-align:left;
+background:#1a1a1a;border:1px solid #2a2a2a;
+border-radius:20px;padding:36px 40px;
+margin-bottom:20px;transition:.25s;text-align:left;
 }
-.contact-card:hover{
-border-color:#ff8c00;
-box-shadow:0 0 22px rgba(255,140,0,.15);
-}
+.contact-card:hover{border-color:#ff8c00;box-shadow:0 0 22px rgba(255,140,0,.15);}
 
 .contact-card-label{
 font-size:12px;font-weight:700;
@@ -386,12 +523,10 @@ text-transform:uppercase;letter-spacing:1.4px;
 color:#666;margin-bottom:10px;
 display:flex;align-items:center;gap:8px;
 }
-
 .contact-card-label svg{width:16px;height:16px;opacity:.6;}
 
 .contact-email{
-font-size:22px;font-weight:700;
-color:#fff;
+font-size:22px;font-weight:700;color:#fff;
 display:flex;align-items:center;justify-content:space-between;
 flex-wrap:wrap;gap:12px;
 }
@@ -399,24 +534,20 @@ flex-wrap:wrap;gap:12px;
 .copy-btn{
 background:rgba(255,140,0,.1);
 border:1px solid rgba(255,140,0,.3);
-color:#ff8c00;
-font-size:13px;font-weight:700;
+color:#ff8c00;font-size:13px;font-weight:700;
 padding:7px 16px;border-radius:8px;
-cursor:pointer;transition:.2s;
-flex-shrink:0;
+cursor:pointer;transition:.2s;flex-shrink:0;
 }
 .copy-btn:hover{background:rgba(255,140,0,.22);border-color:#ff8c00;}
 .copy-btn.copied{background:rgba(0,200,100,.12);border-color:rgba(0,200,100,.4);color:#00c864;}
 
 .recommend-btn{
 display:flex;align-items:center;justify-content:center;gap:10px;
-width:100%;
-padding:16px;
+width:100%;padding:16px;
 background:linear-gradient(45deg,#ff8c00,#ffd000);
 color:#111;font-weight:900;font-size:17px;
 border:none;border-radius:14px;cursor:pointer;
-text-decoration:none;
-transition:.2s;
+text-decoration:none;transition:.2s;
 box-shadow:0 4px 20px rgba(255,140,0,.35);
 margin-top:8px;
 }
@@ -430,12 +561,10 @@ margin-top:8px;
 
 <div class="topbar">
   <div class="top-center">Credits: Carter M and Caden J</div>
-
   <div class="top-left" onclick="showPage('home')">
     <div class="logo-emoji">🌭</div>
     <div class="header-text">Hotdog Party</div>
   </div>
-
   <div class="nav-right">
     <div class="nav-btn" onclick="showPage('gamesPage')">
       <svg viewBox="0 0 24 24" fill="white">
@@ -443,14 +572,12 @@ margin-top:8px;
       </svg>
       Games
     </div>
-
     <div class="nav-btn" onclick="showPage('contactPage')">
       <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
         <path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/>
       </svg>
       Contact
     </div>
-
     <a href="https://discord.gg/3y28DJYaVY" target="_blank" class="discord-btn">
       <svg viewBox="0 0 127.14 96.36">
         <path fill="white" d="M107.7,8.07A105.15,105.15,0,0,0,81.47,0a72.06,72.06,0,0,0-3.36,6.83A97.68,97.68,0,0,0,49,6.83,72.37,72.37,0,0,0,45.64,0,105.89,105.89,0,0,0,19.39,8.09C2.79,33.64-1.71,58.52.54,83.06a105.73,105.73,0,0,0,32.17,16.3,77.7,77.7,0,0,0,6.89-11.14,68.42,68.42,0,0,1-10.85-5.18c.91-.67,1.8-1.36,2.66-2.07a75.48,75.48,0,0,0,64.32,0c.87.71,1.76,1.4,2.66,2.07a68.68,68.68,0,0,1-10.87,5.19,77.23,77.23,0,0,0,6.9,11.13A105.25,105.25,0,0,0,126.6,83C129.2,54.59,122.2,30,107.7,8.07Z"/>
@@ -460,9 +587,8 @@ margin-top:8px;
   </div>
 </div>
 
-<!-- HOME -->
+<!-- HOME PAGE -->
 <div id="home" class="page active">
-
   <div class="hero">
     <h1>THE <span class="white">HOTDOG</span> PARTY</h1>
     <p>Start having fun without realizing.</p>
@@ -500,39 +626,69 @@ margin-top:8px;
   <div class="section-title">🔥 Featured Games</div>
   <div class="featured-grid" id="featured-games"></div>
   <button class="view-all-btn" onclick="showPage('gamesPage')">View All Games →</button>
-
 </div>
 
 <!-- GAMES PAGE -->
 <div id="gamesPage" class="page">
-  <h2>All Games</h2>
-  <div class="search-container">
-    <svg class="search-icon" viewBox="0 0 24 24">
-      <path d="M21 20l-5.2-5.2a7 7 0 10-1 1L20 21zM10 16a6 6 0 110-12 6 6 0 010 12z"/>
-    </svg>
-    <input class="search" id="search" placeholder="Search games...">
+
+  <div class="games-layout">
+
+    <!-- BIG HERO GAME -->
+    <div class="game-hero-panel" id="heroPanel" onclick="">
+      <img class="hero-icon" id="heroIcon" src="" alt="">
+      <div class="hero-info">
+        <div class="hero-game-name" id="heroName">Loading...</div>
+        <div class="hero-game-tag">🌭 HOTDOG PARTY PICK</div>
+        <a class="hero-play-btn" id="heroPlayBtn" href="#">
+          ▶ PLAY NOW!
+        </a>
+      </div>
+    </div>
+
+    <!-- SIDEBAR -->
+    <div class="game-sidebar">
+      <div class="sidebar-title">⚡ Quick Play</div>
+      <div id="sidebarGames"></div>
+    </div>
+
+    <!-- BOTTOM BAR under hero -->
+    <div class="hero-bottom-bar">
+      <img class="hero-bottom-icon" id="heroBottomIcon" src="" alt="">
+      <div>
+        <div class="hero-bottom-name" id="heroBottomName"></div>
+        <div class="hero-bottom-sub">Click to play instantly</div>
+      </div>
+    </div>
+
+    <!-- SEARCH + FULL GRID -->
+    <div class="games-grid-section" style="grid-column:1 / -1; margin-top:8px;">
+      <div class="search-container">
+        <svg class="search-icon" viewBox="0 0 24 24">
+          <path d="M21 20l-5.2-5.2a7 7 0 10-1 1L20 21zM10 16a6 6 0 110-12 6 6 0 010 12z"/>
+        </svg>
+        <input class="search" id="search" placeholder="Search games...">
+      </div>
+      <div class="games" id="games"></div>
+    </div>
+
   </div>
-  <div class="games" id="games"></div>
 </div>
 
 <!-- CONTACT PAGE -->
 <div id="contactPage" class="page">
   <div class="contact-wrap">
-
     <h2>📬 Contact Us</h2>
     <p>Got questions, issues, or just want to say hey? Reach out below.</p>
-
     <div class="contact-card">
       <div class="contact-card-label">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
         Email us
       </div>
       <div class="contact-email">
-        <span><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="6c04031808030b1c0d1e18155459582c0b010d0500420f0301">[email&#160;protected]</a></span>
+        <span>hotdogparty854@gmail.com</span>
         <button class="copy-btn" id="copyBtn" onclick="copyEmail()">Copy</button>
       </div>
     </div>
-
     <div class="contact-card">
       <div class="contact-card-label">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
@@ -542,11 +698,10 @@ margin-top:8px;
         🎮 Recommendations
       </a>
     </div>
-
   </div>
 </div>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+<script>
 
 let allGames = []
 
@@ -566,6 +721,34 @@ function copyEmail() {
 
 function shuffle(arr) {
   return [...arr].sort(() => Math.random() - 0.5)
+}
+
+function setHero(game) {
+  document.getElementById("heroIcon").src = game.icon
+  document.getElementById("heroIcon").alt = game.name
+  document.getElementById("heroName").textContent = game.name
+  document.getElementById("heroPlayBtn").href = game.path
+  document.getElementById("heroPanel").onclick = () => location.href = game.path
+  document.getElementById("heroBottomIcon").src = game.icon
+  document.getElementById("heroBottomName").textContent = game.name
+}
+
+function renderSidebar(games) {
+  const container = document.getElementById("sidebarGames")
+  container.innerHTML = ""
+  shuffle(games).slice(0, 5).forEach(game => {
+    const el = document.createElement("div")
+    el.className = "sidebar-game"
+    el.innerHTML = `
+      <img src="${game.icon}" alt="${game.name}">
+      <div class="sidebar-game-name">${game.name}</div>
+    `
+    el.onclick = () => {
+      setHero(game)
+      renderSidebar(allGames)
+    }
+    container.appendChild(el)
+  })
 }
 
 function renderGames(games) {
@@ -589,7 +772,7 @@ function renderFeatured(games) {
     card.innerHTML = `
       <img src="${game.icon}">
       ${i < 4 ? '<div class="hot-badge">🔥 Hot</div>' : ''}
-      <div class="title">${game.name}</div>
+      <div class="ftitle">${game.name}</div>
     `
     card.onclick = () => location.href = game.path
     container.appendChild(card)
@@ -612,7 +795,7 @@ document.getElementById("search").addEventListener("input", e => {
   renderGames(allGames.filter(g => g.name.toLowerCase().includes(q)))
 })
 
-// Background shapes — runs first, independent of games fetch
+// Background shapes
 const bg = document.getElementById("bg")
 for (let i = 0; i < 30; i++) {
   const shape = document.createElement("div")
@@ -629,6 +812,10 @@ async function loadGames() {
     const games = await res.json()
     allGames = games
     document.getElementById("stat-games").textContent = games.length
+    // Pick a random hero game
+    const heroGame = shuffle(games)[0]
+    setHero(heroGame)
+    renderSidebar(games)
     renderGames(games)
     renderFeatured(games)
     renderBelt(games)

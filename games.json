@@ -378,5 +378,35 @@
         "name": "BuildNow.GG",
         "path": "games/buildnow_gg/clbuildnowgg.html",
         "icon": "games/buildnow_gg/icon.png"
+    },
+    {
+        "name": "Death Run",
+        "path": "games/death_run/game.html",
+        "icon": "games/death_run/icon.png"
+    },
+    {
+        "name": "Driven Wild",
+        "path": "games/driven_wild/cldrivenwild.html",
+        "icon": "games/driven_wild/icon.png"
+    },
+    {
+        "name": "Elytra Flight",
+        "path": "games/elytra_flight/clelytraflight.html",
+        "icon": "games/elytra_flight/icon.png"
+    },
+    {
+        "name": "Fruit Ninja",
+        "path": "games/fruit_ninja/clfruitninja.html",
+        "icon": "games/fruit_ninja/icon.png"
+    },
+    {
+        "name": "Stickman Clash",
+        "path": "games/stickmanclash/clash.html",
+        "icon": "games/stickmanclash/icon.png"
+    },
+    {
+        "name": "Going Balls",
+        "path": "games/going_balls/clgoingballs.html",
+        "icon": "games/going_balls/icon.png"
     }
 ]
