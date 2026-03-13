@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Hotdog Party – Play</title>
+<link rel="icon" href="favicon.png">
+<link href="https://fonts.googleapis.com/css2?family=Luckiest+Guy&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:"Segoe UI",system-ui,sans-serif;background:#121212;color:white;overflow-x:hidden;}
+.bg{position:fixed;top:0;left:0;width:100%;height:100%;z-index:-1;overflow:hidden;}
+.shape{position:absolute;width:60px;height:60px;background:linear-gradient(45deg,#ff7b00,#ffae00);opacity:.18;border-radius:14px;animation:float 18s linear infinite;}
+@keyframes float{0%{transform:translateY(0) rotate(0)}50%{transform:translateY(-70px) rotate(180deg)}100%{transform:translateY(0) rotate(360deg)}}
+
+/* TOPBAR */
+.topbar{position:fixed;top:0;left:0;width:100%;background:rgba(18,18,18,.97);backdrop-filter:blur(12px);padding:10px 24px;display:flex;align-items:center;justify-content:space-between;box-shadow:0 2px 24px rgba(0,0,0,.7);z-index:1000;border-bottom:1px solid rgba(255,140,0,.12);}
+.top-center{position:absolute;left:50%;transform:translateX(-50%);font-size:13px;font-weight:600;color:#555;pointer-events:none;letter-spacing:.5px;}
+.top-left{display:flex;align-items:center;cursor:pointer;background:rgba(255,140,0,.07);border:1px solid rgba(255,140,0,.18);border-radius:12px;padding:6px 14px 6px 10px;transition:.2s;text-decoration:none;}
+.top-left:hover{background:rgba(255,140,0,.14);border-color:rgba(255,140,0,.35);box-shadow:0 0 14px rgba(255,140,0,.15);}
+.logo-emoji{font-size:26px;animation:bounce 2s infinite;line-height:1;margin-right:8px;}
+@keyframes bounce{0%,100%{transform:translateY(0)}50%{transform:translateY(-5px)}}
+.header-text{font-family:'Luckiest Guy';font-size:22px;background:linear-gradient(45deg,#ff7b00,#ffcc00);-webkit-background-clip:text;-webkit-text-fill-color:transparent;letter-spacing:1px;}
+.nav-right{display:flex;align-items:center;gap:8px;flex-wrap:wrap;}
+.nav-btn{display:flex;align-items:center;gap:7px;padding:8px 14px;border-radius:10px;text-decoration:none;color:#ddd;font-weight:600;font-size:14px;transition:.2s;border:1px solid transparent;}
+.nav-btn:hover{background:#1e1e1e;border-color:#333;color:white;}
+.nav-btn svg{width:20px;height:20px;opacity:.85;}
+.games-nav-btn{background:linear-gradient(45deg,rgba(255,140,0,.15),rgba(255,200,0,.1));border-color:rgba(255,140,0,.35)!important;color:#ffb347;font-weight:700;}
+.games-nav-btn svg{opacity:1;color:#ff8c00;}
+.games-nav-btn:hover{background:linear-gradient(45deg,rgba(255,140,0,.28),rgba(255,200,0,.18))!important;border-color:#ff8c00!important;color:#ffd000!important;box-shadow:0 0 14px rgba(255,140,0,.3);}
+.discord-btn{display:flex;align-items:center;gap:8px;background:#5865F2;padding:8px 16px;border-radius:10px;color:white;text-decoration:none;font-weight:700;font-size:14px;border:1px solid rgba(255,255,255,.1);transition:.2s;box-shadow:0 2px 10px rgba(88,101,242,.35);}
+.discord-btn svg{width:22px;height:22px;}
+.discord-btn:hover{background:#ff8c00;box-shadow:0 0 16px rgba(255,140,0,.5);}
+
+/* PAGE */
+.page-wrap{
+  padding: 90px 24px 32px;
+  display:flex;
+  justify-content:center;
+  align-items:start;
+  gap:24px;
+  min-height:100vh;
+}
+
+/* PLAYER */
+.player-main{
+  flex:0 1 900px;
+  min-width:0;
+  background:#0e0e0e;
+  border:2px solid #2a2a2a;
+  border-radius:18px;
+  overflow:hidden;
+  display:flex;flex-direction:column;
+}
+.player-toolbar{
+  display:flex;align-items:center;gap:10px;
+  padding:10px 14px;background:#161616;border-bottom:1px solid #2a2a2a;
+}
+.player-game-icon{width:32px;height:32px;border-radius:7px;object-fit:cover;flex-shrink:0;}
+.player-game-title{font-weight:700;font-size:15px;color:#eee;flex:1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+
+.toolbar-btn{display:flex;align-items:center;justify-content:center;width:36px;height:36px;border-radius:9px;border:1px solid #2e2e2e;background:#1e1e1e;cursor:pointer;transition:.18s;flex-shrink:0;color:#bbb;}
+.toolbar-btn:hover{background:#2a2a2a;border-color:#ff8c00;color:#ff8c00;box-shadow:0 0 10px rgba(255,140,0,.25);}
+.toolbar-btn svg{width:17px;height:17px;pointer-events:none;}
+
+.back-btn{display:flex;align-items:center;gap:7px;padding:7px 14px;border-radius:9px;border:1px solid #2e2e2e;background:#1e1e1e;cursor:pointer;transition:.18s;color:#bbb;font-size:13px;font-weight:700;flex-shrink:0;text-decoration:none;}
+.back-btn:hover{background:#2a2a2a;border-color:#ff8c00;color:#ff8c00;}
+.back-btn svg{width:16px;height:16px;}
+
+.player-iframe-wrap{flex:1;position:relative;min-height:520px;}
+.player-iframe-wrap iframe{width:100%;height:100%;border:none;position:absolute;inset:0;}
+
+/* SIDEBAR */
+.player-sidebar{flex:0 0 240px;display:flex;flex-direction:column;gap:10px;position:sticky;top:104px;}
+.sidebar-title{font-family:'Luckiest Guy';font-size:16px;background:linear-gradient(45deg,#ff7b00,#ffae00);-webkit-background-clip:text;-webkit-text-fill-color:transparent;letter-spacing:1px;margin:0 0 4px;}
+.sidebar-game{display:flex;align-items:center;gap:12px;background:#1a1a1a;border:1px solid #2a2a2a;border-radius:12px;padding:10px;cursor:pointer;transition:.2s;text-decoration:none;}
+.sidebar-game:hover{border-color:#ff8c00;box-shadow:0 0 14px rgba(255,140,0,.2);transform:translateX(3px);}
+.sidebar-game img{width:52px;height:52px;border-radius:8px;object-fit:cover;flex-shrink:0;}
+.sidebar-game-name{font-size:13px;font-weight:700;color:#ddd;line-height:1.3;}
+
+/* not-found */
+.not-found{padding:80px 20px;text-align:center;color:#555;font-size:18px;}
+.not-found a{color:#ff8c00;text-decoration:none;font-weight:700;}
+.not-found a:hover{text-decoration:underline;}
+</style>
+</head>
+<body>
+
+<div class="bg" id="bg"></div>
+
+<div class="topbar">
+  <div class="top-center">Credits: Carter M and Caden J</div>
+  <a class="top-left" href="index.html">
+    <div class="logo-emoji">🌭</div>
+    <div class="header-text">Hotdog Party</div>
+  </a>
+  <div class="nav-right">
+    <a class="nav-btn games-nav-btn" href="games.html">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="12" rx="4"/><path d="M8 11v4M6 13h4"/><circle cx="16" cy="12" r="1" fill="currentColor"/><circle cx="18" cy="14" r="1" fill="currentColor"/></svg>
+      Games
+    </a>
+    <a class="nav-btn" href="contact.html">
+      <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+      Contact
+    </a>
+    <a href="https://discord.gg/3y28DJYaVY" target="_blank" class="discord-btn">
+      <svg viewBox="0 0 127.14 96.36"><path fill="white" d="M107.7,8.07A105.15,105.15,0,0,0,81.47,0a72.06,72.06,0,0,0-3.36,6.83A97.68,97.68,0,0,0,49,6.83,72.37,72.37,0,0,0,45.64,0,105.89,105.89,0,0,0,19.39,8.09C2.79,33.64-1.71,58.52.54,83.06a105.73,105.73,0,0,0,32.17,16.3,77.7,77.7,0,0,0,6.89-11.14,68.42,68.42,0,0,1-10.85-5.18c.91-.67,1.8-1.36,2.66-2.07a75.48,75.48,0,0,0,64.32,0c.87.71,1.76,1.4,2.66,2.07a68.68,68.68,0,0,1-10.87,5.19,77.23,77.23,0,0,0,6.9,11.13A105.25,105.25,0,0,0,126.6,83C129.2,54.59,122.2,30,107.7,8.07Z"/></svg>
+      Discord
+    </a>
+  </div>
+</div>
+
+<div class="page-wrap">
+
+  <div class="player-main">
+    <div class="player-toolbar">
+      <a class="back-btn" href="games.html">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+        Back
+      </a>
+      <img class="player-game-icon" id="playerIcon" src="" alt="">
+      <div class="player-game-title" id="playerTitle">Loading...</div>
+      <button class="toolbar-btn" title="Refresh" onclick="refreshGame()">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"/></svg>
+      </button>
+      <button class="toolbar-btn" title="Fullscreen" onclick="fullscreenGame()">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 3 21 3 21 9"/><polyline points="9 21 3 21 3 15"/><line x1="21" y1="3" x2="14" y2="10"/><line x1="3" y1="21" x2="10" y2="14"/></svg>
+      </button>
+    </div>
+    <div class="player-iframe-wrap">
+      <iframe id="gameFrame" src="" allowfullscreen></iframe>
+    </div>
+  </div>
+
+  <div class="player-sidebar">
+    <div class="sidebar-title">⚡ Quick Play</div>
+    <div id="playerSidebarGames"></div>
+  </div>
+
+</div>
+
+<script>
+const FB_URL    = "https://hotdog-party-61e77-default-rtdb.firebaseio.com/plays"
+const FB_ACTIVE = "https://hotdog-party-61e77-default-rtdb.firebaseio.com/active"
+const LB_LOCAL  = "hotdog_lb"
+const sessionId = Math.random().toString(36).slice(2)
+
+// ---- PARSE URL PARAMS ----
+const params = new URLSearchParams(location.search)
+const currentPath = params.get("path") || ""
+const currentName = params.get("name") || "Game"
+const currentIcon = params.get("icon") || ""
+
+function gameURL(game) {
+  return "game.html?path=" + encodeURIComponent(game.path) +
+         "&name=" + encodeURIComponent(game.name) +
+         "&icon=" + encodeURIComponent(game.icon)
+}
+
+// ---- INIT PLAYER ----
+function initPlayer() {
+  if (!currentPath) {
+    document.querySelector(".player-main").innerHTML =
+      '<div class="not-found">No game selected. <a href="games.html">Browse games →</a></div>'
+    return
+  }
+  document.title = currentName + " – Hotdog Party"
+  document.getElementById("playerIcon").src  = currentIcon
+  document.getElementById("playerTitle").textContent = currentName
+  document.getElementById("gameFrame").src   = currentPath
+  incrementPlayCount()
+  pingActive()
+  setInterval(pingActive, 90000)
+}
+
+// ---- FIREBASE: play count ----
+async function incrementPlayCount() {
+  const key = currentName.replace(/[.#$\[\]\/ ]/g, "_")
+  try {
+    const r = await fetch(FB_URL + "/" + key + ".json")
+    const cur = await r.json()
+    const prev = cur && cur.count ? cur.count : 0
+    await fetch(FB_URL + "/" + key + ".json", {
+      method: "PUT",
+      headers: {"Content-Type":"application/json"},
+      body: JSON.stringify({count:prev+1, name:currentName, icon:currentIcon, path:currentPath})
+    })
+  } catch {
+    // localStorage fallback
+    const local = JSON.parse(localStorage.getItem(LB_LOCAL) || "{}")
+    local[key] = {count:((local[key]||{}).count||0)+1, name:currentName, icon:currentIcon, path:currentPath}
+    localStorage.setItem(LB_LOCAL, JSON.stringify(local))
+  }
+}
+
+// ---- FIREBASE: active ping ----
+async function pingActive() {
+  try {
+    await fetch(FB_ACTIVE + "/" + sessionId + ".json", {
+      method:"PUT",
+      headers:{"Content-Type":"application/json"},
+      body:JSON.stringify({game:currentName, icon:currentIcon, path:currentPath, ts:Date.now()})
+    })
+  } catch {}
+}
+
+// ---- TOOLBAR ----
+function refreshGame() {
+  const f = document.getElementById("gameFrame")
+  f.src = f.src
+}
+function fullscreenGame() {
+  const f = document.getElementById("gameFrame")
+  if      (f.requestFullscreen)       f.requestFullscreen()
+  else if (f.webkitRequestFullscreen) f.webkitRequestFullscreen()
+  else if (f.mozRequestFullScreen)    f.mozRequestFullScreen()
+}
+
+// ---- SIDEBAR ----
+function shuffle(arr) { return [...arr].sort(()=>Math.random()-.5) }
+
+async function loadSidebar() {
+  try {
+    const res = await fetch("games.json")
+    const games = await res.json()
+    const others = shuffle(games.filter(g => g.path !== currentPath)).slice(0, 5)
+    const container = document.getElementById("playerSidebarGames")
+    container.innerHTML = others.map(g =>
+      `<a class="sidebar-game" href="${gameURL(g)}">
+        <img src="${g.icon}" alt="${g.name}">
+        <div class="sidebar-game-name">${g.name}</div>
+      </a>`
+    ).join("")
+  } catch {}
+}
+
+// ---- BG SHAPES ----
+const bg = document.getElementById("bg")
+for (let i = 0; i < 30; i++) {
+  const s = document.createElement("div")
+  s.className = "shape"
+  s.style.left = Math.random() * 100 + "%"
+  s.style.top  = Math.random() * 100 + "%"
+  s.style.animationDuration = (Math.random() * 20 + 10) + "s"
+  bg.appendChild(s)
+}
+
+initPlayer()
+loadSidebar()
+</script>
+</body>
+</html>
