@@ -79,7 +79,7 @@ border-bottom:1px solid rgba(255,140,0,.12);
 .featured-game img{width:100%;height:100%;object-fit:cover;}
 .featured-game .ftitle{position:absolute;bottom:0;width:100%;text-align:center;background:linear-gradient(to top,rgba(0,0,0,.88) 0%,rgba(0,0,0,.45) 50%,rgba(0,0,0,0) 100%);padding:32px 8px 10px;opacity:0;transition:.25s;font-weight:600;font-size:14px;box-sizing:border-box;}
 .featured-game:hover .ftitle{opacity:1;}
-.hot-badge{position:absolute;top:10px;right:10px;background:linear-gradient(45deg,#ff4500,#ff8c00);color:white;font-size:11px;font-weight:800;padding:3px 9px;border-radius:20px;text-transform:uppercase;letter-spacing:.5px;}
+.hot-badge{position:absolute;top:8px;right:8px;background:linear-gradient(45deg,#ff4500,#ff8c00);color:white;font-size:11px;font-weight:800;padding:3px 8px;border-radius:20px;text-transform:uppercase;letter-spacing:.5px;white-space:nowrap;}
 .view-all-btn{display:block;width:fit-content;margin:8px auto 20px;padding:12px 32px;border:2px solid #ff8c00;background:transparent;color:#ff8c00;font-weight:700;font-size:15px;border-radius:10px;cursor:pointer;transition:.2s;}
 .view-all-btn:hover{background:#ff8c00;color:#111;}
 
@@ -627,15 +627,18 @@ function renderGames(games) {
   })
 }
 
-function renderFeatured(games) {
+function renderFeatured(orderedGames) {
   const container = document.getElementById("featured-games")
   container.innerHTML = ""
-  shuffle(games).slice(0, 12).forEach((game, i) => {
+  orderedGames.slice(0, 12).forEach((game, i) => {
     const card = document.createElement("div")
     card.className = "featured-game"
-    card.innerHTML = '<img src="' + game.icon + '">' +
-      (i < 4 ? '<div class="hot-badge">\uD83D\uDD25 Hot</div>' : '') +
-      '<div class="ftitle">' + game.name + '</div>'
+    const badge = i === 0 ? '<div class="hot-badge">🥇 #1</div>'
+                : i === 1 ? '<div class="hot-badge">🥈 #2</div>'
+                : i === 2 ? '<div class="hot-badge">🥉 #3</div>'
+                : i < 10  ? `<div class="hot-badge">#${i+1}</div>`
+                : ''
+    card.innerHTML = '<img src="' + game.icon + '">' + badge + '<div class="ftitle">' + game.name + '</div>'
     card.onclick = () => { showPage('gamesPage'); openGame(game) }
     container.appendChild(card)
   })
@@ -686,9 +689,32 @@ async function loadGames() {
     allGames = games
     document.getElementById("stat-games").textContent = games.length
     renderGames(games)
-    renderFeatured(games)
     renderBelt(games)
     loadLeaderboard()
+
+    // Featured: top 10 most played from Firebase, padded with random games
+    try {
+      const lbRes = await fetch(FB_URL + ".json")
+      const lbData = await lbRes.json()
+      let featured = []
+      if (lbData) {
+        const sorted = Object.values(lbData)
+          .filter(e => e && e.count && e.path)
+          .sort((a, b) => b.count - a.count)
+          .slice(0, 10)
+          .map(e => games.find(g => g.path === e.path))
+          .filter(Boolean)
+        featured = sorted
+      }
+      // Pad to 12 with random games not already in the list
+      const usedPaths = new Set(featured.map(g => g.path))
+      const rest = shuffle(games.filter(g => !usedPaths.has(g.path)))
+      featured = [...featured, ...rest].slice(0, 12)
+      renderFeatured(featured)
+    } catch {
+      renderFeatured(shuffle(games))
+    }
+
   } catch(e) {
     console.log("Could not load games.json:", e)
   }
