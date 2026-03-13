@@ -701,8 +701,8 @@
     },
     {
         "name": "Archery World Tour",
-        "path": "games/worldarch/worldarch.html",
-        "icon": "games/worldarch/icon.png"
+        "path": "games/archery/worldarch.html",
+        "icon": "games/archery/icon.png"
     },
     {
         "name": "Ultimate Car Driving Simulator",
@@ -738,6 +738,56 @@
         "name": "Uno",
         "path": "games/uno/cluno.html",
         "icon": "games/uno/icon.png"
+    },
+    {
+        "name": "Bad Ice Cream",
+        "path": "games/badicecream/bad1.html",
+        "icon": "games/badicecream/icon1.png"
+    },
+    {
+        "name": "Bad Ice Cream 2",
+        "path": "games/badicecream/bad2.html",
+        "icon": "games/badicecream/icon2.png"
+    },
+    {
+        "name": "Bad Ice Cream 3",
+        "path": "games/badicecream/bad3.html",
+        "icon": "games/badicecream/icon3.png"
+    },
+    {
+        "name": "Vex 3",
+        "path": "games/vex/v3.html",
+        "icon": "games/vex/icon3.png"
+    },
+    {
+        "name": "Vex 4",
+        "path": "games/vex/v4.html",
+        "icon": "games/vex/icon4.png"
+    },
+    {
+        "name": "Vex 6",
+        "path": "games/vex/v6.html",
+        "icon": "games/vex/icon6.png"
+    },
+    {
+        "name": "Vex 7",
+        "path": "games/vex/v7.html",
+        "icon": "games/vex/icon7.png"
+    },
+    {
+        "name": "Vex X3M",
+        "path": "games/vex/v-x3m.html",
+        "icon": "games/vex/icon-x3m.png"
+    },
+    {
+        "name": "Vex X3M 2",
+        "path": "games/vex/v-x3m2.html",
+        "icon": "games/vex/icon-x3m2.png"
+    },
+    {
+        "name": "Volleyball Challenge",
+        "path": "games/volleyballchallenge/vbc.html",
+        "icon": "games/volleyballchallenge/icon.png"
     }
     
     

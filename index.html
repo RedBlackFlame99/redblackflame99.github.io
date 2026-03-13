@@ -839,7 +839,7 @@ function renderGames(games) {
 function renderFeatured(orderedGames) {
   const container = document.getElementById("featured-games")
   container.innerHTML = ""
-  orderedGames.slice(0, 12).forEach((game, i) => {
+  orderedGames.slice(0, 10).forEach((game, i) => {
     const card = document.createElement("div")
     card.className = "featured-game"
     const badge = i === 0 ? '<div class="hot-badge">🥇 #1</div>'
@@ -919,13 +919,10 @@ async function loadGames() {
           .filter(Boolean)
         featured = sorted
       }
-      // Pad to 12 with random games not already in the list
-      const usedPaths = new Set(featured.map(g => g.path))
-      const rest = shuffle(games.filter(g => !usedPaths.has(g.path)))
-      featured = [...featured, ...rest].slice(0, 12)
+      // Just show top 10, no padding
       renderFeatured(featured)
     } catch {
-      renderFeatured(shuffle(games))
+      renderFeatured(shuffle(games).slice(0, 10))
     }
 
   } catch(e) {
