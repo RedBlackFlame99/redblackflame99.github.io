@@ -898,5 +898,10 @@
         "name": "Craftmine",
         "path": "games/craftmine/index.html",
         "icon": "games/craftmine/images/craftmine.png"
+    },
+    {
+        "name": "Deal or no deal",
+        "path": "test/deal-or-no-deal/index.html",
+        "icon": "test/deal-or-no-deal/index.jpg"
     }
 ]
