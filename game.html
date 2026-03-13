@@ -224,18 +224,6 @@ function toggleMute() {
   }
 }
 
-// ---- RECENTLY PLAYED (localStorage) ----
-function saveRecentlyPlayed() {
-  if (!currentPath) return
-  const key   = "hotdog_recent"
-  const entry = { name: currentName, icon: currentIcon, path: currentPath, ts: Date.now() }
-  let recent  = JSON.parse(localStorage.getItem(key) || "[]")
-  recent = recent.filter(g => g.path !== currentPath)
-  recent.unshift(entry)
-  recent = recent.slice(0, 5)
-  localStorage.setItem(key, JSON.stringify(recent))
-}
-
 // ---- INIT PLAYER ----
 function initPlayer() {
   if (!currentPath) {
@@ -247,7 +235,6 @@ function initPlayer() {
   document.getElementById("playerIcon").src        = currentIcon
   document.getElementById("playerTitle").textContent = currentName
   document.getElementById("gameFrame").src          = currentPath
-  saveRecentlyPlayed()
   incrementPlayCount()
   pingActive()
   setInterval(pingActive, 90000)
