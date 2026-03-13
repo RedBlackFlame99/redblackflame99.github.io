@@ -788,6 +788,36 @@
         "name": "Volleyball Challenge",
         "path": "games/volleyballchallenge/vbc.html",
         "icon": "games/volleyballchallenge/icon.png"
+    },
+    {
+        "name": "Volley Random",
+        "path": "games/volleyrandom/vr.html",
+        "icon": "games/volleyrandom/icon.png"
+    },
+    {
+        "name": "Vortex",
+        "path": "games/vortex/v.html",
+        "icon": "games/vortex/icon.png"
+    },
+    {
+        "name": "Wave Dash",
+        "path": "games/geometry_dash/wd1.html",
+        "icon": "games/geometry_dash/icon1.png"
+    },
+    {
+        "name": "Wrestle Bros",
+        "path": "games/wrestlebros/wb.html",
+        "icon": "games/wrestlebros/icon.png"
+    },
+    {
+        "name": "Yohoho.io",
+        "path": "games/yohohoio/yo.html",
+        "icon": "games/yohohoio/icon.png"
+    },
+    {
+        "name": "Undertale",
+        "path": "games/undertale/undertale.html",
+        "icon": "games/undertale/icon.png"
     }
     
     
