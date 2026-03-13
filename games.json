@@ -838,6 +838,11 @@
         "name": "Big Tower Tiny Square 2",
         "path": "games/bigtower/tower2.html",
         "icon": "games/bigtower/icon2.png"
+    },
+    {
+        "name": "Bob the Robber right click then click fullscreen",
+        "path": "games/bobrob/rob.html",
+        "icon": "games/bobrob/icon.png"
     }
     
     
