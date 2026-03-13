@@ -100,25 +100,29 @@ border-bottom:1px solid rgba(255,140,0,.12);
 /* =====================
    GAMES PAGE
    ===================== */
-#gamesPage{padding:24px 0;}
+#gamesPage{padding:24px 0 0 0;}
 
-/* BROWSE VIEW — 3-col: blank | content | leaderboard */
+/* BROWSE VIEW — center column + right leaderboard */
 .games-layout{
-  display:grid;
-  grid-template-columns:1fr minmax(0,820px) 260px;
-  gap:0 24px;
+  display:flex;
+  justify-content:center;
   align-items:start;
+  gap:24px;
   padding:0 24px;
 }
 
-/* left blank column — nothing */
-.games-left-blank{grid-column:1;}
+/* center content */
+.games-center{
+  flex:0 1 900px;
+  min-width:0;
+}
 
-/* center content column */
-.games-center{grid-column:2;}
-
-/* right leaderboard column */
-.games-right{grid-column:3;position:sticky;top:104px;}
+/* right leaderboard */
+.games-right{
+  flex:0 0 240px;
+  position:sticky;
+  top:104px;
+}
 
 /* search */
 .search-container{position:relative;max-width:100%;margin-bottom:18px;}
@@ -207,15 +211,16 @@ border-bottom:1px solid rgba(255,140,0,.12);
    ===================== */
 .player-layout{
 display:none;
-grid-template-columns:1fr minmax(0,820px) 260px;
-gap:0 24px;
-padding:0 24px;
+flex-direction:row;
+justify-content:center;
 align-items:start;
+gap:24px;
+padding:0 24px;
 }
-.player-layout.visible{display:grid;}
-.player-left-blank{grid-column:1;}
+.player-layout.visible{display:flex;}
 .player-main{
-grid-column:2;
+flex:0 1 900px;
+min-width:0;
 background:#0e0e0e;
 border:2px solid #2a2a2a;
 border-radius:18px;
@@ -290,7 +295,7 @@ position:absolute;inset:0;
 
 /* Player sidebar */
 .player-sidebar{
-grid-column:3;
+flex:0 0 240px;
 display:flex;flex-direction:column;
 gap:10px;
 position:sticky;top:104px;
@@ -372,9 +377,6 @@ position:sticky;top:104px;
   <!-- BROWSE VIEW -->
   <div class="games-layout" id="browseView">
 
-    <!-- blank left -->
-    <div class="games-left-blank"></div>
-
     <!-- center: search + 6-per-row grid -->
     <div class="games-center">
       <div class="search-container">
@@ -392,7 +394,7 @@ position:sticky;top:104px;
           <div class="lb-live-dot"></div>
         </div>
         <div class="lb-list" id="lbList">
-          <div class="lb-empty">Play some games to start the leaderboard!</div>
+          <div class="lb-empty">Loading leaderboard...</div>
         </div>
       </div>
     </div>
@@ -402,8 +404,6 @@ position:sticky;top:104px;
   <!-- PLAYER VIEW -->
   <div class="player-layout" id="playerView">
 
-    <div class="player-left-blank"></div>
-
     <div class="player-main">
       <div class="player-toolbar">
         <button class="back-btn" onclick="closePlayer()">
@@ -412,11 +412,9 @@ position:sticky;top:104px;
         </button>
         <img class="player-game-icon" id="playerIcon" src="" alt="">
         <div class="player-game-title" id="playerTitle"></div>
-        <!-- Refresh -->
         <button class="toolbar-btn" title="Refresh" onclick="refreshGame()">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"/></svg>
         </button>
-        <!-- Fullscreen -->
         <button class="toolbar-btn" title="Fullscreen" onclick="fullscreenGame()">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 3 21 3 21 9"/><polyline points="9 21 3 21 3 15"/><line x1="21" y1="3" x2="14" y2="10"/><line x1="3" y1="21" x2="10" y2="14"/></svg>
         </button>
@@ -426,7 +424,6 @@ position:sticky;top:104px;
       </div>
     </div>
 
-    <!-- Player Quick Picks sidebar -->
     <div class="player-sidebar">
       <div class="sidebar-title">⚡ Quick Play</div>
       <div id="playerSidebarGames"></div>
@@ -475,57 +472,78 @@ function showPage(page) {
   window.scrollTo(0, 0)
 }
 
-// ---- LEADERBOARD (localStorage — shared across same browser) ----
-const LB_KEY = "hotdog_play_counts"
+// ---- LEADERBOARD (Firebase Realtime DB — global across all players) ----
+// SETUP: Go to firebase.google.com → create project → Realtime Database → Start in test mode
+// Then replace the URL below with your own:  https://YOUR-PROJECT-default-rtdb.firebaseio.com/plays
+const FB_URL = "https://hotdog-party-61e77-default-rtdb.firebaseio.com/plays"
+const FB_READY = !FB_URL.startsWith("YOUR_")
 
-function getPlayCounts() {
-  try { return JSON.parse(localStorage.getItem(LB_KEY) || "{}") } catch { return {} }
+// localStorage fallback key (used if Firebase not yet configured)
+const LB_LOCAL_KEY = "hotdog_lb"
+
+async function incrementPlayCount(game) {
+  const key = game.name.replace(/[.#$\[\]\/ ]/g, "_")
+  if (FB_READY) {
+    try {
+      const r = await fetch(FB_URL + "/" + key + ".json")
+      const cur = await r.json()
+      const prev = (cur && cur.count) ? cur.count : 0
+      await fetch(FB_URL + "/" + key + ".json", {
+        method: "PUT",
+        headers: {"Content-Type":"application/json"},
+        body: JSON.stringify({count: prev+1, name: game.name, icon: game.icon, path: game.path})
+      })
+      loadLeaderboard()
+      return
+    } catch(e) {}
+  }
+  // localStorage fallback
+  const local = JSON.parse(localStorage.getItem(LB_LOCAL_KEY) || "{}")
+  local[key] = {count: ((local[key]||{}).count||0)+1, name: game.name, icon: game.icon, path: game.path}
+  localStorage.setItem(LB_LOCAL_KEY, JSON.stringify(local))
+  renderLeaderboard(Object.values(local).sort((a,b)=>b.count-a.count).slice(0,10))
 }
 
-function incrementPlayCount(game) {
-  const counts = getPlayCounts()
-  counts[game.path] = (counts[game.path] || 0) + 1
-  localStorage.setItem(LB_KEY, JSON.stringify(counts))
-  renderLeaderboard(counts)
+async function loadLeaderboard() {
+  if (FB_READY) {
+    try {
+      const r = await fetch(FB_URL + ".json")
+      const data = await r.json()
+      if (data) {
+        const entries = Object.values(data).filter(e=>e&&e.count).sort((a,b)=>b.count-a.count).slice(0,10)
+        renderLeaderboard(entries)
+        return
+      }
+    } catch(e) {}
+  }
+  // localStorage fallback
+  const local = JSON.parse(localStorage.getItem(LB_LOCAL_KEY) || "{}")
+  const entries = Object.values(local).filter(e=>e&&e.count).sort((a,b)=>b.count-a.count).slice(0,10)
+  renderLeaderboard(entries)
 }
 
-function renderLeaderboard(counts) {
-  if (!counts) counts = getPlayCounts()
+function renderLeaderboard(entries) {
   const container = document.getElementById("lbList")
   if (!container) return
-
-  const sorted = Object.entries(counts)
-    .sort((a, b) => b[1] - a[1])
-    .slice(0, 10)
-
-  if (sorted.length === 0) {
+  if (!entries || entries.length === 0) {
     container.innerHTML = '<div class="lb-empty">Play some games to start the leaderboard!</div>'
     return
   }
-
-  const maxCount = sorted[0][1]
-  const rankLabels = ["\uD83E\uDD47","\uD83E\uDD48","\uD83E\uDD49"]
-  const rankClasses = ["gold","silver","bronze"]
-
-  container.innerHTML = sorted.map(([path, count], i) => {
-    const game = allGames.find(g => g.path === path)
-    if (!game) return ""
-    const pct = Math.round((count / maxCount) * 100)
-    const rankClass = i < 3 ? rankClasses[i] : "other"
-    const rankLabel = i < 3 ? rankLabels[i] : String(i+1)
-    const playsLabel = count === 1 ? "1 play" : count + " plays"
-    const safePath = path.replace(/'/g, "\\'")
-    return `
-      <div class="lb-row" onclick="openGame(allGames.find(g=>g.path==='${safePath}'))">
-        <div class="lb-rank ${rankClass}">${rankLabel}</div>
-        <img class="lb-icon" src="${game.icon}" alt="${game.name}">
-        <div class="lb-info">
-          <div class="lb-name">${game.name}</div>
-          <div class="lb-plays">${playsLabel}</div>
-          <div class="lb-bar-wrap"><div class="lb-bar" style="width:${pct}%"></div></div>
-        </div>
+  const maxCount = entries[0].count
+  const medals = ["\uD83E\uDD47","\uD83E\uDD48","\uD83E\uDD49"]
+  const classes = ["gold","silver","bronze"]
+  container.innerHTML = entries.map((e, i) => {
+    const pct = Math.round((e.count / maxCount) * 100)
+    const safePath = (e.path||"").replace(/'/g,"\\'")
+    return `<div class="lb-row" onclick="openGame(allGames.find(g=>g.path==='${safePath}'))">
+      <div class="lb-rank ${i<3?classes[i]:'other'}">${i<3?medals[i]:i+1}</div>
+      <img class="lb-icon" src="${e.icon}" alt="${e.name}" onerror="this.style.opacity=0">
+      <div class="lb-info">
+        <div class="lb-name">${e.name}</div>
+        <div class="lb-plays">${e.count===1?"1 play":e.count+" plays"}</div>
+        <div class="lb-bar-wrap"><div class="lb-bar" style="width:${pct}%"></div></div>
       </div>
-    `
+    </div>`
   }).join("")
 }
 
@@ -546,7 +564,7 @@ function openGame(game) {
 function closePlayer() {
   document.getElementById("gameFrame").src = ""
   document.getElementById("playerView").classList.remove("visible")
-  document.getElementById("browseView").style.display = "grid"
+  document.getElementById("browseView").style.display = "flex"
 }
 
 function refreshGame() {
@@ -648,7 +666,7 @@ async function loadGames() {
     renderGames(games)
     renderFeatured(games)
     renderBelt(games)
-    renderLeaderboard()
+    loadLeaderboard()
   } catch(e) {
     console.log("Could not load games.json:", e)
   }
