@@ -65,6 +65,21 @@
         "icon": "games/slope/slope.png"
     },
     {
+        "name": "Slope 2 Player",
+        "path": "games/slope/slope2p.html",
+        "icon": "games/slope/icon2.png"
+    },
+    {
+        "name": "Slope 3",
+        "path": "games/slope/slope3.html",
+        "icon": "games/slope/icon3.png"
+    },
+    {
+        "name": "Slope 2 Player",
+        "path": "games/slope/slope2p.html",
+        "icon": "games/slope/icon2.png"
+    },
+    {
         "name": "Doge Miner",
         "path": "games/doge_miner/dogeminer.html",
         "icon": "games/doge_miner/icon.png"
@@ -518,6 +533,93 @@
         "name": "Minecraft Parkour",
         "path": "games/mc/mcparkour/blockcraftparkour.html",
         "icon": "games/mc/mcparkour/icon.png"
+    },
+    {
+        "name": "Paper.io",
+        "path": "games/paperio/paperio.html",
+        "icon": "games/paperio/icon1.png"
+    },
+    {
+        "name": "1",
+        "path": "games/1/1.html",
+        "icon": "games/1/icon.png"
+    },
+    {
+        "name": "Parking Fury",
+        "path": "games/parking_fury/pf1.html",
+        "icon": "games/parking_fury/icon1.png"
+    },
+    {
+        "name": "Parking Fury 2",
+        "path": "games/parking_fury/pf2.html",
+        "icon": "games/parking_fury/icon2.png"
+    },
+    {
+        "name": "Parking Fury 3",
+        "path": "games/parking_fury/pf3.html",
+        "icon": "games/parking_fury/icon3.png"
+    },
+    {
+        "name": "Sausage Flip",
+        "path": "games/sausage_flip/sf.html",
+        "icon": "games/sausage_flip/icon.png"
+    },
+    {
+        "name": "10 Minutes till Dawn",
+        "path": "games/10minutes/10minutes.html",
+        "icon": "games/10minutes/icon.png"
+    },
+    {
+        "name": "Skyrace",
+        "path": "games/skyrace/clskyrace-3d.html",
+        "icon": "games/skyrace/icon.png"
+    },
+    {
+        "name": "1 on 1 Soccer",
+        "path": "games/1on1soccer/soccer.html",
+        "icon": "games/1on1soccer/icon.png"
+    },
+    {
+        "name": "Slither.io",
+        "path": "games/slitherio/clslitherio.html",
+        "icon": "games/slitherio/icon.png"
+    },
+    {
+        "name": "60 Second Burger Run",
+        "path": "games/60second/burgerrun.html",
+        "icon": "games/60second/icon.png"
+    },
+    {
+        "name": "9007199254740992",
+        "path": "games/9007/9007.html",
+        "icon": "games/9007/icon.png"
+    },
+    {
+        "name": "Snowball.io",
+        "path": "games/snowballio/clsnowballio.html",
+        "icon": "games/snowballio/icon.png"
+    },
+    {
+        "name": "Achievement Unlocked",
+        "path": "games/achievement_unlocked/achieve1/achi",
+        "icon": "games/achievement_unlocked/achieve1/icon.png"
+    },
+    {
+        "name": "State.io",
+        "path": "games/stateio/clstateio.html",
+        "icon": "games/stateio/icon.png"
+    },
+    {
+        "name": "Summer Rider 3D",
+        "path": "games/summerrider3d/clsummerrider.html",
+        "icon": "games/summerrider3d/icon.png"
+    },
+    {
+        "name": "Stealth Master",
+        "path": "games/stealthmaster/clstealthmaster.html",
+        "icon": "games/stealthmaster/icon.png"
     }
+    
+    
     
 ]

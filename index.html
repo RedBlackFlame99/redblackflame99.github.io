@@ -301,6 +301,24 @@ gap:10px;
 position:sticky;top:104px;
 }
 
+/* SCROLL TO TOP */
+.scroll-top{
+  position:fixed;bottom:28px;right:28px;
+  width:46px;height:46px;
+  background:linear-gradient(45deg,#ff8c00,#ffd000);
+  border:none;border-radius:12px;
+  cursor:pointer;
+  display:flex;align-items:center;justify-content:center;
+  box-shadow:0 4px 18px rgba(255,140,0,.5);
+  opacity:0;pointer-events:none;
+  transform:translateY(12px);
+  transition:opacity .25s,transform .25s;
+  z-index:999;
+}
+.scroll-top.visible{opacity:1;pointer-events:auto;transform:translateY(0);}
+.scroll-top:hover{transform:translateY(-3px);box-shadow:0 6px 24px rgba(255,140,0,.7);}
+.scroll-top svg{width:22px;height:22px;color:#111;pointer-events:none;}
+
 /* =====================
    CONTACT PAGE
    ===================== */
@@ -459,6 +477,10 @@ position:sticky;top:104px;
     </div>
   </div>
 </div>
+
+<button class="scroll-top" id="scrollTopBtn" onclick="window.scrollTo({top:0,behavior:'smooth'})">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"/></svg>
+</button>
 
 <script>
 
@@ -673,6 +695,10 @@ async function loadGames() {
 }
 
 loadGames()
+
+window.addEventListener("scroll", () => {
+  document.getElementById("scrollTopBtn").classList.toggle("visible", window.scrollY > 300)
+})
 
 </script>
 </body>
