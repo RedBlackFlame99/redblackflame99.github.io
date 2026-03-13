@@ -1,944 +1,133 @@
-<!DOCTYPE html>
+<Module>
+
+
+<!-- Ultimate Game Stash file--> 
+<!-- For the regularly updating doc go to https://docs.google.com/document/d/1_FmH3BlSBQI7FGgAQL59-ZPe8eCxs35wel6JUyVaG8Q/ -->
+
+
+
+<Module>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>Hotdog Party</title>
-<link rel="icon" href="favicon.png">
-<link href="https://fonts.googleapis.com/css2?family=Luckiest+Guy&display=swap" rel="stylesheet">
-<style>
-
-body{
-margin:0;padding-top:90px;
-font-family:"Segoe UI",system-ui,sans-serif;
-background:#121212;color:white;overflow-x:hidden;
-}
-
-.bg{position:fixed;top:0;left:0;width:100%;height:100%;z-index:-1;overflow:hidden;}
-
-.shape{
-position:absolute;width:60px;height:60px;
-background:linear-gradient(45deg,#ff7b00,#ffae00);
-opacity:.18;border-radius:14px;animation:float 18s linear infinite;
-}
-
-@keyframes float{
-0%{transform:translateY(0) rotate(0)}
-50%{transform:translateY(-70px) rotate(180deg)}
-100%{transform:translateY(0) rotate(360deg)}
-}
-
-/* TOPBAR */
-.topbar{
-position:fixed;top:0;left:0;width:100%;
-background:rgba(18,18,18,.97);backdrop-filter:blur(12px);
-padding:10px 24px;display:flex;align-items:center;justify-content:space-between;
-box-shadow:0 2px 24px rgba(0,0,0,.7);box-sizing:border-box;z-index:1000;
-border-bottom:1px solid rgba(255,140,0,.12);
-}
-.top-center{position:absolute;left:50%;transform:translateX(-50%);font-size:13px;font-weight:600;color:#555;pointer-events:none;letter-spacing:.5px;}
-.top-left{display:flex;align-items:center;cursor:pointer;background:rgba(255,140,0,.07);border:1px solid rgba(255,140,0,.18);border-radius:12px;padding:6px 14px 6px 10px;transition:.2s;}
-.top-left:hover{background:rgba(255,140,0,.14);border-color:rgba(255,140,0,.35);box-shadow:0 0 14px rgba(255,140,0,.15);}
-.logo-emoji{font-size:26px;animation:bounce 2s infinite;line-height:1;margin-right:8px;}
-@keyframes bounce{0%,100%{transform:translateY(0)}50%{transform:translateY(-5px)}}
-.header-text{font-family:'Luckiest Guy';font-size:22px;background:linear-gradient(45deg,#ff7b00,#ffcc00);-webkit-background-clip:text;-webkit-text-fill-color:transparent;letter-spacing:1px;}
-.nav-right{display:flex;align-items:center;gap:8px;flex-wrap:wrap;}
-.nav-btn{display:flex;align-items:center;gap:7px;padding:8px 14px;border-radius:10px;text-decoration:none;color:#ddd;font-weight:600;font-size:14px;transition:.2s;cursor:pointer;border:1px solid transparent;}
-.nav-btn:hover{background:#1e1e1e;border-color:#333;color:white;}
-.nav-btn svg{width:20px;height:20px;opacity:.85;}
-.games-nav-btn{
-  background:linear-gradient(45deg,rgba(255,140,0,.15),rgba(255,200,0,.1));
-  border-color:rgba(255,140,0,.35) !important;
-  color:#ffb347;
-  font-weight:700;
-}
-.games-nav-btn svg{opacity:1;color:#ff8c00;}
-.games-nav-btn:hover{
-  background:linear-gradient(45deg,rgba(255,140,0,.28),rgba(255,200,0,.18)) !important;
-  border-color:#ff8c00 !important;
-  color:#ffd000 !important;
-  box-shadow:0 0 14px rgba(255,140,0,.3);
-}
-.games-nav-btn:hover svg{color:#ffd000;}
-.discord-btn{display:flex;align-items:center;gap:8px;background:#5865F2;padding:8px 16px;border-radius:10px;color:white;text-decoration:none;font-weight:700;font-size:14px;border:1px solid rgba(255,255,255,.1);transition:.2s;box-shadow:0 2px 10px rgba(88,101,242,.35);}
-.discord-btn svg{width:22px;height:22px;}
-.discord-btn:hover{background:#ff8c00;box-shadow:0 0 16px rgba(255,140,0,.5);}
-
-/* PAGES */
-.page{display:none;padding:32px 40px;}
-.active{display:block;}
-
-/* HOME */
-.hero{text-align:center;padding:60px 20px 30px;}
-.hero h1{font-family:'Luckiest Guy';font-size:clamp(56px,10vw,110px);margin:0;line-height:1.05;background:linear-gradient(135deg,#ff7b00 0%,#ffcc00 50%,#ff7b00 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;filter:drop-shadow(0 4px 28px rgba(255,140,0,.5));letter-spacing:3px;}
-.hero h1 .white{background:linear-gradient(135deg,#ffffff,#ffe8a0);-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
-.hero p{font-size:20px;color:#aaa;margin:18px 0 32px;}
-.hero-btns{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;align-items:center;}
-.start-btn{display:inline-flex;align-items:center;padding:14px 34px;border:none;background:linear-gradient(45deg,#ff8c00,#ffd000);color:#111;font-weight:900;font-size:17px;border-radius:10px;cursor:pointer;transition:.2s;box-shadow:0 4px 20px rgba(255,140,0,.45);}
-.start-btn:hover{transform:scale(1.06);box-shadow:0 6px 28px rgba(255,140,0,.65);}
-.discord-hero-btn{display:inline-flex;align-items:center;gap:10px;padding:13px 28px;background:#5865F2;border:1px solid rgba(255,255,255,.12);border-radius:10px;color:#fff;font-weight:800;font-size:16px;text-decoration:none;transition:.2s;box-shadow:0 4px 18px rgba(88,101,242,.4);}
-.discord-hero-btn svg{width:22px;height:22px;flex-shrink:0;}
-.discord-hero-btn:hover{background:#ff8c00;box-shadow:0 6px 26px rgba(255,140,0,.5);transform:scale(1.05);}
-
-.stats{display:flex;justify-content:center;gap:20px;flex-wrap:wrap;margin:52px 0 16px;}
-.stat-card{background:#1a1a1a;border:1px solid #2a2a2a;border-radius:18px;padding:28px 44px;text-align:center;min-width:130px;transition:.25s;}
-.stat-card:hover{border-color:#ff8c00;box-shadow:0 0 20px rgba(255,140,0,.2);transform:translateY(-4px);}
-.stat-num{font-family:'Luckiest Guy';font-size:52px;background:linear-gradient(45deg,#ff7b00,#ffae00);-webkit-background-clip:text;-webkit-text-fill-color:transparent;line-height:1;}
-.stat-label{font-size:13px;color:#777;margin-top:8px;font-weight:700;text-transform:uppercase;letter-spacing:1.2px;}
-
-.section-title{font-family:'Luckiest Guy';font-size:34px;margin:54px 0 20px;background:linear-gradient(45deg,#ff7b00,#ffae00);-webkit-background-clip:text;-webkit-text-fill-color:transparent;display:inline-block;}
-
-.belt-wrapper::before,.belt-wrapper::after{content:'';position:absolute;top:0;bottom:0;width:100px;z-index:2;pointer-events:none;}
-.featured-game{position:relative;aspect-ratio:1/1;border-radius:14px;overflow:hidden;cursor:pointer;background:#1f1f1f;transition:.22s;border:2px solid transparent;}
-.featured-game:hover{transform:scale(1.06);border-color:#ff8c00;box-shadow:0 0 22px rgba(255,140,0,.38);}
-.featured-game img{width:100%;height:100%;object-fit:cover;}
-.featured-game .ftitle{position:absolute;bottom:0;width:100%;text-align:center;background:linear-gradient(to top,rgba(0,0,0,.88) 0%,rgba(0,0,0,.45) 50%,rgba(0,0,0,0) 100%);padding:32px 8px 10px;opacity:0;transition:.25s;font-weight:600;font-size:14px;box-sizing:border-box;}
-.featured-game:hover .ftitle{opacity:1;}
-.hot-badge{position:absolute;top:8px;right:8px;background:linear-gradient(45deg,#ff4500,#ff8c00);color:white;font-size:11px;font-weight:800;padding:3px 8px;border-radius:20px;text-transform:uppercase;letter-spacing:.5px;white-space:nowrap;}
-.view-all-btn{display:block;width:fit-content;margin:8px auto 20px;padding:12px 32px;border:2px solid #ff8c00;background:transparent;color:#ff8c00;font-weight:700;font-size:15px;border-radius:10px;cursor:pointer;transition:.2s;}
-.view-all-btn:hover{background:#ff8c00;color:#111;}
-
-/* BELT */
-.belt-wrapper{position:relative;overflow:hidden;margin:0 -40px 0;padding:10px 0;}
-.featured-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:16px;margin:16px 0 28px;}
-.belt-wrapper::before,.belt-wrapper::after{content:'';position:absolute;top:0;bottom:0;width:100px;z-index:2;pointer-events:none;}
-.belt-wrapper::before{left:0;background:linear-gradient(to right,#121212 20%,transparent);}
-.belt-wrapper::after{right:0;background:linear-gradient(to left,#121212 20%,transparent);}
-.belt-track{display:flex;gap:14px;width:max-content;animation:beltScroll 80s linear infinite;padding:4px 40px;}
-.belt-wrapper:hover .belt-track{animation-play-state:paused;}
-@keyframes beltScroll{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
-.belt-card{position:relative;width:130px;height:130px;border-radius:12px;overflow:hidden;cursor:pointer;background:#1f1f1f;flex-shrink:0;transition:.2s;border:2px solid transparent;}
-.belt-card:hover{transform:scale(1.08);border-color:#ff8c00;box-shadow:0 0 16px rgba(255,140,0,.4);}
-.belt-card img{width:100%;height:100%;object-fit:cover;}
-.belt-title{position:absolute;bottom:0;width:100%;text-align:center;background:linear-gradient(to top,rgba(0,0,0,.88) 0%,rgba(0,0,0,.45) 60%,rgba(0,0,0,0) 100%);padding:26px 6px 7px;opacity:0;transition:.22s;font-size:12px;font-weight:600;box-sizing:border-box;}
-.belt-card:hover .belt-title{opacity:1;}
-
-/* =====================
-   GAMES PAGE
-   ===================== */
-#gamesPage{padding:24px 0 0 0;}
-
-/* BROWSE VIEW — center column + right leaderboard */
-.games-layout{
-  display:flex;
-  justify-content:center;
-  align-items:start;
-  gap:24px;
-  padding:0 24px;
-}
-
-/* center content */
-.games-center{
-  flex:0 1 900px;
-  min-width:0;
-}
-
-/* right leaderboard */
-.games-right{
-  flex:0 0 240px;
-  position:sticky;
-  top:104px;
-}
-
-/* LEFT PANEL */
-.games-left{
-  flex:0 0 220px;
-  position:sticky;
-  top:104px;
-  display:flex;
-  flex-direction:column;
-  gap:14px;
-}
-
-/* Game of the Day */
-.gotd-panel{
-  background:#1a1a1a;
-  border:1px solid #2a2a2a;
-  border-radius:16px;
-  overflow:hidden;
-}
-.gotd-header{
-  padding:12px 14px;
-  background:#161616;
-  border-bottom:1px solid #2a2a2a;
-  display:flex;align-items:center;gap:8px;
-}
-.gotd-header-title{
-  font-family:'Luckiest Guy';font-size:16px;
-  background:linear-gradient(45deg,#ff7b00,#ffae00);
-  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
-  letter-spacing:1px;
-}
-.gotd-body{padding:12px;}
-.gotd-img-wrap{
-  position:relative;width:100%;aspect-ratio:1/1;
-  border-radius:10px;overflow:hidden;
-  cursor:pointer;margin-bottom:10px;
-  border:2px solid transparent;transition:.2s;
-}
-.gotd-img-wrap:hover{border-color:#ff8c00;box-shadow:0 0 18px rgba(255,140,0,.35);}
-.gotd-img-wrap img{width:100%;height:100%;object-fit:cover;}
-.gotd-name{font-size:14px;font-weight:700;color:#ddd;margin-bottom:8px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
-.gotd-play-btn{
-  width:100%;padding:9px;
-  background:linear-gradient(45deg,#ff8c00,#ffd000);
-  border:none;border-radius:9px;
-  color:#111;font-weight:900;font-size:13px;
-  cursor:pointer;transition:.2s;
-}
-.gotd-play-btn:hover{transform:scale(1.03);box-shadow:0 4px 16px rgba(255,140,0,.5);}
-.gotd-date{font-size:11px;color:#555;margin-bottom:8px;}
-
-/* Active Players */
-.active-panel{
-  background:#1a1a1a;
-  border:1px solid #2a2a2a;
-  border-radius:16px;
-  overflow:hidden;
-}
-.active-header{
-  padding:12px 14px;
-  background:#161616;
-  border-bottom:1px solid #2a2a2a;
-  display:flex;align-items:center;gap:8px;
-}
-.active-header-title{
-  font-family:'Luckiest Guy';font-size:16px;
-  background:linear-gradient(45deg,#ff7b00,#ffae00);
-  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
-  letter-spacing:1px;flex:1;
-}
-.active-dot{
-  width:8px;height:8px;border-radius:50%;
-  background:#4caf50;box-shadow:0 0 6px #4caf50;
-  animation:pulse 1.8s infinite;
-}
-.active-list{padding:8px 0;}
-.active-row{
-  display:flex;align-items:center;gap:10px;
-  padding:8px 14px;cursor:pointer;transition:.15s;
-}
-.active-row:hover{background:rgba(255,140,0,.06);}
-.active-icon{width:36px;height:36px;border-radius:8px;object-fit:cover;flex-shrink:0;border:1px solid #2a2a2a;}
-.active-info{flex:1;min-width:0;}
-.active-name{font-size:12px;font-weight:700;color:#ddd;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
-.active-count{font-size:11px;color:#4caf50;margin-top:1px;}
-.active-empty{padding:20px;text-align:center;color:#444;font-size:13px;}
-
-/* search */
-.search-container{position:relative;max-width:100%;margin-bottom:18px;}
-.search-icon{position:absolute;left:14px;top:50%;transform:translateY(-50%);width:18px;height:18px;fill:#aaa;pointer-events:none;}
-.search{width:100%;padding:11px 16px 11px 42px;border-radius:12px;border:2px solid #2a2a2a;background:#1a1a1a;color:#fff;font-size:15px;outline:none;transition:.25s;box-sizing:border-box;}
-.search::placeholder{color:#555;}
-.search:focus{border-color:#ff8c00;box-shadow:0 0 10px rgba(255,140,0,.4);background:#1f1f1f;}
-
-/* 6-per-row grid */
-.games{display:grid;grid-template-columns:repeat(6,1fr);gap:12px;}
-.game{position:relative;aspect-ratio:1/1;border-radius:12px;overflow:hidden;cursor:pointer;background:#1a1a1a;transition:.2s;border:2px solid transparent;}
-.game:hover{transform:scale(1.05);border-color:#ff8c00;box-shadow:0 0 16px rgba(255,140,0,.3);}
-.game img{width:100%;height:100%;object-fit:cover;}
-.game .title{position:absolute;bottom:0;width:100%;text-align:center;background:linear-gradient(to top,rgba(0,0,0,.88) 0%,rgba(0,0,0,.45) 50%,rgba(0,0,0,0) 100%);padding:28px 8px 8px;opacity:0;transition:.22s;font-weight:600;font-size:12px;box-sizing:border-box;}
-.game:hover .title{opacity:1;}
-
-/* LEADERBOARD */
-.leaderboard-panel{
-  background:#1a1a1a;
-  border:1px solid #2a2a2a;
-  border-radius:16px;
-  overflow:hidden;
-}
-.lb-header{
-  padding:14px 16px;
-  border-bottom:1px solid #2a2a2a;
-  background:#161616;
-  display:flex;align-items:center;gap:8px;
-}
-.lb-header-title{
-  font-family:'Luckiest Guy';font-size:18px;
-  background:linear-gradient(45deg,#ff7b00,#ffae00);
-  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
-  letter-spacing:1px;flex:1;
-}
-.lb-live-dot{
-  width:8px;height:8px;border-radius:50%;
-  background:#ff8c00;
-  box-shadow:0 0 6px #ff8c00;
-  animation:pulse 1.8s infinite;
-}
-@keyframes pulse{0%,100%{opacity:1}50%{opacity:.3}}
-
-.lb-list{padding:8px 0;}
-
-.lb-row{
-  display:flex;align-items:center;gap:10px;
-  padding:9px 14px;
-  transition:.15s;
-  cursor:pointer;
-}
-.lb-row:hover{background:rgba(255,140,0,.06);}
-
-.lb-rank{
-  font-family:'Luckiest Guy';
-  font-size:18px;
-  width:26px;text-align:center;flex-shrink:0;
-  line-height:1;
-}
-.lb-rank.gold{color:#ffd700;}
-.lb-rank.silver{color:#c0c0c0;}
-.lb-rank.bronze{color:#cd7f32;}
-.lb-rank.other{color:#555;}
-
-.lb-icon{
-  width:40px;height:40px;border-radius:8px;
-  object-fit:cover;flex-shrink:0;
-  border:1px solid #2a2a2a;
-}
-.lb-info{flex:1;min-width:0;}
-.lb-name{font-size:13px;font-weight:700;color:#ddd;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
-.lb-plays{font-size:11px;color:#666;margin-top:2px;}
-.lb-bar-wrap{height:3px;background:#222;border-radius:2px;margin-top:5px;}
-.lb-bar{height:3px;background:linear-gradient(90deg,#ff7b00,#ffcc00);border-radius:2px;transition:width .4s;}
-
-.lb-empty{padding:24px;text-align:center;color:#444;font-size:13px;}
-
-.sidebar-title{font-family:'Luckiest Guy';font-size:16px;background:linear-gradient(45deg,#ff7b00,#ffae00);-webkit-background-clip:text;-webkit-text-fill-color:transparent;letter-spacing:1px;margin:0 0 4px;}
-.sidebar-game{display:flex;align-items:center;gap:12px;background:#1a1a1a;border:1px solid #2a2a2a;border-radius:12px;padding:10px;cursor:pointer;transition:.2s;}
-.sidebar-game:hover{border-color:#ff8c00;box-shadow:0 0 14px rgba(255,140,0,.2);transform:translateX(3px);}
-.sidebar-game img{width:52px;height:52px;border-radius:8px;object-fit:cover;flex-shrink:0;}
-.sidebar-game-name{font-size:13px;font-weight:700;color:#ddd;line-height:1.3;}
-
-/* =====================
-   PLAYER VIEW
-   ===================== */
-.player-layout{
-display:none;
-flex-direction:row;
-justify-content:center;
-align-items:start;
-gap:24px;
-padding:0 24px;
-}
-.player-layout.visible{display:flex;}
-.player-main{
-flex:0 1 900px;
-min-width:0;
-background:#0e0e0e;
-border:2px solid #2a2a2a;
-border-radius:18px;
-overflow:hidden;
-display:flex;flex-direction:column;
-}
-
-.player-toolbar{
-display:flex;align-items:center;
-gap:10px;
-padding:10px 14px;
-background:#161616;
-border-bottom:1px solid #2a2a2a;
-}
-
-.player-game-icon{
-width:32px;height:32px;
-border-radius:7px;object-fit:cover;
-flex-shrink:0;
-}
-
-.player-game-title{
-font-weight:700;font-size:15px;
-color:#eee;flex:1;
-white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
-}
-
-.toolbar-btn{
-display:flex;align-items:center;justify-content:center;
-width:36px;height:36px;
-border-radius:9px;
-border:1px solid #2e2e2e;
-background:#1e1e1e;
-cursor:pointer;
-transition:.18s;
-flex-shrink:0;
-color:#bbb;
-}
-.toolbar-btn:hover{
-background:#2a2a2a;
-border-color:#ff8c00;
-color:#ff8c00;
-box-shadow:0 0 10px rgba(255,140,0,.25);
-}
-.toolbar-btn svg{width:17px;height:17px;pointer-events:none;}
-
-.back-btn{
-display:flex;align-items:center;gap:7px;
-padding:7px 14px;
-border-radius:9px;
-border:1px solid #2e2e2e;
-background:#1e1e1e;
-cursor:pointer;
-transition:.18s;
-color:#bbb;
-font-size:13px;font-weight:700;
-flex-shrink:0;
-}
-.back-btn:hover{background:#2a2a2a;border-color:#ff8c00;color:#ff8c00;}
-.back-btn svg{width:16px;height:16px;}
-
-.player-iframe-wrap{
-flex:1;
-position:relative;
-min-height:520px;
-}
-.player-iframe-wrap iframe{
-width:100%;height:100%;
-border:none;
-position:absolute;inset:0;
-}
-
-/* Player sidebar */
-.player-sidebar{
-flex:0 0 240px;
-display:flex;flex-direction:column;
-gap:10px;
-position:sticky;top:104px;
-}
-
-/* SCROLL TO TOP */
-.scroll-top{
-  position:fixed;bottom:28px;right:28px;
-  width:46px;height:46px;
-  background:linear-gradient(45deg,#ff8c00,#ffd000);
-  border:none;border-radius:12px;
-  cursor:pointer;
-  display:flex;align-items:center;justify-content:center;
-  box-shadow:0 4px 18px rgba(255,140,0,.5);
-  opacity:0;pointer-events:none;
-  transform:translateY(12px);
-  transition:opacity .25s,transform .25s;
-  z-index:999;
-}
-.scroll-top.visible{opacity:1;pointer-events:auto;transform:translateY(0);}
-.scroll-top:hover{transform:translateY(-3px);box-shadow:0 6px 24px rgba(255,140,0,.7);}
-.scroll-top svg{width:22px;height:22px;color:#111;pointer-events:none;}
-
-/* =====================
-   CONTACT PAGE
-   ===================== */
-.contact-wrap{max-width:560px;margin:60px auto 0;text-align:center;}
-.contact-wrap h2{font-family:'Luckiest Guy';font-size:48px;background:linear-gradient(45deg,#ff7b00,#ffcc00);-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin:0 0 12px;}
-.contact-wrap p{color:#888;font-size:16px;margin:0 0 48px;}
-.contact-card{background:#1a1a1a;border:1px solid #2a2a2a;border-radius:20px;padding:36px 40px;margin-bottom:20px;transition:.25s;text-align:left;}
-.contact-card:hover{border-color:#ff8c00;box-shadow:0 0 22px rgba(255,140,0,.15);}
-.contact-card-label{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:1.4px;color:#666;margin-bottom:10px;display:flex;align-items:center;gap:8px;}
-.contact-card-label svg{width:16px;height:16px;opacity:.6;}
-.contact-email{font-size:22px;font-weight:700;color:#fff;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;}
-.copy-btn{background:rgba(255,140,0,.1);border:1px solid rgba(255,140,0,.3);color:#ff8c00;font-size:13px;font-weight:700;padding:7px 16px;border-radius:8px;cursor:pointer;transition:.2s;flex-shrink:0;}
-.copy-btn:hover{background:rgba(255,140,0,.22);border-color:#ff8c00;}
-.copy-btn.copied{background:rgba(0,200,100,.12);border-color:rgba(0,200,100,.4);color:#00c864;}
-.recommend-btn{display:flex;align-items:center;justify-content:center;gap:10px;width:100%;padding:16px;background:linear-gradient(45deg,#ff8c00,#ffd000);color:#111;font-weight:900;font-size:17px;border:none;border-radius:14px;cursor:pointer;text-decoration:none;transition:.2s;box-shadow:0 4px 20px rgba(255,140,0,.35);margin-top:8px;}
-.recommend-btn:hover{transform:scale(1.03);box-shadow:0 6px 28px rgba(255,140,0,.55);}
-
-</style>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+  <title>really cool flash game</title>
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      background: black;
+      overflow: hidden;
+      height: 100%;
+      width: 100%;
+    }
+    #flash-container {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: black;
+      overflow: hidden;
+    }
+    .black-box {
+      position: fixed;
+      background: black;
+      z-index: 10;
+    }
+    #box-top {
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 0;
+    }
+    #box-bottom {
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 0;
+    }
+    #box-left {
+      top: 0;
+      left: 0;
+      width: 0;
+      height: 100%;
+    }
+    #box-right {
+      top: 0;
+      right: 0;
+      width: 0;
+      height: 100%;
+    }
+    ruffle-player {
+      width: 100%;
+      height: 100%;
+      background: black;
+      display: block;
+    }
+  </style>
+  <script src="https://cdn.jsdelivr.net/npm/@ruffle-rs/ruffle@0.2.0-nightly.2025.10.2/ruffle.min.js"></script>
 </head>
 <body>
-
-<div class="bg" id="bg"></div>
-
-<div class="topbar">
-  <div class="top-center">Credits: Carter M and Caden J</div>
-  <div class="top-left" onclick="showPage('home')">
-    <div class="logo-emoji">🌭</div>
-    <div class="header-text">Hotdog Party</div>
-  </div>
-  <div class="nav-right">
-    <div class="nav-btn games-nav-btn" onclick="showPage('gamesPage')">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" width="20" height="20"><rect x="2" y="7" width="20" height="12" rx="4"/><path d="M8 11v4M6 13h4"/><circle cx="16" cy="12" r="1" fill="currentColor"/><circle cx="18" cy="14" r="1" fill="currentColor"/></svg>
-      Games
-    </div>
-    <div class="nav-btn" onclick="showPage('contactPage')">
-      <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
-      Contact
-    </div>
-    <a href="https://discord.gg/3y28DJYaVY" target="_blank" class="discord-btn">
-      <svg viewBox="0 0 127.14 96.36"><path fill="white" d="M107.7,8.07A105.15,105.15,0,0,0,81.47,0a72.06,72.06,0,0,0-3.36,6.83A97.68,97.68,0,0,0,49,6.83,72.37,72.37,0,0,0,45.64,0,105.89,105.89,0,0,0,19.39,8.09C2.79,33.64-1.71,58.52.54,83.06a105.73,105.73,0,0,0,32.17,16.3,77.7,77.7,0,0,0,6.89-11.14,68.42,68.42,0,0,1-10.85-5.18c.91-.67,1.8-1.36,2.66-2.07a75.48,75.48,0,0,0,64.32,0c.87.71,1.76,1.4,2.66,2.07a68.68,68.68,0,0,1-10.87,5.19,77.23,77.23,0,0,0,6.9,11.13A105.25,105.25,0,0,0,126.6,83C129.2,54.59,122.2,30,107.7,8.07Z"/></svg>
-      Discord
-    </a>
-  </div>
-</div>
-
-<!-- HOME PAGE -->
-<div id="home" class="page active">
-  <div class="hero">
-    <h1>THE <span class="white">HOTDOG</span> PARTY</h1>
-    <p>Start having fun without realizing.</p>
-    <div class="hero-btns">
-      <button class="start-btn" onclick="showPage('gamesPage')">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:26px;height:26px;vertical-align:middle;margin-right:10px;color:#111"><rect x="2" y="7" width="20" height="12" rx="4"/><path d="M8 11v4M6 13h4"/><circle cx="16" cy="12" r="1" fill="#111"/><circle cx="18" cy="14" r="1" fill="#111"/></svg>
-        START GRINDING!
-      </button>
-      <a href="https://discord.gg/3y28DJYaVY" target="_blank" class="discord-hero-btn">
-        <svg viewBox="0 0 127.14 96.36"><path fill="white" d="M107.7,8.07A105.15,105.15,0,0,0,81.47,0a72.06,72.06,0,0,0-3.36,6.83A97.68,97.68,0,0,0,49,6.83,72.37,72.37,0,0,0,45.64,0,105.89,105.89,0,0,0,19.39,8.09C2.79,33.64-1.71,58.52.54,83.06a105.73,105.73,0,0,0,32.17,16.3,77.7,77.7,0,0,0,6.89-11.14,68.42,68.42,0,0,1-10.85-5.18c.91-.67,1.8-1.36,2.66-2.07a75.48,75.48,0,0,0,64.32,0c.87.71,1.76,1.4,2.66,2.07a68.68,68.68,0,0,1-10.87,5.19,77.23,77.23,0,0,0,6.9,11.13A105.25,105.25,0,0,0,126.6,83C129.2,54.59,122.2,30,107.7,8.07Z"/></svg>
-        Join Discord
-      </a>
-    </div>
-  </div>
-  <div class="stats">
-    <div class="stat-card"><div class="stat-num" id="stat-games">60+</div><div class="stat-label">Games</div></div>
-    <div class="stat-card"><div class="stat-num">100%</div><div class="stat-label">Free</div></div>
-    <div class="stat-card"><div class="stat-num">24/7</div><div class="stat-label">Online</div></div>
-  </div>
-  <div class="section-title">🎮 Browse Games</div>
-  <div class="belt-wrapper"><div class="belt-track" id="belt-track"></div></div>
-  <div class="featured-grid" id="featured-games"></div>
-  <button class="view-all-btn" onclick="showPage('gamesPage')">View All Games →</button>
-</div>
-
-<!-- GAMES PAGE -->
-<div id="gamesPage" class="page">
-
-  <!-- BROWSE VIEW -->
-  <div class="games-layout" id="browseView">
-
-    <!-- LEFT PANEL -->
-    <div class="games-left">
-
-      <!-- Game of the Day -->
-      <div class="gotd-panel">
-        <div class="gotd-header">
-          <span>📅</span>
-          <div class="gotd-header-title">Game of the Day</div>
-        </div>
-        <div class="gotd-body">
-          <div class="gotd-date" id="gotdDate"></div>
-          <div class="gotd-img-wrap" id="gotdImgWrap">
-            <img id="gotdImg" src="" alt="">
-          </div>
-          <div class="gotd-name" id="gotdName">Loading...</div>
-          <button class="gotd-play-btn" id="gotdBtn">▶ Play Now</button>
-        </div>
-      </div>
-
-      <!-- Active Players -->
-      <div class="active-panel">
-        <div class="active-header">
-          <div class="active-header-title">🔥 Playing Now</div>
-          <div style="display:flex;align-items:center;gap:6px;">
-            <div class="active-dot"></div>
-            <span id="activeCount" style="font-size:12px;font-weight:700;color:#4caf50;">0</span>
-          </div>
-        </div>
-        <div class="active-list" id="activeList">
-          <div class="active-empty">Loading...</div>
-        </div>
-      </div>
-
-    </div>
-
-    <!-- center: search + 6-per-row grid -->
-    <div class="games-center">
-      <div class="search-container">
-        <svg class="search-icon" viewBox="0 0 24 24"><path d="M21 20l-5.2-5.2a7 7 0 10-1 1L20 21zM10 16a6 6 0 110-12 6 6 0 010 12z"/></svg>
-        <input class="search" id="search" placeholder="Search games...">
-      </div>
-      <div class="games" id="games"></div>
-    </div>
-
-    <!-- right: leaderboard -->
-    <div class="games-right">
-      <div class="leaderboard-panel">
-        <div class="lb-header">
-          <div class="lb-header-title">🏆 Most Played</div>
-          <div class="lb-live-dot"></div>
-        </div>
-        <div class="lb-list" id="lbList">
-          <div class="lb-empty">Loading leaderboard...</div>
-        </div>
-      </div>
-    </div>
-
-  </div>
-
-  <!-- PLAYER VIEW -->
-  <div class="player-layout" id="playerView">
-
-    <div class="player-main">
-      <div class="player-toolbar">
-        <button class="back-btn" onclick="closePlayer()">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
-          Back
-        </button>
-        <img class="player-game-icon" id="playerIcon" src="" alt="">
-        <div class="player-game-title" id="playerTitle"></div>
-        <button class="toolbar-btn" title="Refresh" onclick="refreshGame()">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"/></svg>
-        </button>
-        <button class="toolbar-btn" title="Fullscreen" onclick="fullscreenGame()">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 3 21 3 21 9"/><polyline points="9 21 3 21 3 15"/><line x1="21" y1="3" x2="14" y2="10"/><line x1="3" y1="21" x2="10" y2="14"/></svg>
-        </button>
-      </div>
-      <div class="player-iframe-wrap">
-        <iframe id="gameFrame" src="" allowfullscreen></iframe>
-      </div>
-    </div>
-
-    <div class="player-sidebar">
-      <div class="sidebar-title">⚡ Quick Play</div>
-      <div id="playerSidebarGames"></div>
-    </div>
-
-  </div>
-
-</div>
-
-<!-- CONTACT PAGE -->
-<div id="contactPage" class="page">
-  <div class="contact-wrap">
-    <h2>📬 Contact Us</h2>
-    <p>Got questions, issues, or just want to say hey? Reach out below.</p>
-    <div class="contact-card">
-      <div class="contact-card-label">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-        Email us
-      </div>
-      <div class="contact-email">
-        <span><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="e38b8c97878c84938291979adbd6d7a3848e828a8fcd808c8e">[email&#160;protected]</a></span>
-        <button class="copy-btn" id="copyBtn" onclick="copyEmail()">Copy</button>
-      </div>
-    </div>
-    <div class="contact-card">
-      <div class="contact-card-label">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-        Suggest a game
-      </div>
-      <a href="https://docs.google.com/forms/d/e/1FAIpQLSfYiXKpJ7o2cjKgrCvz6uNZ_lulE3e90rBCsKrtCXt4oQ1qoA/viewform?usp=publish-editor" target="_blank" class="recommend-btn">
-        🎮 Recommendations
-      </a>
-    </div>
-  </div>
-</div>
-
-<button class="scroll-top" id="scrollTopBtn" onclick="window.scrollTo({top:0,behavior:'smooth'})">
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"/></svg>
-</button>
-
-<script>
-
-let allGames = []
-let currentGame = null
-
-// ---- PAGE NAV ----
-function showPage(page) {
-  document.querySelectorAll(".page").forEach(p => p.classList.remove("active"))
-  document.getElementById(page).classList.add("active")
-  window.scrollTo(0, 0)
-}
-
-// ---- GAME OF THE DAY ----
-function setupGameOfTheDay(games) {
-  if (!games.length) return
-  // Use today's date as a deterministic seed — same game for everyone all day
-  const today = new Date()
-  const seed = today.getFullYear() * 10000 + (today.getMonth()+1) * 100 + today.getDate()
-  const idx = seed % games.length
-  const game = games[idx]
-
-  const months = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"]
-  document.getElementById("gotdDate").textContent =
-    months[today.getMonth()] + " " + today.getDate() + ", " + today.getFullYear()
-  document.getElementById("gotdImg").src = game.icon
-  document.getElementById("gotdName").textContent = game.name
-  document.getElementById("gotdImgWrap").onclick = () => { showPage('gamesPage'); openGame(game) }
-  document.getElementById("gotdBtn").onclick = () => { showPage('gamesPage'); openGame(game) }
-}
-
-// ---- ACTIVE PLAYERS (Firebase — last 3 mins) ----
-const FB_ACTIVE_URL = "https://hotdog-party-61e77-default-rtdb.firebaseio.com/active"
-let activeSessionId = Math.random().toString(36).slice(2)
-
-async function pingActive(game) {
-  if (!FB_READY) return
-  try {
-    await fetch(FB_ACTIVE_URL + "/" + activeSessionId + ".json", {
-      method: "PUT",
-      headers: {"Content-Type":"application/json"},
-      body: JSON.stringify({
-        game: game.name,
-        icon: game.icon,
-        path: game.path,
-        ts: Date.now()
-      })
-    })
-  } catch(e) {}
-}
-
-async function loadActivePlayers() {
-  const container = document.getElementById("activeList")
-  if (!container) return
-  if (!FB_READY) { container.innerHTML = '<div class="active-empty">0 people playing right now</div>'; return }
-  try {
-    const r = await fetch(FB_ACTIVE_URL + ".json")
-    const data = await r.json()
-    if (!data) {
-      container.innerHTML = `<div style="padding:18px 14px;text-align:center;"><div style="font-family:'Luckiest Guy';font-size:42px;background:linear-gradient(45deg,#ff7b00,#ffae00);-webkit-background-clip:text;-webkit-text-fill-color:transparent;line-height:1;">0</div><div style="font-size:12px;color:#888;margin-top:6px;font-weight:600;">people playing right now</div></div>`
-      return
-    }
-
-    const cutoff = Date.now() - 3 * 60 * 1000 // last 3 minutes
-    const active = Object.values(data).filter(e => e && e.ts && e.ts > cutoff)
-
-    // Update total online count in header
-    const countEl = document.getElementById("activeCount")
-    if (countEl) countEl.textContent = active.length + " online"
-
-    const total = active.length
-    const label = total === 1 ? "1 person playing right now" : total + " people playing right now"
-    container.innerHTML = `<div style="padding:18px 14px;text-align:center;">
-      <div style="font-family:'Luckiest Guy';font-size:42px;background:linear-gradient(45deg,#ff7b00,#ffae00);-webkit-background-clip:text;-webkit-text-fill-color:transparent;line-height:1;">${total}</div>
-      <div style="font-size:12px;color:#888;margin-top:6px;font-weight:600;">${total === 1 ? 'person playing right now' : 'people playing right now'}</div>
-    </div>`
-  } catch(e) {
-    container.innerHTML = '<div class="active-empty">No one playing right now</div>'
-  }
-}
-
-
-// SETUP: Go to firebase.google.com → create project → Realtime Database → Start in test mode
-// Then replace the URL below with your own:  https://YOUR-PROJECT-default-rtdb.firebaseio.com/plays
-const FB_URL = "https://hotdog-party-61e77-default-rtdb.firebaseio.com/plays"
-const FB_READY = !FB_URL.startsWith("YOUR_")
-
-// localStorage fallback key (used if Firebase not yet configured)
-const LB_LOCAL_KEY = "hotdog_lb"
-
-async function incrementPlayCount(game) {
-  const key = game.name.replace(/[.#$\[\]\/ ]/g, "_")
-  if (FB_READY) {
-    try {
-      const r = await fetch(FB_URL + "/" + key + ".json")
-      const cur = await r.json()
-      const prev = (cur && cur.count) ? cur.count : 0
-      await fetch(FB_URL + "/" + key + ".json", {
-        method: "PUT",
-        headers: {"Content-Type":"application/json"},
-        body: JSON.stringify({count: prev+1, name: game.name, icon: game.icon, path: game.path})
-      })
-      loadLeaderboard()
-      return
-    } catch(e) {}
-  }
-  // localStorage fallback
-  const local = JSON.parse(localStorage.getItem(LB_LOCAL_KEY) || "{}")
-  local[key] = {count: ((local[key]||{}).count||0)+1, name: game.name, icon: game.icon, path: game.path}
-  localStorage.setItem(LB_LOCAL_KEY, JSON.stringify(local))
-  renderLeaderboard(Object.values(local).sort((a,b)=>b.count-a.count).slice(0,10))
-}
-
-async function loadLeaderboard() {
-  if (FB_READY) {
-    try {
-      const r = await fetch(FB_URL + ".json")
-      const data = await r.json()
-      if (data) {
-        const entries = Object.values(data).filter(e=>e&&e.count).sort((a,b)=>b.count-a.count).slice(0,10)
-        renderLeaderboard(entries)
-        return
+  <div id="flash-container"></div>
+  <div class="black-box" id="box-top"></div>
+  <div class="black-box" id="box-bottom"></div>
+  <div class="black-box" id="box-left"></div>
+  <div class="black-box" id="box-right"></div>
+  <script>
+    const container = document.getElementById("flash-container");
+    const boxTop = document.getElementById("box-top");
+    const boxBottom = document.getElementById("box-bottom");
+    const boxLeft = document.getElementById("box-left");
+    const boxRight = document.getElementById("box-right");
+    
+    function resizeGame() {
+      const windowWidth = window.innerWidth;
+      const windowHeight = window.innerHeight;
+      const aspectRatio = 5.5 / 3;
+      
+      // Use 95% of available space instead of 100%
+      let width = Math.floor(windowWidth * 1);
+      let height = Math.floor(width / aspectRatio);
+      
+      if (height > windowHeight * 1) {
+        height = Math.floor(windowHeight * 1);
+        width = Math.floor(height * aspectRatio);
       }
-    } catch(e) {}
-  }
-  // localStorage fallback
-  const local = JSON.parse(localStorage.getItem(LB_LOCAL_KEY) || "{}")
-  const entries = Object.values(local).filter(e=>e&&e.count).sort((a,b)=>b.count-a.count).slice(0,10)
-  renderLeaderboard(entries)
-}
-
-function renderLeaderboard(entries) {
-  const container = document.getElementById("lbList")
-  if (!container) return
-  if (!entries || entries.length === 0) {
-    container.innerHTML = '<div class="lb-empty">Play some games to start the leaderboard!</div>'
-    return
-  }
-  const maxCount = entries[0].count
-  const medals = ["\uD83E\uDD47","\uD83E\uDD48","\uD83E\uDD49"]
-  const classes = ["gold","silver","bronze"]
-  container.innerHTML = entries.map((e, i) => {
-    const pct = Math.round((e.count / maxCount) * 100)
-    const safePath = (e.path||"").replace(/'/g,"\\'")
-    return `<div class="lb-row" onclick="openGame(allGames.find(g=>g.path==='${safePath}'))">
-      <div class="lb-rank ${i<3?classes[i]:'other'}">${i<3?medals[i]:i+1}</div>
-      <img class="lb-icon" src="${e.icon}" alt="${e.name}" onerror="this.style.opacity=0">
-      <div class="lb-info">
-        <div class="lb-name">${e.name}</div>
-        <div class="lb-plays">${e.count===1?"1 play":e.count+" plays"}</div>
-        <div class="lb-bar-wrap"><div class="lb-bar" style="width:${pct}%"></div></div>
-      </div>
-    </div>`
-  }).join("")
-}
-
-// ---- PLAYER ----
-function openGame(game) {
-  if (!game) return
-  currentGame = game
-  document.getElementById("browseView").style.display = "none"
-  document.getElementById("playerView").classList.add("visible")
-  document.getElementById("playerIcon").src = game.icon
-  document.getElementById("playerTitle").textContent = game.name
-  document.getElementById("gameFrame").src = game.path
-  renderPlayerSidebar(allGames, game)
-  window.scrollTo(0, 0)
-  incrementPlayCount(game)
-  pingActive(game)
-  // Keep refreshing "playing now" while game is open
-  clearInterval(window._activeInterval)
-  window._activeInterval = setInterval(() => pingActive(game), 90000)
-}
-
-function closePlayer() {
-  document.getElementById("gameFrame").src = ""
-  document.getElementById("playerView").classList.remove("visible")
-  document.getElementById("browseView").style.display = "flex"
-}
-
-function refreshGame() {
-  const frame = document.getElementById("gameFrame")
-  frame.src = frame.src
-}
-
-function fullscreenGame() {
-  const frame = document.getElementById("gameFrame")
-  if (frame.requestFullscreen) frame.requestFullscreen()
-  else if (frame.webkitRequestFullscreen) frame.webkitRequestFullscreen()
-  else if (frame.mozRequestFullScreen) frame.mozRequestFullScreen()
-}
-
-// ---- SIDEBARS ----
-function renderPlayerSidebar(games, activeGame) {
-  const container = document.getElementById("playerSidebarGames")
-  container.innerHTML = ""
-  shuffle(games).filter(g => g.path !== activeGame.path).slice(0, 5).forEach(game => {
-    const el = document.createElement("div")
-    el.className = "sidebar-game"
-    el.innerHTML = '<img src="' + game.icon + '" alt="' + game.name + '"><div class="sidebar-game-name">' + game.name + '</div>'
-    el.onclick = () => openGame(game)
-    container.appendChild(el)
-  })
-}
-
-// ---- GRIDS ----
-function renderGames(games) {
-  const container = document.getElementById("games")
-  container.innerHTML = ""
-  games.forEach(game => {
-    const card = document.createElement("div")
-    card.className = "game"
-    card.innerHTML = '<img src="' + game.icon + '"><div class="title">' + game.name + '</div>'
-    card.onclick = () => openGame(game)
-    container.appendChild(card)
-  })
-}
-
-function renderFeatured(orderedGames) {
-  const container = document.getElementById("featured-games")
-  container.innerHTML = ""
-  orderedGames.slice(0, 12).forEach((game, i) => {
-    const card = document.createElement("div")
-    card.className = "featured-game"
-    const badge = i === 0 ? '<div class="hot-badge">🥇 #1</div>'
-                : i === 1 ? '<div class="hot-badge">🥈 #2</div>'
-                : i === 2 ? '<div class="hot-badge">🥉 #3</div>'
-                : i < 10  ? `<div class="hot-badge">#${i+1}</div>`
-                : ''
-    card.innerHTML = '<img src="' + game.icon + '">' + badge + '<div class="ftitle">' + game.name + '</div>'
-    card.onclick = () => { showPage('gamesPage'); openGame(game) }
-    container.appendChild(card)
-  })
-}
-
-function renderBelt(games) {
-  const track = document.getElementById("belt-track")
-  const items = [...shuffle(games), ...shuffle(games)]
-  track.innerHTML = items.map(game => {
-    const safePath = game.path.replace(/'/g, "\\'")
-    return '<div class="belt-card" onclick="showPage(\'gamesPage\'); openGame(allGames.find(g=>g.path===\'' + safePath + '\'))">' +
-      '<img src="' + game.icon + '" alt="' + game.name + '">' +
-      '<div class="belt-title">' + game.name + '</div>' +
-      '</div>'
-  }).join("")
-}
-
-function shuffle(arr) { return [...arr].sort(() => Math.random() - 0.5) }
-
-function copyEmail() {
-  navigator.clipboard.writeText("hotdogparty854@gmail.com")
-  const btn = document.getElementById("copyBtn")
-  btn.textContent = "Copied!"
-  btn.classList.add("copied")
-  setTimeout(() => { btn.textContent = "Copy"; btn.classList.remove("copied") }, 2000)
-}
-
-document.getElementById("search").addEventListener("input", e => {
-  const q = e.target.value.toLowerCase()
-  renderGames(allGames.filter(g => g.name.toLowerCase().includes(q)))
-})
-
-// Background shapes
-const bg = document.getElementById("bg")
-for (let i = 0; i < 30; i++) {
-  const shape = document.createElement("div")
-  shape.className = "shape"
-  shape.style.left = Math.random() * 100 + "%"
-  shape.style.top = Math.random() * 100 + "%"
-  shape.style.animationDuration = (Math.random() * 20 + 10) + "s"
-  bg.appendChild(shape)
-}
-
-async function loadGames() {
-  try {
-    const res = await fetch("games.json")
-    const games = await res.json()
-    allGames = games
-    document.getElementById("stat-games").textContent = games.length
-    renderGames(games)
-    renderBelt(games)
-    loadLeaderboard()
-    setupGameOfTheDay(games)
-    loadActivePlayers()
-    // Refresh active players every 30 seconds
-    setInterval(loadActivePlayers, 30000)
-
-    // Featured: top 10 most played from Firebase, padded with random games
-    try {
-      const lbRes = await fetch(FB_URL + ".json")
-      const lbData = await lbRes.json()
-      let featured = []
-      if (lbData) {
-        const sorted = Object.values(lbData)
-          .filter(e => e && e.count && e.path)
-          .sort((a, b) => b.count - a.count)
-          .slice(0, 10)
-          .map(e => games.find(g => g.path === e.path))
-          .filter(Boolean)
-        featured = sorted
-      }
-      // Pad to 12 with random games not already in the list
-      const usedPaths = new Set(featured.map(g => g.path))
-      const rest = shuffle(games.filter(g => !usedPaths.has(g.path)))
-      featured = [...featured, ...rest].slice(0, 12)
-      renderFeatured(featured)
-    } catch {
-      renderFeatured(shuffle(games))
+      
+      container.style.width = `${width}px`;
+      container.style.height = `${height}px`;
+      
+      // Calculate margins
+      const topMargin = (windowHeight - height) / 2;
+      const leftMargin = (windowWidth - width) / 2;
+      
+      // Set black box sizes
+      boxTop.style.height = `${topMargin}px`;
+      boxBottom.style.height = `${topMargin}px`;
+      boxLeft.style.width = `${leftMargin}px`;
+      boxRight.style.width = `${leftMargin}px`;
     }
-
-  } catch(e) {
-    console.log("Could not load games.json:", e)
-  }
-}
-
-loadGames()
-
-window.addEventListener("scroll", () => {
-  document.getElementById("scrollTopBtn").classList.toggle("visible", window.scrollY > 300)
-})
-
-</script>
+    
+    window.addEventListener("resize", resizeGame);
+    window.addEventListener("DOMContentLoaded", () => {
+      resizeGame();
+      const ruffle = window.RufflePlayer?.newest() || window.RufflePlayer?.createPlayer();
+      if (ruffle && container) {
+        const player = ruffle.createPlayer();
+        player.style.width = "100%";
+        player.style.height = "100%";
+        player.style.background = "black";
+        container.appendChild(player);
+        player.load("$1");
+      } else {
+        container.textContent = "Ruffle failed to load."; 
+      }
+    });
+  </script>
+    <param name="movie" value="https://cdn.jsdelivr.net/gh/bubbls/UGS-file-encryption@8fecedfd237e90740ce30b860005e6819b6df9cd/Bad-Ice-Cream.swf">
+    <embed src="https://cdn.jsdelivr.net/gh/bubbls/UGS-file-encryption@8fecedfd237e90740ce30b860005e6819b6df9cd/Bad-Ice-Cream.swf" width="100%" height="100%">
 </body>
 </html>
+]]></Content>
+</Module>

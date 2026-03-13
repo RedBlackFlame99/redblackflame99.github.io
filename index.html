@@ -87,7 +87,7 @@ border-bottom:1px solid rgba(255,140,0,.12);
 
 .section-title{font-family:'Luckiest Guy';font-size:34px;margin:54px 0 20px;background:linear-gradient(45deg,#ff7b00,#ffae00);-webkit-background-clip:text;-webkit-text-fill-color:transparent;display:inline-block;}
 
-.featured-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:16px;margin-bottom:28px;}
+.belt-wrapper::before,.belt-wrapper::after{content:'';position:absolute;top:0;bottom:0;width:100px;z-index:2;pointer-events:none;}
 .featured-game{position:relative;aspect-ratio:1/1;border-radius:14px;overflow:hidden;cursor:pointer;background:#1f1f1f;transition:.22s;border:2px solid transparent;}
 .featured-game:hover{transform:scale(1.06);border-color:#ff8c00;box-shadow:0 0 22px rgba(255,140,0,.38);}
 .featured-game img{width:100%;height:100%;object-fit:cover;}
@@ -98,7 +98,8 @@ border-bottom:1px solid rgba(255,140,0,.12);
 .view-all-btn:hover{background:#ff8c00;color:#111;}
 
 /* BELT */
-.belt-wrapper{position:relative;overflow:hidden;margin:0 -40px 54px;padding:10px 0;}
+.belt-wrapper{position:relative;overflow:hidden;margin:0 -40px 0;padding:10px 0;}
+.featured-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:16px;margin:16px 0 28px;}
 .belt-wrapper::before,.belt-wrapper::after{content:'';position:absolute;top:0;bottom:0;width:100px;z-index:2;pointer-events:none;}
 .belt-wrapper::before{left:0;background:linear-gradient(to right,#121212 20%,transparent);}
 .belt-wrapper::after{right:0;background:linear-gradient(to left,#121212 20%,transparent);}
@@ -486,7 +487,6 @@ position:sticky;top:104px;
   </div>
   <div class="section-title">🎮 Browse Games</div>
   <div class="belt-wrapper"><div class="belt-track" id="belt-track"></div></div>
-  <div class="section-title">🔥 Featured Games</div>
   <div class="featured-grid" id="featured-games"></div>
   <button class="view-all-btn" onclick="showPage('gamesPage')">View All Games →</button>
 </div>
@@ -520,7 +520,10 @@ position:sticky;top:104px;
       <div class="active-panel">
         <div class="active-header">
           <div class="active-header-title">🔥 Playing Now</div>
-          <div class="active-dot"></div>
+          <div style="display:flex;align-items:center;gap:6px;">
+            <div class="active-dot"></div>
+            <span id="activeCount" style="font-size:12px;font-weight:700;color:#4caf50;">0</span>
+          </div>
         </div>
         <div class="active-list" id="activeList">
           <div class="active-empty">Loading...</div>
@@ -669,41 +672,28 @@ async function pingActive(game) {
 async function loadActivePlayers() {
   const container = document.getElementById("activeList")
   if (!container) return
-  if (!FB_READY) { container.innerHTML = '<div class="active-empty">No one yet!</div>'; return }
+  if (!FB_READY) { container.innerHTML = '<div class="active-empty">0 people playing right now</div>'; return }
   try {
     const r = await fetch(FB_ACTIVE_URL + ".json")
     const data = await r.json()
-    if (!data) { container.innerHTML = '<div class="active-empty">Be the first to play!</div>'; return }
+    if (!data) {
+      container.innerHTML = `<div style="padding:18px 14px;text-align:center;"><div style="font-family:'Luckiest Guy';font-size:42px;background:linear-gradient(45deg,#ff7b00,#ffae00);-webkit-background-clip:text;-webkit-text-fill-color:transparent;line-height:1;">0</div><div style="font-size:12px;color:#888;margin-top:6px;font-weight:600;">people playing right now</div></div>`
+      return
+    }
 
     const cutoff = Date.now() - 3 * 60 * 1000 // last 3 minutes
     const active = Object.values(data).filter(e => e && e.ts && e.ts > cutoff)
 
-    // Count by game
-    const counts = {}
-    active.forEach(e => {
-      const k = e.path
-      if (!counts[k]) counts[k] = { name: e.game, icon: e.icon, path: e.path, count: 0 }
-      counts[k].count++
-    })
+    // Update total online count in header
+    const countEl = document.getElementById("activeCount")
+    if (countEl) countEl.textContent = active.length + " online"
 
-    const sorted = Object.values(counts).sort((a,b) => b.count - a.count).slice(0, 5)
-
-    if (sorted.length === 0) {
-      container.innerHTML = '<div class="active-empty">No one playing right now</div>'
-      return
-    }
-
-    container.innerHTML = sorted.map(e => {
-      const safePath = e.path.replace(/'/g, "\\'")
-      const label = e.count === 1 ? "1 player" : e.count + " players"
-      return `<div class="active-row" onclick="openGame(allGames.find(g=>g.path==='${safePath}'))">
-        <img class="active-icon" src="${e.icon}" alt="${e.name}" onerror="this.style.opacity=0">
-        <div class="active-info">
-          <div class="active-name">${e.name}</div>
-          <div class="active-count">● ${label}</div>
-        </div>
-      </div>`
-    }).join("")
+    const total = active.length
+    const label = total === 1 ? "1 person playing right now" : total + " people playing right now"
+    container.innerHTML = `<div style="padding:18px 14px;text-align:center;">
+      <div style="font-family:'Luckiest Guy';font-size:42px;background:linear-gradient(45deg,#ff7b00,#ffae00);-webkit-background-clip:text;-webkit-text-fill-color:transparent;line-height:1;">${total}</div>
+      <div style="font-size:12px;color:#888;margin-top:6px;font-weight:600;">${total === 1 ? 'person playing right now' : 'people playing right now'}</div>
+    </div>`
   } catch(e) {
     container.innerHTML = '<div class="active-empty">No one playing right now</div>'
   }
@@ -932,7 +922,7 @@ async function loadGames() {
       // Pad to 12 with random games not already in the list
       const usedPaths = new Set(featured.map(g => g.path))
       const rest = shuffle(games.filter(g => !usedPaths.has(g.path)))
-      featured = [...featured, ...rest].slice(0, 10)
+      featured = [...featured, ...rest].slice(0, 12)
       renderFeatured(featured)
     } catch {
       renderFeatured(shuffle(games))
