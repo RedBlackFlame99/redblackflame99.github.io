@@ -628,6 +628,36 @@
         "name": "Stickman Hook",
         "path": "games/stickmanhook/clstickmanhook.html",
         "icon": "games/stickmanhook/icon.png"
+    },
+    {
+        "name": "A Dark Room",
+        "path": "games/darkroom/darkroom.html",
+        "icon": "games/darkroom/icon.png"
+    },
+    {
+        "name": "Stick Merge",
+        "path": "games/stickmerge/sm.html",
+        "icon": "games/stickmerge/icon.png"
+    },
+    {
+        "name": "Adventure Capatalist",
+        "path": "games/adventurecap/cap.html",
+        "icon": "games/adventurecap/icon.png"
+    },
+    {
+        "name": "Super Car Rush",
+        "path": "games/supercarrush/cr.html",
+        "icon": "games/supercarrush/icon.png"
+    },
+    {
+        "name": "Superhot",
+        "path": "games/superhot/sh.html",
+        "icon": "games/superhot/icon.png"
+    },
+    {
+        "name": "Swordfight",
+        "path": "games/swordfight/clswordfight.html",
+        "icon": "games/swordfight/icon.png"
     }
     
     

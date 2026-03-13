@@ -709,7 +709,7 @@ async function loadGames() {
       // Pad to 12 with random games not already in the list
       const usedPaths = new Set(featured.map(g => g.path))
       const rest = shuffle(games.filter(g => !usedPaths.has(g.path)))
-      featured = [...featured, ...rest].slice(0, 12)
+      featured = [...featured, ...rest].slice(0, 20)
       renderFeatured(featured)
     } catch {
       renderFeatured(shuffle(games))
