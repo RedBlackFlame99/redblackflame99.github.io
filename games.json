@@ -280,6 +280,11 @@
         "icon": "games/gun_mayhem/icon2.png"
     },
     {
+        "name": "Gun Mayhem Redux",
+        "path": "games/gun_mayhem/redux/index.html",
+        "icon": "games/gun_mayhem/redux/icon.png"
+    },
+    {
         "name": "Pixel Shooter",
         "path": "games/pixel_shooter/clpixelshooter.html",
         "icon": "games/pixel_shooter/icon.png"
@@ -923,6 +928,21 @@
         "name": "Froggys Battle",
         "path": "games/froggysbattle/index.html",
         "icon": "games/froggysbattle/icon.jpg"
+    },
+    {
+        "name": "Getting Over It",
+        "path": "games/getting-over-it/index.html",
+        "icon": "games/getting-over-it/icon.png"
+    },
+    {
+        "name": "Golf",
+        "path": "games/golf/index.html",
+        "icon": "games/golf/icon.jpg"
+    },
+    {
+        "name": "Gravity Soccer",
+        "path": "games/gravity-soccer/index.html",
+        "icon": "games/gravity-soccer/icon.png"
     }
 
 ]
