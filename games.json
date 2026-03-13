@@ -70,11 +70,6 @@
         "icon": "games/slope/icon3.png"
     },
     {
-        "name": "Slope 2 Player",
-        "path": "games/slope/slope2p.html",
-        "icon": "games/slope/icon2.png"
-    },
-    {
         "name": "Doge Miner",
         "path": "games/doge_miner/dogeminer.html",
         "icon": "games/doge_miner/icon.png"

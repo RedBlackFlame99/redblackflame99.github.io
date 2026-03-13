@@ -61,6 +61,8 @@ body{font-family:"Segoe UI",system-ui,sans-serif;background:#121212;color:white;
 .toolbar-btn{display:flex;align-items:center;justify-content:center;width:36px;height:36px;border-radius:9px;border:1px solid #2e2e2e;background:#1e1e1e;cursor:pointer;transition:.18s;flex-shrink:0;color:#bbb;}
 .toolbar-btn:hover{background:#2a2a2a;border-color:#ff8c00;color:#ff8c00;box-shadow:0 0 10px rgba(255,140,0,.25);}
 .toolbar-btn svg{width:17px;height:17px;pointer-events:none;}
+.toolbar-btn.muted{border-color:#ff4444;color:#ff4444;background:rgba(255,68,68,.1);}
+.toolbar-btn.muted:hover{border-color:#ff4444;color:#ff4444;box-shadow:0 0 10px rgba(255,68,68,.25);}
 
 .back-btn{display:flex;align-items:center;gap:7px;padding:7px 14px;border-radius:9px;border:1px solid #2e2e2e;background:#1e1e1e;cursor:pointer;transition:.18s;color:#bbb;font-size:13px;font-weight:700;flex-shrink:0;text-decoration:none;}
 .back-btn:hover{background:#2a2a2a;border-color:#ff8c00;color:#ff8c00;}
@@ -68,6 +70,9 @@ body{font-family:"Segoe UI",system-ui,sans-serif;background:#121212;color:white;
 
 .player-iframe-wrap{flex:1;position:relative;min-height:520px;}
 .player-iframe-wrap iframe{width:100%;height:100%;border:none;position:absolute;inset:0;}
+
+/* mute overlay — covers iframe to block audio via a silent AudioContext trick */
+#muteOverlay{display:none;position:absolute;inset:0;z-index:10;pointer-events:none;}
 
 /* SIDEBAR */
 .player-sidebar{flex:0 0 240px;display:flex;flex-direction:column;gap:10px;position:sticky;top:104px;}
@@ -119,6 +124,20 @@ body{font-family:"Segoe UI",system-ui,sans-serif;background:#121212;color:white;
       </a>
       <img class="player-game-icon" id="playerIcon" src="" alt="">
       <div class="player-game-title" id="playerTitle">Loading...</div>
+      <button class="toolbar-btn" id="muteBtn" title="Mute" onclick="toggleMute()">
+        <!-- Unmuted icon (shown by default) -->
+        <svg id="iconUnmuted" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/>
+          <path d="M19.07 4.93a10 10 0 0 1 0 14.14"/>
+          <path d="M15.54 8.46a5 5 0 0 1 0 7.07"/>
+        </svg>
+        <!-- Muted icon (hidden by default) -->
+        <svg id="iconMuted" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:none;">
+          <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/>
+          <line x1="23" y1="9" x2="17" y2="15"/>
+          <line x1="17" y1="9" x2="23" y2="15"/>
+        </svg>
+      </button>
       <button class="toolbar-btn" title="Refresh" onclick="refreshGame()">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"/></svg>
       </button>
@@ -127,6 +146,7 @@ body{font-family:"Segoe UI",system-ui,sans-serif;background:#121212;color:white;
       </button>
     </div>
     <div class="player-iframe-wrap">
+      <div id="muteOverlay"></div>
       <iframe id="gameFrame" src="" allowfullscreen></iframe>
     </div>
   </div>
@@ -144,7 +164,6 @@ const FB_ACTIVE = "https://hotdog-party-61e77-default-rtdb.firebaseio.com/active
 const LB_LOCAL  = "hotdog_lb"
 const sessionId = Math.random().toString(36).slice(2)
 
-// ---- PARSE URL PARAMS ----
 const params = new URLSearchParams(location.search)
 const currentPath = params.get("path") || ""
 const currentName = params.get("name") || "Game"
@@ -156,6 +175,55 @@ function gameURL(game) {
          "&icon=" + encodeURIComponent(game.icon)
 }
 
+// ---- MUTE ----
+let isMuted = false
+let audioCtx = null
+let gainNode = null
+
+function toggleMute() {
+  isMuted = !isMuted
+  const frame = document.getElementById("gameFrame")
+  const btn   = document.getElementById("muteBtn")
+
+  // Set iframe muted attribute (works for same-origin)
+  frame.muted = isMuted
+
+  // Also try to mute via Web Audio API destination gain (best effort)
+  if (isMuted) {
+    try {
+      if (!audioCtx) {
+        audioCtx = new (window.AudioContext || window.webkitAudioContext)()
+        gainNode = audioCtx.createGain()
+        gainNode.connect(audioCtx.destination)
+      }
+      gainNode.gain.value = 0
+    } catch(e) {}
+
+    // Reload iframe with muted attribute as a fallback
+    const src = frame.src
+    frame.src = ""
+    frame.setAttribute("muted", "")
+    setTimeout(() => { frame.src = src }, 50)
+
+    btn.classList.add("muted")
+    btn.title = "Unmute"
+    document.getElementById("iconUnmuted").style.display = "none"
+    document.getElementById("iconMuted").style.display   = "block"
+  } else {
+    try { if (gainNode) gainNode.gain.value = 1 } catch(e) {}
+
+    const src = frame.src
+    frame.src = ""
+    frame.removeAttribute("muted")
+    setTimeout(() => { frame.src = src }, 50)
+
+    btn.classList.remove("muted")
+    btn.title = "Mute"
+    document.getElementById("iconUnmuted").style.display = "block"
+    document.getElementById("iconMuted").style.display   = "none"
+  }
+}
+
 // ---- INIT PLAYER ----
 function initPlayer() {
   if (!currentPath) {
@@ -164,9 +232,9 @@ function initPlayer() {
     return
   }
   document.title = currentName + " – Hotdog Party"
-  document.getElementById("playerIcon").src  = currentIcon
+  document.getElementById("playerIcon").src        = currentIcon
   document.getElementById("playerTitle").textContent = currentName
-  document.getElementById("gameFrame").src   = currentPath
+  document.getElementById("gameFrame").src          = currentPath
   incrementPlayCount()
   pingActive()
   setInterval(pingActive, 90000)
@@ -185,9 +253,9 @@ async function incrementPlayCount() {
       body: JSON.stringify({count:prev+1, name:currentName, icon:currentIcon, path:currentPath})
     })
   } catch {
-    // localStorage fallback
     const local = JSON.parse(localStorage.getItem(LB_LOCAL) || "{}")
-    local[key] = {count:((local[key]||{}).count||0)+1, name:currentName, icon:currentIcon, path:currentPath}
+    const key2 = currentName.replace(/[.#$\[\]\/ ]/g, "_")
+    local[key2] = {count:((local[key2]||{}).count||0)+1, name:currentName, icon:currentIcon, path:currentPath}
     localStorage.setItem(LB_LOCAL, JSON.stringify(local))
   }
 }
