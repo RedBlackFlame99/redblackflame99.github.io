@@ -401,110 +401,7 @@ gap:10px;
 position:sticky;top:104px;
 }
 
-/* =====================
-   BROWSER PAGE
-   ===================== */
-#browserPage{padding:0 !important;}
-
-.browser-chrome{
-  background:#161616;
-  border-bottom:1px solid #2a2a2a;
-  padding:10px 16px;
-  display:flex;
-  align-items:center;
-  gap:10px;
-  position:sticky;
-  top:70px;
-  z-index:100;
-}
-
-.browser-nav-btn{
-  display:flex;align-items:center;justify-content:center;
-  width:34px;height:34px;border-radius:8px;
-  border:1px solid #2a2a2a;background:#1e1e1e;
-  color:#aaa;cursor:pointer;transition:.18s;flex-shrink:0;
-}
-.browser-nav-btn:hover{border-color:#ff8c00;color:#ff8c00;}
-.browser-nav-btn svg{width:16px;height:16px;pointer-events:none;}
-
-.browser-url-wrap{
-  flex:1;display:flex;align-items:center;
-  background:#1a1a1a;border:2px solid #2a2a2a;
-  border-radius:10px;padding:0 14px;gap:8px;
-  transition:.2s;
-}
-.browser-url-wrap:focus-within{border-color:#ff8c00;box-shadow:0 0 10px rgba(255,140,0,.25);}
-.browser-url-wrap svg{width:15px;height:15px;color:#555;flex-shrink:0;}
-.browser-url{
-  flex:1;background:none;border:none;outline:none;
-  color:#ddd;font-size:14px;padding:8px 0;
-}
-.browser-url::placeholder{color:#444;}
-.browser-go{
-  padding:6px 16px;background:linear-gradient(45deg,#ff8c00,#ffd000);
-  border:none;border-radius:7px;color:#111;font-weight:800;
-  font-size:13px;cursor:pointer;transition:.2s;flex-shrink:0;
-}
-.browser-go:hover{transform:scale(1.04);box-shadow:0 0 12px rgba(255,140,0,.4);}
-
-.browser-shortcuts{
-  display:flex;gap:8px;padding:12px 16px;
-  background:#141414;border-bottom:1px solid #1e1e1e;
-  flex-wrap:wrap;
-}
-.shortcut-btn{
-  display:flex;align-items:center;gap:7px;
-  padding:6px 14px;background:#1e1e1e;
-  border:1px solid #2a2a2a;border-radius:20px;
-  color:#ccc;font-size:13px;font-weight:600;
-  cursor:pointer;transition:.18s;text-decoration:none;
-}
-.shortcut-btn:hover{border-color:#ff8c00;color:#ff8c00;background:#222;}
-.shortcut-btn img{width:16px;height:16px;border-radius:3px;}
-
-.browser-frame-wrap{
-  position:relative;
-  height:calc(100vh - 185px);
-  background:#0e0e0e;
-}
-.browser-frame-wrap iframe{
-  width:100%;height:100%;border:none;display:block;
-}
-.browser-blocked{
-  display:none;
-  flex-direction:column;align-items:center;justify-content:center;
-  height:100%;gap:16px;color:#555;text-align:center;padding:40px;
-}
-.browser-blocked.show{display:flex;}
-.browser-blocked svg{width:64px;height:64px;opacity:.3;}
-.browser-blocked h3{font-size:22px;color:#666;margin:0;}
-.browser-blocked p{font-size:14px;color:#444;max-width:400px;margin:0;}
-.browser-placeholder{
-  display:flex;flex-direction:column;align-items:center;
-  justify-content:center;height:100%;gap:20px;
-}
-.browser-placeholder-title{
-  font-family:'Luckiest Guy';font-size:32px;
-  background:linear-gradient(45deg,#ff7b00,#ffae00);
-  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
-}
-.browser-placeholder-sub{color:#555;font-size:15px;}
-.browser-shortcuts-big{display:flex;gap:16px;flex-wrap:wrap;justify-content:center;margin-top:10px;}
-.shortcut-big{
-  display:flex;flex-direction:column;align-items:center;gap:8px;
-  width:80px;cursor:pointer;transition:.2s;
-}
-.shortcut-big:hover{transform:translateY(-4px);}
-.shortcut-big-icon{
-  width:56px;height:56px;border-radius:14px;
-  background:#1e1e1e;border:1px solid #2a2a2a;
-  display:flex;align-items:center;justify-content:center;
-  font-size:26px;transition:.2s;
-}
-.shortcut-big:hover .shortcut-big-icon{border-color:#ff8c00;box-shadow:0 0 16px rgba(255,140,0,.3);}
-.shortcut-big-label{font-size:12px;color:#888;font-weight:600;}
-
-
+/* SCROLL TO TOP */
 .scroll-top{
   position:fixed;bottom:28px;right:28px;
   width:46px;height:46px;
@@ -555,10 +452,6 @@ position:sticky;top:104px;
     <div class="nav-btn games-nav-btn" onclick="showPage('gamesPage')">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" width="20" height="20"><rect x="2" y="7" width="20" height="12" rx="4"/><path d="M8 11v4M6 13h4"/><circle cx="16" cy="12" r="1" fill="currentColor"/><circle cx="18" cy="14" r="1" fill="currentColor"/></svg>
       Games
-    </div>
-    <div class="nav-btn" onclick="showPage('browserPage')">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
-      Browser
     </div>
     <div class="nav-btn" onclick="showPage('contactPage')">
       <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
@@ -695,92 +588,6 @@ position:sticky;top:104px;
 
 </div>
 
-<!-- BROWSER PAGE -->
-<div id="browserPage" class="page">
-
-  <!-- Chrome bar -->
-  <div class="browser-chrome">
-    <button class="browser-nav-btn" onclick="browserBack()" title="Back">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
-    </button>
-    <button class="browser-nav-btn" onclick="browserForward()" title="Forward">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
-    </button>
-    <button class="browser-nav-btn" onclick="browserRefresh()" title="Refresh">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"/></svg>
-    </button>
-    <div class="browser-url-wrap">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
-      <input class="browser-url" id="browserUrl" placeholder="Enter a URL or search..." onkeydown="if(event.key==='Enter')browserGo()">
-    </div>
-    <button class="browser-go" onclick="browserGo()">Go</button>
-    <button class="browser-nav-btn" onclick="browserFullscreen()" title="Fullscreen">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 3 21 3 21 9"/><polyline points="9 21 3 21 3 15"/><line x1="21" y1="3" x2="14" y2="10"/><line x1="3" y1="21" x2="10" y2="14"/></svg>
-    </button>
-  </div>
-
-  <!-- Quick shortcuts bar -->
-  <div class="browser-shortcuts">
-    <a class="shortcut-btn" onclick="browserLoad('https://www.youtube.com')"><img src="https://www.google.com/s2/favicons?domain=youtube.com&sz=32"> YouTube</a>
-    <a class="shortcut-btn" onclick="browserLoad('https://www.twitch.tv')"><img src="https://www.google.com/s2/favicons?domain=twitch.tv&sz=32"> Twitch</a>
-    <a class="shortcut-btn" onclick="browserLoad('https://www.google.com')"><img src="https://www.google.com/s2/favicons?domain=google.com&sz=32"> Google</a>
-    <a class="shortcut-btn" onclick="browserLoad('https://www.reddit.com')"><img src="https://www.google.com/s2/favicons?domain=reddit.com&sz=32"> Reddit</a>
-    <a class="shortcut-btn" onclick="browserLoad('https://www.spotify.com')"><img src="https://www.google.com/s2/favicons?domain=spotify.com&sz=32"> Spotify</a>
-    <a class="shortcut-btn" onclick="browserLoad('https://chat.openai.com')"><img src="https://www.google.com/s2/favicons?domain=openai.com&sz=32"> ChatGPT</a>
-    <a class="shortcut-btn" onclick="browserLoad('https://x.com')"><img src="https://www.google.com/s2/favicons?domain=x.com&sz=32"> X</a>
-    <a class="shortcut-btn" onclick="browserLoad('https://www.tiktok.com')"><img src="https://www.google.com/s2/favicons?domain=tiktok.com&sz=32"> TikTok</a>
-  </div>
-
-  <!-- Frame + placeholder + blocked message -->
-  <div class="browser-frame-wrap" id="browserFrameWrap">
-
-    <!-- Placeholder shown before any URL is loaded -->
-    <div class="browser-placeholder" id="browserPlaceholder">
-      <div class="browser-placeholder-title">🌐 Hotdog Browser</div>
-      <div class="browser-placeholder-sub">Type a URL above or pick a shortcut</div>
-      <div class="browser-shortcuts-big">
-        <div class="shortcut-big" onclick="browserLoad('https://www.youtube.com')">
-          <div class="shortcut-big-icon"><img src="https://www.google.com/s2/favicons?domain=youtube.com&sz=64" style="width:32px;height:32px;border-radius:4px;"></div>
-          <div class="shortcut-big-label">YouTube</div>
-        </div>
-        <div class="shortcut-big" onclick="browserLoad('https://www.twitch.tv')">
-          <div class="shortcut-big-icon"><img src="https://www.google.com/s2/favicons?domain=twitch.tv&sz=64" style="width:32px;height:32px;border-radius:4px;"></div>
-          <div class="shortcut-big-label">Twitch</div>
-        </div>
-        <div class="shortcut-big" onclick="browserLoad('https://www.google.com')">
-          <div class="shortcut-big-icon"><img src="https://www.google.com/s2/favicons?domain=google.com&sz=64" style="width:32px;height:32px;border-radius:4px;"></div>
-          <div class="shortcut-big-label">Google</div>
-        </div>
-        <div class="shortcut-big" onclick="browserLoad('https://www.reddit.com')">
-          <div class="shortcut-big-icon"><img src="https://www.google.com/s2/favicons?domain=reddit.com&sz=64" style="width:32px;height:32px;border-radius:4px;"></div>
-          <div class="shortcut-big-label">Reddit</div>
-        </div>
-        <div class="shortcut-big" onclick="browserLoad('https://chat.openai.com')">
-          <div class="shortcut-big-icon"><img src="https://www.google.com/s2/favicons?domain=openai.com&sz=64" style="width:32px;height:32px;border-radius:4px;"></div>
-          <div class="shortcut-big-label">ChatGPT</div>
-        </div>
-        <div class="shortcut-big" onclick="browserLoad('https://www.spotify.com')">
-          <div class="shortcut-big-icon"><img src="https://www.google.com/s2/favicons?domain=spotify.com&sz=64" style="width:32px;height:32px;border-radius:4px;"></div>
-          <div class="shortcut-big-label">Spotify</div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Blocked message -->
-    <div class="browser-blocked" id="browserBlocked">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><line x1="4.93" y1="4.93" x2="19.07" y2="19.07"/></svg>
-      <h3>Site Blocked This Embed</h3>
-      <p id="browserBlockedUrl"></p>
-      <p>This site doesn't allow being embedded. Try opening it directly instead.</p>
-      <a id="browserBlockedLink" href="#" target="_blank" class="gotd-play-btn" style="text-decoration:none;padding:10px 24px;border-radius:9px;">Open in New Tab ↗</a>
-    </div>
-
-    <iframe id="browserFrame" src="" style="display:none;width:100%;height:100%;border:none;"
-      onload="browserFrameLoaded()" onerror="browserFrameError()"></iframe>
-  </div>
-
-</div>
-
 <!-- CONTACT PAGE -->
 <div id="contactPage" class="page">
   <div class="contact-wrap">
@@ -792,7 +599,7 @@ position:sticky;top:104px;
         Email us
       </div>
       <div class="contact-email">
-        <span><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="274f4853434840574655535e1f121367404a464e4b0944484a">[email&#160;protected]</a></span>
+        <span>hotdogparty854@gmail.com</span>
         <button class="copy-btn" id="copyBtn" onclick="copyEmail()">Copy</button>
       </div>
     </div>
@@ -812,7 +619,7 @@ position:sticky;top:104px;
   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"/></svg>
 </button>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+<script>
 
 let allGames = []
 let currentGame = null
@@ -824,124 +631,7 @@ function showPage(page) {
   window.scrollTo(0, 0)
 }
 
-// ---- BROWSER ----
-let browserHistory = []
-let browserHistoryIndex = -1
-
-function browserLoad(url) {
-  // Add https if missing
-  if (!/^https?:\/\//i.test(url)) {
-    // If it looks like a domain, add https
-    if (url.includes('.') && !url.includes(' ')) {
-      url = 'https://' + url
-    } else {
-      // Treat as Google search
-      url = 'https://www.google.com/search?q=' + encodeURIComponent(url)
-    }
-  }
-
-  document.getElementById('browserUrl').value = url
-  document.getElementById('browserPlaceholder').style.display = 'none'
-  document.getElementById('browserBlocked').classList.remove('show')
-
-  const frame = document.getElementById('browserFrame')
-  frame.style.display = 'block'
-  frame.src = url
-
-  // Track history
-  browserHistory = browserHistory.slice(0, browserHistoryIndex + 1)
-  browserHistory.push(url)
-  browserHistoryIndex = browserHistory.length - 1
-
-  // Detect block after short delay
-  clearTimeout(window._blockTimer)
-  window._blockTimer = setTimeout(() => {
-    try {
-      // If we can access contentDocument it loaded fine, if not it's blocked
-      const doc = frame.contentDocument
-      if (!doc || !doc.location.href || doc.location.href === 'about:blank') {
-        showBlocked(url)
-      }
-    } catch(e) {
-      // Cross-origin means it loaded (blocked sites throw errors too but differently)
-      // We'll just leave it — if it loaded in the iframe it's fine
-    }
-  }, 3000)
-}
-
-function browserFrameLoaded() {
-  const frame = document.getElementById('browserFrame')
-  try {
-    const loc = frame.contentWindow.location.href
-    if (loc && loc !== 'about:blank') {
-      document.getElementById('browserUrl').value = loc
-    }
-  } catch(e) {
-    // Cross-origin, that's fine — it loaded
-  }
-}
-
-function browserFrameError() {
-  const url = document.getElementById('browserUrl').value
-  showBlocked(url)
-}
-
-function showBlocked(url) {
-  const frame = document.getElementById('browserFrame')
-  // Check if frame actually has content before showing blocked
-  try {
-    if (frame.contentDocument && frame.contentDocument.body && frame.contentDocument.body.innerHTML.length > 0) return
-  } catch(e) {}
-  frame.style.display = 'none'
-  const blocked = document.getElementById('browserBlocked')
-  blocked.classList.add('show')
-  document.getElementById('browserBlockedUrl').textContent = url
-  document.getElementById('browserBlockedLink').href = url
-}
-
-function browserGo() {
-  const val = document.getElementById('browserUrl').value.trim()
-  if (val) browserLoad(val)
-}
-
-function browserBack() {
-  if (browserHistoryIndex > 0) {
-    browserHistoryIndex--
-    const url = browserHistory[browserHistoryIndex]
-    document.getElementById('browserUrl').value = url
-    document.getElementById('browserFrame').src = url
-    document.getElementById('browserBlocked').classList.remove('show')
-    document.getElementById('browserFrame').style.display = 'block'
-    document.getElementById('browserPlaceholder').style.display = 'none'
-  }
-}
-
-function browserForward() {
-  if (browserHistoryIndex < browserHistory.length - 1) {
-    browserHistoryIndex++
-    const url = browserHistory[browserHistoryIndex]
-    document.getElementById('browserUrl').value = url
-    document.getElementById('browserFrame').src = url
-    document.getElementById('browserBlocked').classList.remove('show')
-    document.getElementById('browserFrame').style.display = 'block'
-    document.getElementById('browserPlaceholder').style.display = 'none'
-  }
-}
-
-function browserRefresh() {
-  const frame = document.getElementById('browserFrame')
-  if (frame.src && frame.src !== window.location.href) {
-    frame.src = frame.src
-    document.getElementById('browserBlocked').classList.remove('show')
-    frame.style.display = 'block'
-  }
-}
-
-function browserFullscreen() {
-  document.getElementById('browserFrame').requestFullscreen?.()
-}
-
-
+// ---- GAME OF THE DAY ----
 function setupGameOfTheDay(games) {
   if (!games.length) return
   // Use today's date as a deterministic seed — same game for everyone all day
@@ -1235,4 +925,17 @@ async function loadGames() {
       renderFeatured(shuffle(games).slice(0, 10))
     }
 
-  } catch(e)
+  } catch(e) {
+    console.log("Could not load games.json:", e)
+  }
+}
+
+loadGames()
+
+window.addEventListener("scroll", () => {
+  document.getElementById("scrollTopBtn").classList.toggle("visible", window.scrollY > 300)
+})
+
+</script>
+</body>
+</html>
