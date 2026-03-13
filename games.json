@@ -561,8 +561,8 @@
     },
     {
         "name": "Sausage Flip",
-        "path": "games/sausage_flip/sf.html",
-        "icon": "games/sausage_flip/icon.png"
+        "path": "games/sausageflip/sf.html",
+        "icon": "games/sausageflip/icon.png"
     },
     {
         "name": "10 Minutes till Dawn",
@@ -600,11 +600,6 @@
         "icon": "games/snowballio/icon.png"
     },
     {
-        "name": "Achievement Unlocked",
-        "path": "games/achievement_unlocked/achieve1/achi",
-        "icon": "games/achievement_unlocked/achieve1/icon.png"
-    },
-    {
         "name": "State.io",
         "path": "games/stateio/clstateio.html",
         "icon": "games/stateio/icon.png"
@@ -618,6 +613,21 @@
         "name": "Stealth Master",
         "path": "games/stealthmaster/clstealthmaster.html",
         "icon": "games/stealthmaster/icon.png"
+    },
+    {
+        "name": "Achievement Unlocked",
+        "path": "games/achievement_unlocked/achieve1.html",
+        "icon": "games/achievement_unlocked/icon1.png"
+    },
+    {
+        "name": "Achievement Unlocked 2",
+        "path": "games/achievement_unlocked/achieve2.html",
+        "icon": "games/achievement_unlocked/icon2.png"
+    },
+    {
+        "name": "Achievement Unlocked 3",
+        "path": "games/achievement_unlocked/achieve3.html",
+        "icon": "games/achievement_unlocked/icon3.png"
     }
     
     
