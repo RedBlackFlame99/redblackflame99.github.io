@@ -408,5 +408,65 @@
         "name": "Going Balls",
         "path": "games/going_balls/clgoingballs.html",
         "icon": "games/going_balls/icon.png"
+    },
+    {
+        "name": "Granny",
+        "path": "games/granny/granny.html",
+        "icon": "games/granny/icon.png"
+    },
+    {
+        "name": "Subway Surfers",
+        "path": "games/subwaysurf/subway.html",
+        "icon": "games/subwaysurf/icon.png"
+    },
+    {
+        "name": "Guess Their Answer",
+        "path": "games/guess_their_answer/clguesstheiranswer.html",
+        "icon": "games/guess_their_answer/icon.png"
+    },
+    {
+        "name": "Harvest.io",
+        "path": "games/harvest_io/clharvestio.html",
+        "icon": "games/harvest_io/icon.png"
+    },
+    {
+        "name": "Iron Snout",
+        "path": "games/iron_snot/iron.html",
+        "icon": "games/iron_snout/icon.png"
+    },
+    {
+        "name": "Helix Jump",
+        "path": "games/helix_jump/clhelixjump.html",
+        "icon": "games/helix_jump/icon.png"
+    },
+    {
+        "name": "Moto X3M",
+        "path": "games/motox3m/moto.html",
+        "icon": "games/motox3m/icon.png"
+    },
+    {
+        "name": "Hextris",
+        "path": "games/hextris/clhextris.html",
+        "icon": "games/hextris/icon.png"
+    },
+    {
+        "name": "Hole.io",
+        "path": "games/hole_io/clholeio.html",
+        "icon": "games/hole_io/icon.png"
+    },
+    {
+        "name": "Hypper Sandbox",
+        "path": "games/hyppersandbox/clhyppersandbox.html",
+        "icon": "games/hyppersandbox/icon.png"
+    },
+    {
+        "name": "Icey Purple Head",
+        "path": "games/icey_purple_head/cliceypurplehead.html",
+        "icon": "games/icey_purple_head/icon.png"
+    },
+    {
+        "name": "Idle Breakout",
+        "path": "games/idle_breakout/clidlebreakout.html",
+        "icon": "games/idle_breakout/icon.png"
     }
 ]
