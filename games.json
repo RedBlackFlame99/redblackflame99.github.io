@@ -870,13 +870,18 @@
         "icon": "games/blackholesquare/icon.png"
     },
     {
-        "name": "Black Hole Square",
-        "path": "games/blackholesquare/index.html",
-        "icon": "games/blackholesquare/icon.png"
-    },
-    {
         "name": "Blocky Snake",
         "path": "games/blocky-snakes/index.html",
         "icon": "games/blocky-snakes/icon.png"
+    },
+    {
+        "name": "Chrome Dino",
+        "path": "games/chromedino/index.html",
+        "icon": "games/chromedino/icon.png"
+    },
+    {
+        "name": "City Blocks 2",
+        "path": "games/city-blocks-2/index.html",
+        "icon": "games/city-blocks-2/icon.png"
     }
 ]
