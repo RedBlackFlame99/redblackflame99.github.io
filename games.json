@@ -186,7 +186,7 @@
     },
     {
         "name": "Capybara Clicker",
-        "path": "games/clicker/capybara_clicker/clcabybaraclicker.html",
+        "path": "games/clicker/capybara_clicker/clcapybaraclicker.html",
         "icon": "games/clicker/capybara_clicker/icon.png"
     },
     {
@@ -468,5 +468,15 @@
         "name": "Idle Breakout",
         "path": "games/idle_breakout/clidlebreakout.html",
         "icon": "games/idle_breakout/icon.png"
+    },
+    {
+        "name": "There is no game",
+        "path": "games/nogame/nogame.html",
+        "icon": "games/nogame/icon.png"
+    },
+    {
+        "name": "Infinite Craft",
+        "path": "games/infinitecraft/clinfinitecraft.html",
+        "icon": "games/infinitecraft/icon.png"
     }
 ]
