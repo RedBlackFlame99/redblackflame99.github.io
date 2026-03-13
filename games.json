@@ -943,6 +943,36 @@
         "name": "Gravity Soccer",
         "path": "games/gravity-soccer/index.html",
         "icon": "games/gravity-soccer/icon.png"
+    },
+    {
+        "name": "Hacker Type",
+        "path": "games/hackertype/index.html",
+        "icon": "games/hackertype/icon.png"
+    },
+    {
+        "name": "House of Hazards",
+        "path": "games/house-of-hazards/index.html",
+        "icon": "games/house-of-hazards/thumbnail.jpg"
+    },
+    {
+        "name": "The Impossible Quiz",
+        "path": "games/impossiblequiz/index.html",
+        "icon": "games/impossiblequiz/impossiblequiz.jpg"
+    },
+    {
+        "name": "KartFight.io",
+        "path": "games/kart-fight-io/index.html",
+        "icon": "games/kart-fight-io/icon.jpg"
+    },
+    {
+        "name": "Krunker",
+        "path": "games/krunker/index.html",
+        "icon": "games/krunker/img/krunker-io.jpg"
+    },
+    {
+        "name": "OSU",
+        "path": "games/osu/index.html",
+        "icon": "games/osu/icon.png"
     }
 
 ]
